@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { onErrorResumeNext } from 'rxjs/operators';
 import { CadastroService } from 'src/app/service/cadastro.service';
 
 export interface FormInput {
@@ -87,15 +86,12 @@ export class CadastroProdutorComponent implements OnInit {
   }
 
   cadastraProdutor(event){
-    console.log(event)
-
     const rua = this.cadastroForm.get('enderecoRua')?.value;
     const numero = this.cadastroForm.get('enderecoNumero')?.value;
     const bairro = this.cadastroForm.get('enderecoBairro')?.value;
     const cidade = this.cadastroForm.get('enderecoCidade')?.value;
     const estado = this.cadastroForm.get('enderecoEstado')?.value;
 
-    // const endereco = `${rua ? rua : ''};${numero ? numero : ''};${bairro ? bairro : ''};${cidade ? cidade : ''};${estado ? estado : ''}`;
     const endereco = 
       (rua ? rua : '') + ';' +
       (numero ? numero : '') + ';' +

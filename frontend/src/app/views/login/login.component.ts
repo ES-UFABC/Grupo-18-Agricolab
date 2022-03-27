@@ -21,17 +21,12 @@ export class LoginComponent implements OnInit {
 
   construirForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
       senha: ['', [Validators.required]],
     });
   }
 
-  teste(event){
+  login(event){
     console.log(event)
-    console.log(this.loginForm.valid)
-    console.log(this.loginForm.get('email')?.valid)
-
-    this.cadastroService.getProdutores().subscribe(data => console.log(data));
-    this.cadastroService.getProdutor(1).subscribe(data => console.log(data));
   }
 }
