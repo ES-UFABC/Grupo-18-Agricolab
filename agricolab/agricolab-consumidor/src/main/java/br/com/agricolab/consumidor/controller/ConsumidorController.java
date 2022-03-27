@@ -38,7 +38,7 @@ public class ConsumidorController {
     }
 
     @PutMapping("/{id}")
-    ConsumidorEntity modificaProdutor(@RequestBody ConsumidorEntity novoConsumidor, @PathVariable Integer id) {
+    ConsumidorEntity modificaConsumidor(@RequestBody ConsumidorEntity novoConsumidor, @PathVariable Integer id) {
 
         return consumidorRepository.findById(id)
                 .map(consumidor -> {
