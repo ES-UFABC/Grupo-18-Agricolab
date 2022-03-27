@@ -7,6 +7,7 @@ export const environment = {
 
   //Local
   API: 'http://localhost:8080',
+  GEO_API: 'http://api.positionstack.com/v1/forward',
 };
 
 /*

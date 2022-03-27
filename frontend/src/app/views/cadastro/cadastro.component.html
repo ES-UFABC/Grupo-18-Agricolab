@@ -16,9 +16,9 @@
         </div>
     </div>
     <div class="start-form" *ngIf="showConsumidorForm">
-        <app-cadastro-consumidor></app-cadastro-consumidor>
+        <app-cadastro-consumidor (voltarEvent)="showStartForm = !showStartForm; showConsumidorForm = !showConsumidorForm;"></app-cadastro-consumidor>
     </div>
     <div class="start-form" *ngIf="showProdutorForm">
-        <app-cadastro-produtor></app-cadastro-produtor>
+        <app-cadastro-produtor (voltarEvent)="showStartForm = !showStartForm; showProdutorForm = !showProdutorForm;"></app-cadastro-produtor>
     </div>
 </main>
