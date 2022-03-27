@@ -22,15 +22,18 @@ const routes: Routes = [
   },
   {
     path: 'mapa',
-    component: MapaComponent
+    component: HomeComponent
+    // component: MapaComponent
   },
   {
     path: 'time',
-    component: TimeComponent
+    component: HomeComponent
+    // component: TimeComponent
   },
   {
     path: 'contato',
-    component: ContatoComponent
+    component: HomeComponent
+    // component: ContatoComponent
   },
 ];
 
