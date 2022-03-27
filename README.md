@@ -21,6 +21,7 @@
 * IDE (Eclipse, IntelliJ, Spring Tool Suite)
 * NodeJS
 * NPM
+* Angular CLI
 
 ========================
 
@@ -35,6 +36,7 @@
 ## Frontend
 
 - Para instalar o frontend em Angular, é necessário ter instalado o NodeJS e o NPM
+- Execute o comando "npm install -g @angular/cli" no seu terminal para instalar o Angular CLI
 - Após clonar o projeto, navegue até a pasta "frontend" com seu terminal
 - Execute o comando "npm install" para instalar as dependências do projeto
 
