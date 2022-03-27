@@ -19,7 +19,8 @@
 }
 
 .main {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 600px;
     padding: 1rem 2rem;
     display: flex;
     justify-content: center;
@@ -34,6 +35,9 @@
     background-color: #00386f;
     width: 90vw;
     height: 50vh;
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 410px;
 }
 
 .main h1 {
@@ -97,5 +101,7 @@
 
     .main form {
         width: 25vw;
+
+        max-width: initial;
     }
 }
