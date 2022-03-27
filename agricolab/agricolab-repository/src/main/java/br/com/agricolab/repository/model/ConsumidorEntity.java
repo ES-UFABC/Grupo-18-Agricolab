@@ -21,37 +21,37 @@ public class ConsumidorEntity implements Serializable {
     @Column(name="id_consumidor", nullable=false)
     private Integer idConsumidor;
 
-    @Column(name="tipo_consumidor", nullable=true, columnDefinition="VARCHAR", length = 2)
+    @Column(name="tipo_consumidor", columnDefinition="VARCHAR", length = 2)
     private String tipoConsumidor;
 
-    @Column(name="segmento_consumidorPJ", nullable=true, columnDefinition="VARCHAR", length = 200)
+    @Column(name="segmento_consumidorPJ",columnDefinition="VARCHAR", length = 200)
     private String segmentoConsumidorPJ;
 
-    @Column(name="nome_consumidor", nullable=true, columnDefinition="VARCHAR", length = 200)
+    @Column(name="nome_consumidor", columnDefinition="VARCHAR", length = 200)
     private String nomeConsumidor;
 
-    @Column(name="email_consumidor", nullable=true, columnDefinition="VARCHAR", length = 100)
+    @Column(name="email_consumidor", columnDefinition="VARCHAR", length = 100)
     private String emailConsumidor;
 
-    @Column(name="cnpj_consumidor", nullable=true, columnDefinition="VARCHAR", length = 14)
+    @Column(name="cnpj_consumidor", columnDefinition="VARCHAR", length = 14)
     private String cnpjConsumidor;
 
-    @Column(name="cpf_consumidor", nullable=true, columnDefinition="VARCHAR", length = 11)
+    @Column(name="cpf_consumidor", columnDefinition="VARCHAR", length = 11)
     private String cpfConsumidor;
 
-    @Column(name="telefone_consumidor", nullable=true, columnDefinition="VARCHAR", length = 13)
+    @Column(name="telefone_consumidor", columnDefinition="VARCHAR", length = 13)
     private String telefoneConsumidor;
 
-    @Column(name="endereco_consumidor", nullable=true, columnDefinition="VARCHAR", length = 100)
+    @Column(name="endereco_consumidor", columnDefinition="VARCHAR", length = 100)
     private String enderecoConsumidor;
 
-    @Column(name="compl_end_consumidor", nullable=true, columnDefinition="VARCHAR", length = 40)
+    @Column(name="compl_end_consumidor", columnDefinition="VARCHAR", length = 40)
     private String complementoEnderecoconsumidor;
 
-    @Column(name="lat_consumidor", nullable=true, columnDefinition="VARCHAR", length = 10)
+    @Column(name="lat_consumidor", columnDefinition="VARCHAR", length = 10)
     private String latitudeConsumidor;
 
-    @Column(name="long_consumidor", nullable=true, columnDefinition="VARCHAR", length = 10)
+    @Column(name="long_consumidor", columnDefinition="VARCHAR", length = 10)
     private String longitudeConsumidor;
     
 }
