@@ -1,66 +1,24 @@
 <header class="logo">
-    <img src="./../../../assets/logo_png_agricolab_200x200.png" alt="Logo Agricolab">
+    <a [routerLink]="['']"><img src="./../../../assets/logo_png_agricolab_200x200.png" alt="Logo Agricolab"></a>
     <a [routerLink]="['']"><h4>Agricolab</h4></a>
 </header>
-<main class="main">
-    <form
-    #form="ngForm"
-    (ngSubmit)="teste($event)"
-    [formGroup]="cadastroForm"
-    id="cadastro-form"
-    >
-        <h1>Cadastro de Produtor</h1>
-        <h2>Dados Pessoais</h2>
-        <section>
-            <div class="form-input">
-                <label for="nome">Nome</label>
-                <input type="text" formControlName="nome" name="nome">
-            </div>
-            <div class="form-input">
-                <label for="email">Email</label>
-                <input type="email" formControlName="email" name="email">
-            </div>
-            <div class="form-input">
-                <label for="telefone">Telefone</label>
-                <input type="tel" formControlName="telefone" name="telefone">
-            </div>
-            <div class="form-input">
-                <label for="telefone">Telefone</label>
-                <input type="tel" formControlName="telefone" name="telefone">
-            </div>
-            <div class="form-input">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" formControlName="cnpj" name="cnpj">
-            </div>
-            <div class="form-input">
-                <label for="cpf">CPF</label>
-                <input type="text" formControlName="cpf" name="cpf">
-            </div>
-        </section>
-        <h2>Endereço</h2>
-        <section>
-            <div class="form-input">
-                <label for="enderecoRua">Rua</label>
-                <input type="text" formControlName="enderecoRua" name="enderecoRua">
-            </div>
-            <div class="form-input">
-                <label for="enderecoNumero">Número</label>
-                <input type="text" formControlName="enderecoNumero" name="enderecoNumero">
-            </div>
-            <div class="form-input">
-                <label for="enderecoBairro">Bairro</label>
-                <input type="text" formControlName="enderecoBairro" name="enderecoBairro">
-            </div>
-            <div class="form-input">
-                <label for="enderecoCidade">Cidade</label>
-                <input type="text" formControlName="enderecoCidade" name="enderecoCidade">
-            </div>
-            <div class="form-input">
-                <label for="enderecoEstado">Estado</label>
-                <input type="text" formControlName="enderecoEstado" name="enderecoEstado">
-            </div>
-        </section>
 
-        <button type="submit" class="simple-button-blue">Enviar</button>
-    </form>
+<main class="main">
+    <div class="header">
+        <h1>Cadastro</h1>
+        <p>Campos com * são obrigatórios</p>
+    </div>
+    <div class="start-form" *ngIf="showStartForm">
+        <h2>Você é um:</h2>
+        <div>
+            <span class="simple-button-blue" (click)="showStartForm = !showStartForm; showConsumidorForm = !showConsumidorForm;">Consumidor</span>
+            <span class="simple-button-blue" (click)="showStartForm = !showStartForm; showProdutorForm = !showProdutorForm;">Produtor</span>
+        </div>
+    </div>
+    <div class="start-form" *ngIf="showConsumidorForm">
+        <app-cadastro-consumidor></app-cadastro-consumidor>
+    </div>
+    <div class="start-form" *ngIf="showProdutorForm">
+        <app-cadastro-produtor></app-cadastro-produtor>
+    </div>
 </main>

@@ -12,6 +12,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './views/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CadastroProdutorComponent } from './components/cadastro-produtor/cadastro-produtor.component';
+import { CadastroConsumidorComponent } from './components/cadastro-consumidor/cadastro-consumidor.component';
+import { MapaComponent } from './views/mapa/mapa.component';
+import { TimeComponent } from './views/time/time.component';
+import { ContatoComponent } from './views/contato/contato.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,12 @@ import { LoginComponent } from './views/login/login.component';
     HeaderComponent,
     FooterComponent,
     CadastroComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroProdutorComponent,
+    CadastroConsumidorComponent,
+    MapaComponent,
+    TimeComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,8 @@ import { LoginComponent } from './views/login/login.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
