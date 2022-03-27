@@ -30,11 +30,8 @@ public class ConsumidorEntity implements Serializable {
     @Column(name="nome_consumidor", columnDefinition="VARCHAR", length = 200)
     private String nomeConsumidor;
 
-    @Column(name="email_consumidor", nullable=true, columnDefinition="VARCHAR", length = 100)
+    @Column(name="email_consumidor", columnDefinition="VARCHAR", length = 100)
     private String emailConsumidor;
-
-    @Column(name="senha_consumidor", columnDefinition="VARCHAR", length = 100)
-    private String senhaConsumidor;
 
     @Column(name="cnpj_consumidor", columnDefinition="VARCHAR", length = 14)
     private String cnpjConsumidor;
