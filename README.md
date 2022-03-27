@@ -17,21 +17,36 @@
 # Pré Requisitos
 
 * JDK 11
-* IDE ( Eclipse, IntelliJ, Spring Tool Suite)
+* Spring Framework
+* IDE (Eclipse, IntelliJ, Spring Tool Suite)
+* NodeJS
+* NPM
 
 ========================
 
 # Desenho Arquitetura
 
 ![arquitetura](https://user-images.githubusercontent.com/32601542/157986724-677be37f-1cd3-4c84-9b58-eefe6afbde4c.png)
+
 ========================
 
 # Como instalar
 
+## Frontend
+
+- Para instalar o frontend em Angular, é necessário ter instalado o NodeJS e o NPM
+- Após clonar o projeto, navegue até a pasta "frontend" com seu terminal
+- Execute o comando "npm install" para instalar as dependências do projeto
+
 ========================
 
-
 # Como usar
+
+## Frontend
+
+- Com as dependências instaladas, execute o comando "npm start" ou "ng serve"
+- Após a aplicação ser inicializada, ela deve estar rodando na porta http://localhost:4200
+
 =======
 
 # Banco dados - Entidades

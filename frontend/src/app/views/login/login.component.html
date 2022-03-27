@@ -1,0 +1,27 @@
+<header class="logo">
+    <a [routerLink]="['']"><img src="./../../../assets/logo_png_agricolab_200x200.png" alt="Logo Agricolab"></a>
+    <a [routerLink]="['']"><h4>Agricolab</h4></a>
+</header>
+<main class="main">
+    <form
+    #form="ngForm"
+    (ngSubmit)="teste($event)"
+    [formGroup]="loginForm"
+    id="login-form"
+    >
+        <h1>Login</h1>
+        <section>
+            <div class="form-input">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" name="email">
+            </div>
+            <div class="form-input">
+                <label for="senha">Senha</label>
+                <input type="password" formControlName="senha" name="senha">
+            </div>
+        </section>
+
+        <button type="submit" class="simple-button">Entrar</button>
+        <a [routerLink]="['esqueci-senha']">Esqueci minha senha</a>
+    </form>
+</main>

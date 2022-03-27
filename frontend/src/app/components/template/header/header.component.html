@@ -1,1 +1,16 @@
-<p>header works!</p>
+<div class="container" [class.change]="showMenu" (click)="showMenu = !showMenu">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+
+<nav @myInsertRemoveTrigger *ngIf="showMenu" class="nav" (click)="showMenu = !showMenu">
+    <ul>
+        <li><a [routerLink]="['']">Home</a></li>
+        <li><a [routerLink]="['mapa']">Encontre produtores</a></li>
+        <li><a [routerLink]="['time']">Nosso time</a></li>
+        <li><a [routerLink]="['contato']">Contato</a></li>
+    </ul>
+    <a [routerLink]="['login']" class="simple-button">Login</a>
+    <a [routerLink]="['cadastro']" class="simple-button">Cadastro</a>
+</nav>

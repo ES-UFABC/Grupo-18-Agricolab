@@ -1,0 +1,96 @@
+.logo {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+}
+
+.logo h4 {
+    font-size: 1.5rem;
+    color: #00386f;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.logo img {
+    width: 10vw; 
+}
+
+.main {
+    min-height: 100vh;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00386f;
+    width: 90vw;
+    height: 50vh;
+}
+
+.main h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.main button {
+    margin-top: 2rem;
+}
+
+.main a {
+    color: #fff;
+    padding: 0.3rem;
+}
+
+.main a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-input label {
+    color: #fff;
+    padding: 0.3rem;
+    display: block;
+    text-align: center;
+}
+
+.form-input input {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.0);
+    margin-bottom: 1rem;
+}
+
+.form-input input:hover {
+    border-bottom: 2px solid #cfcfcf;
+}
+
+.form-input input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #a0a0a0;
+}
+
+.form-input input:-webkit-autofill { 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #fff !important;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .logo img {
+        width: 4vw;
+    }
+
+    .main form {
+        width: 25vw;
+    }
+}

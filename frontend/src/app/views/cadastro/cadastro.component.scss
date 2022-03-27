@@ -1,0 +1,84 @@
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+    position: absolute;
+}
+
+.logo h4 {
+    font-size: 1.5rem;
+    color: #00386f;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.logo img {
+    width: 10vw; 
+}
+
+.main {
+    min-height: 100vh;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.main .header {
+    position: absolute;
+    top: 5.5rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.header p {
+    font-weight: 100;
+    font-size: 1rem;
+}
+
+.start-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.start-form {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.start-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    margin-top: 3rem;
+
+}
+
+@media only screen and (min-width: 768px) {
+
+    .logo img {
+        width: 4vw;
+    }
+
+    .main form {
+        display: initial;
+    }
+
+}
