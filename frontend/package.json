@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-host": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "prebuild": "npm --no-git-tag-version version patch",
     "watch": "ng build --watch --configuration development",

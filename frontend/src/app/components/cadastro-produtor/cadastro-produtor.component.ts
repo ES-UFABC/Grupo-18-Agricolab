@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { onErrorResumeNext } from 'rxjs/operators';
 import { CadastroService } from 'src/app/service/cadastro.service';
+import { GeoApiService } from 'src/app/service/geo-api.service';
 
 export interface FormInput {
   name: string;
@@ -17,6 +17,8 @@ export interface FormInput {
   styleUrls: ['./cadastro-produtor.component.scss']
 })
 export class CadastroProdutorComponent implements OnInit {
+  @Output() voltarEvent = new EventEmitter<string>();
+  
   cadastroForm: FormGroup;
   
   formInputs: FormInput[] = [
@@ -27,6 +29,7 @@ export class CadastroProdutorComponent implements OnInit {
     { name: 'cpf', label: 'CPF', type: 'text', value: '', obrigatorio: false },
     { name: 'enderecoRua', label: 'Rua', type: 'text', value: '', obrigatorio: true },
     { name: 'enderecoNumero', label: 'Número', type: 'text', value: '', obrigatorio: false },
+    { name: 'enderecoComplemento', label: 'Complemento', type: 'text', value: '', obrigatorio: false },
     { name: 'enderecoBairro', label: 'Bairro', type: 'text', value: '', obrigatorio: true },
     { name: 'enderecoCidade', label: 'Cidade', type: 'text', value: '', obrigatorio: true },
     { name: 'enderecoEstado', label: 'Estado', type: 'text', value: '', obrigatorio: true },
@@ -41,12 +44,13 @@ export class CadastroProdutorComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public cadastroService: CadastroService,
+    public geoApiService: GeoApiService,
   ) { }
 
   ngOnInit(): void {
     this.construirForm();
   }
-  
+
   construirForm() {
     this.cadastroForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
@@ -56,6 +60,7 @@ export class CadastroProdutorComponent implements OnInit {
       cpf: ['', [Validators.nullValidator]],
       enderecoRua: ['', [Validators.required]],
       enderecoNumero: ['', [Validators.nullValidator]],
+      enderecoComplemento: ['', [Validators.nullValidator]],
       enderecoBairro: ['', [Validators.required]],
       enderecoCidade: ['', [Validators.required]],
       enderecoEstado: ['', [Validators.required]],
@@ -71,6 +76,8 @@ export class CadastroProdutorComponent implements OnInit {
     if(this.qualInput > 0) {
       this.qualInput--;
       this.campoInvalido = false;
+    } else {
+      this.voltarEvent.emit();
     }
   }
 
@@ -86,16 +93,13 @@ export class CadastroProdutorComponent implements OnInit {
     return this.qualInput === inputNumber ? false : true;
   }
 
-  cadastraProdutor(event){
-    console.log(event)
-
+  fazCadastro(event){
     const rua = this.cadastroForm.get('enderecoRua')?.value;
     const numero = this.cadastroForm.get('enderecoNumero')?.value;
     const bairro = this.cadastroForm.get('enderecoBairro')?.value;
     const cidade = this.cadastroForm.get('enderecoCidade')?.value;
     const estado = this.cadastroForm.get('enderecoEstado')?.value;
 
-    // const endereco = `${rua ? rua : ''};${numero ? numero : ''};${bairro ? bairro : ''};${cidade ? cidade : ''};${estado ? estado : ''}`;
     const endereco = 
       (rua ? rua : '') + ';' +
       (numero ? numero : '') + ';' +
@@ -109,17 +113,39 @@ export class CadastroProdutorComponent implements OnInit {
       telefoneProdutor: this.cadastroForm.get('telefone')?.value,
       cnpjProdutor: this.cadastroForm.get('cnpj')?.value,
       cpfProdutor: this.cadastroForm.get('cpf')?.value,
+      complementoEnderecoProdutor: this.cadastroForm.get('enderecoComplemento')?.value,
       enderecoProdutor: endereco,
+      latitudeProdutor: '',
+      longitudeProdutor: '',
     };
 
-    this.cadastroService.postProdutor(params).subscribe(data => {
-      this.showForm = false;
-      this.isFormSucess = true;
+    const enderecoGeo =
+      (numero ? numero + ' ' : '') +
+      (rua ? rua + ', ' : '') +
+      (bairro ? bairro + ', ' : '') +
+      (cidade ? cidade + ', ' : '') +
+      (estado ? estado + ', ' : '') + 'Brasil';
+
+    this.geoApiService.getGeocoding(enderecoGeo).subscribe(geoData => {
+
+      if(geoData && geoData.data && geoData.data.length > 0) {
+        params.latitudeProdutor = geoData.data[0].latitude;
+        params.longitudeProdutor = geoData.data[0].longitude;
+      }
+  
+      this.cadastroService.postProdutor(params).subscribe(data => {
+        this.showForm = false;
+        this.isFormSucess = true;
+      },
+      err => {
+        this.showForm = false;
+        this.isFormSucess = false;
+      });
     },
     err => {
       this.showForm = false;
       this.isFormSucess = false;
     });
-  }
 
+  }
 }
