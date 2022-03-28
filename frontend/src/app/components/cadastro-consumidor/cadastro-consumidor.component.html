@@ -1,1 +1,29 @@
-<p>Em construção</p>
+<form
+#form="ngForm"
+(ngSubmit)="cadastraConsumidor($event)"
+[formGroup]="cadastroForm"
+id="cadastro-form"
+*ngIf="showForm"
+>
+    <div class="form-input" *ngFor="let input of formInputs; index as i;">
+        <label for="{{ input.name }}" [hidden]="isHidden(i)">
+            {{ input.label }}
+            <span *ngIf="input.obrigatorio" [hidden]="isHidden(i)">*</span>
+        </label>
+        <input type="{{ input.type }}" name="{{ input.name }}" formControlName="{{ input.name }}" [hidden]="isHidden(i)" [class.invalid-input]="campoInvalido">
+    </div>
+
+    <div class="buttons">
+        <a href="javascript: void(0);" class="simple-button-blue" *ngIf="qualInput !== inputFinal; else elseBlock;" (click)="avancaForm()">Avançar</a>
+        <ng-template #elseBlock>
+            <button type="submit" class="simple-button-blue">Enviar</button>
+        </ng-template>
+        <a href="javascript: void(0);" class="simple-button-red" *ngIf="qualInput" (click)="voltaForm()">Voltar</a>
+    </div>
+</form>
+
+<section class="finished" *ngIf="!showForm">
+    <h2>{{ isFormSucess ? 'Cadastro efetuado com sucesso!' : 'Falha ao realizar o cadastro' }}</h2>
+    <a [routerLink]="['']" class="simple-button-blue">Home</a>
+    <a [routerLink]="['../login']" class="simple-button-blue">Login</a>
+</section>
