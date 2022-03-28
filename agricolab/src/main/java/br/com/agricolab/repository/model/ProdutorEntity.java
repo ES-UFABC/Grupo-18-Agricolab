@@ -1,4 +1,4 @@
-package br.com.project.repository.model;
+package br.com.agricolab.repository.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,9 +1,9 @@
-package br.com.project.controller;
+package br.com.agricolab.controller;
 
 
 
-import br.com.project.repository.adapter.ConsumidorRepository;
-import br.com.project.repository.model.ConsumidorEntity;
+import br.com.agricolab.repository.adapter.ConsumidorRepository;
+import br.com.agricolab.repository.model.ConsumidorEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,10 +1,10 @@
-package br.com.project;
+package br.com.agricolab;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectApplicationTests {
+class AgricolabApplicationTests {
 
 	@Test
 	void contextLoads() {

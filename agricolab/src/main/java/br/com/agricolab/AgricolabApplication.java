@@ -1,13 +1,13 @@
-package br.com.project;
+package br.com.agricolab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectApplication {
+public class AgricolabApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectApplication.class, args);
+		SpringApplication.run(AgricolabApplication.class, args);
 	}
 
 }

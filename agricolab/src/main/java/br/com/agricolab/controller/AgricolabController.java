@@ -1,4 +1,4 @@
-package br.com.project.controller;
+package br.com.agricolab.controller;
 
 
 import org.springframework.http.ResponseEntity;

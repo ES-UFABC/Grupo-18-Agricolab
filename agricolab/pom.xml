@@ -11,7 +11,7 @@
 	<groupId>br.com</groupId>
 	<artifactId>agricolab</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>project</name>
+	<name>agricolab</name>
 	<description>Spring project with AWS</description>
 	<properties>
 		<java.version>11</java.version>
