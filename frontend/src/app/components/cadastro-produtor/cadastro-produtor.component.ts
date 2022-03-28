@@ -24,6 +24,7 @@ export class CadastroProdutorComponent implements OnInit {
   formInputs: FormInput[] = [
     { name: 'nome', label: 'Nome Completo', type: 'text', value: '', obrigatorio: true },
     { name: 'email', label: 'Email', type: 'email', value: '', obrigatorio: true },
+    { name: 'senha', label: 'Senha', type: 'password', value: '', obrigatorio: true },
     { name: 'telefone', label: 'Telefone', type: 'tel', value: '', obrigatorio: false },
     { name: 'cnpj', label: 'CNPJ', type: 'text', value: '', obrigatorio: false },
     { name: 'cpf', label: 'CPF', type: 'text', value: '', obrigatorio: false },
@@ -55,6 +56,7 @@ export class CadastroProdutorComponent implements OnInit {
     this.cadastroForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
+      senha: ['', [Validators.required]],
       telefone: ['', [Validators.nullValidator]],
       cnpj: ['', [Validators.nullValidator]],
       cpf: ['', [Validators.nullValidator]],
