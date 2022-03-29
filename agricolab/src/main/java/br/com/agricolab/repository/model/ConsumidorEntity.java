@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "consumidores")
+@Table(name = "consumidores", uniqueConstraints={@UniqueConstraint(columnNames={"email_consumidor"})})
 public class ConsumidorEntity implements Serializable {
 
     private static final long serialVersionUID = -7049957706738879274L;
@@ -32,6 +32,9 @@ public class ConsumidorEntity implements Serializable {
 
     @Column(name="email_consumidor", columnDefinition="VARCHAR", length = 100)
     private String emailConsumidor;
+
+    @Column(name="senha_consumidor", columnDefinition="VARCHAR", length = 100)
+    private String senhaConsumidor;
 
     @Column(name="cnpj_consumidor", columnDefinition="VARCHAR", length = 14)
     private String cnpjConsumidor;

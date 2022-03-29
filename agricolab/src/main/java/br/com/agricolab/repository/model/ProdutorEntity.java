@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "produtores")
+@Table(name = "produtores", uniqueConstraints={@UniqueConstraint(columnNames={"email_produtor"})})
 public class ProdutorEntity {
 
     @Id
@@ -26,6 +26,10 @@ public class ProdutorEntity {
 
     @Column(name="email_produtor", columnDefinition="VARCHAR", length = 100)
     private String emailProdutor;
+
+    @Column(name="senha_produtor", columnDefinition="VARCHAR", length = 100)
+    private String senhaProdutor;
+
 
     @Column(name="cnpj_produtor", columnDefinition="VARCHAR", length = 14)
     private String cnpjProdutor;
