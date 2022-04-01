@@ -28,6 +28,7 @@ public class ProdutorService {
         ProdutorEntity produtorEntity = produtorRepository.findByIdProdutor(id);
 
         ProdutosEntity produtosConverter = mapper.toProdutos(produtos);
+        produtoRepository.save(produtosConverter);
 
         produtorEntity.getProdutos().add(produtosConverter);
 

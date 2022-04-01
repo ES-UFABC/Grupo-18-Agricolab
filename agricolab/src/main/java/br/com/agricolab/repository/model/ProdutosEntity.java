@@ -1,6 +1,7 @@
 package br.com.agricolab.repository.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,15 +9,14 @@ import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "produtos")
 public class ProdutosEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="id_produtos", nullable=false)
+    @Column(name="id_produtos")
     private Integer idProduto;
 
     @Column(name="nome_produtos")
@@ -27,5 +27,6 @@ public class ProdutosEntity {
 
     @Column(name="valor_produtos")
     private BigDecimal valorProduto;
+
 
 }

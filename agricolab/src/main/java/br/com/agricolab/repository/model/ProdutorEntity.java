@@ -1,5 +1,6 @@
 package br.com.agricolab.repository.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,9 +33,8 @@ public class ProdutorEntity {
     @Column(name="senha_produtor",  length = 100)
     private String senhaProdutor;
 
-    @Column(name = "produtos_produtor")
-    @OneToMany
-    @JoinColumn(name="produtor_id")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name="produtores_id")
     private List<ProdutosEntity> produtos = new ArrayList<>();
 
 

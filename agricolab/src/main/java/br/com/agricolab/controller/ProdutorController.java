@@ -3,7 +3,6 @@ package br.com.agricolab.controller;
 import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ProdutorEntity;
-import br.com.agricolab.repository.model.ProdutosEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
