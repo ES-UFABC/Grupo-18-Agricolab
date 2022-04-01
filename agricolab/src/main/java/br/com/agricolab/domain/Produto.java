@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class Produto {
 
     private String nomeProduto;
-    private Long quantidadeProduto;
+    private Integer quantidadeProduto;
     private BigDecimal valorProduto;
 
 }

@@ -3,6 +3,7 @@ package br.com.agricolab.controller;
 import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ProdutorEntity;
+import br.com.agricolab.repository.model.ProdutosEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +51,7 @@ public class ProdutorController {
                     return produtorRepository.save(produtor);
                 })
                 .orElseGet(() -> {
-                    novoProdutor.setId(id);
+                    novoProdutor.setIdProdutor(id);
                     return produtorRepository.save(novoProdutor);
                 });
     }
@@ -61,11 +62,26 @@ public class ProdutorController {
     }
 
 
-    @PostMapping("/produtos/{id}")
-    public ResponseEntity<ProdutorEntity> cadastroProdutos(Produto produtos, @PathVariable Integer id){
+    @PostMapping("/cadastro/produto/{id}")
+    public ResponseEntity<ProdutorEntity> cadastroProdutos(@RequestBody Produto produtos, @PathVariable Integer id){
         return ResponseEntity.ok(produtorService.cadastro(id, produtos));
 
     }
+
+    @DeleteMapping("/delete/produto/{id}")
+    public ResponseEntity<Void> deleteProdutos(@PathVariable Integer id){
+        produtorService.delete(id);
+        return ResponseEntity.noContent().build();
+
+    }
+
+    @PutMapping("/alterar/produto/{id}")
+    public ResponseEntity<Void> alterarProduto(@RequestBody Produto produtoNovo, @PathVariable Integer id){
+        produtorService.replace(produtoNovo, id);
+        return ResponseEntity.noContent().build();
+
+    }
+
 
 }
 
