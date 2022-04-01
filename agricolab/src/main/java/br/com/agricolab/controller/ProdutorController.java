@@ -1,21 +1,24 @@
 package br.com.agricolab.controller;
 
+import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ProdutorEntity;
+import br.com.agricolab.service.ProdutorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping({"/produtor"})
+@RequestMapping("/produtor")
 public class ProdutorController {
 
+    @Autowired
     private ProdutorRepository produtorRepository;
 
-    ProdutorController(ProdutorRepository produtorRepository) {
-        this.produtorRepository = produtorRepository;
-    }
+    @Autowired
+    ProdutorService produtorService;
 
     @GetMapping(path = "/all")
     public List findAll(){
@@ -47,7 +50,7 @@ public class ProdutorController {
                     return produtorRepository.save(produtor);
                 })
                 .orElseGet(() -> {
-                    novoProdutor.setIdProdutor(id);
+                    novoProdutor.setId(id);
                     return produtorRepository.save(novoProdutor);
                 });
     }
@@ -55,6 +58,13 @@ public class ProdutorController {
     @DeleteMapping("/{id}")
     void deleteProdutor(@PathVariable Integer id) {
         produtorRepository.deleteById(id);
+    }
+
+
+    @PostMapping("/produtos/{id}")
+    public ResponseEntity<ProdutorEntity> cadastroProdutos(Produto produtos, @PathVariable Integer id){
+        return ResponseEntity.ok(produtorService.cadastro(id, produtos));
+
     }
 
 }

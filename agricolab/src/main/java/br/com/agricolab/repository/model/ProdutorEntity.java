@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +18,7 @@ public class ProdutorEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id_produtor", nullable=false)
-    private Integer idProdutor;
+    private Integer id;
 
     @Column(name="nome_produtor", columnDefinition="VARCHAR", length = 200)
     private String nomeProdutor;
@@ -29,6 +31,11 @@ public class ProdutorEntity {
 
     @Column(name="senha_produtor", columnDefinition="VARCHAR", length = 100)
     private String senhaProdutor;
+
+    @Column(name = "produtos_produtor")
+    @OneToMany
+    @JoinColumn(name="produtor_id")
+    private List<ProdutosEntity> produtos = new ArrayList<>();
 
 
     @Column(name="cnpj_produtor", columnDefinition="VARCHAR", length = 14)

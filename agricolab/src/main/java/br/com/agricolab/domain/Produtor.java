@@ -1,4 +1,4 @@
-package br.com.agricolab.controller.domain;
+package br.com.agricolab.domain;
 
 import lombok.Getter;
 import lombok.Setter;
