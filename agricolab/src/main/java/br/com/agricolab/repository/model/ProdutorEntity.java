@@ -37,7 +37,6 @@ public class ProdutorEntity {
     @JoinColumn(name="produtores_id")
     private List<ProdutosEntity> produtos = new ArrayList<>();
 
-
     @Column(name="cnpj_produtor",  length = 14)
     private String cnpjProdutor;
 
