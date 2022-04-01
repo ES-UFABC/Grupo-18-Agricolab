@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProdutorRepository extends JpaRepository<ProdutorEntity, Integer> {
+
+    ProdutorEntity findByIdProdutor(Integer idProdutor);
+
+
 }
