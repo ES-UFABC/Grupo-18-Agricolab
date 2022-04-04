@@ -10,4 +10,5 @@ public interface ProdutorRepository extends JpaRepository<ProdutorEntity, Intege
     ProdutorEntity findByIdProdutor(Integer idProdutor);
 
 
+    boolean findByEmailProdutor(String email);
 }
