@@ -1,4 +1,4 @@
-package br.com.agricolab.mapper;
+package br.com.agricolab.core.produtos.mapper;
 
 
 import br.com.agricolab.domain.Produto;

@@ -28,5 +28,4 @@ public class ProdutosEntity {
     @Column(name="valor_produtos")
     private BigDecimal valorProduto;
 
-
 }

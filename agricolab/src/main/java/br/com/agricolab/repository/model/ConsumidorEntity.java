@@ -30,7 +30,7 @@ public class ConsumidorEntity implements Serializable {
     @Column(name="nome_consumidor",  length = 200)
     private String nomeConsumidor;
 
-    @Column(name="email_consumidor",  length = 100)
+    @Column(name="email_consumidor",  length = 100, unique = true)
     private String emailConsumidor;
 
     @Column(name="senha_consumidor",  length = 100)
@@ -56,5 +56,8 @@ public class ConsumidorEntity implements Serializable {
 
     @Column(name="long_consumidor",  length = 10)
     private String longitudeConsumidor;
-    
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id_usuario")
+//    UsuarioEntity usuario;
 }

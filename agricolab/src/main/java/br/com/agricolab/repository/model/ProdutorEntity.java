@@ -8,16 +8,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name = "produtores", uniqueConstraints={@UniqueConstraint(columnNames={"email_produtor"})})
-public class ProdutorEntity {
+public class ProdutorEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_produtor", nullable=false)
     private Integer idProdutor;
 
@@ -27,14 +28,14 @@ public class ProdutorEntity {
     @Column(name="tipo_produtor",  length = 2)
     private String tipoProdutor;
 
-    @Column(name="email_produtor",  length = 100)
+    @Column(name="email_produtor",  length = 100, unique = true)
     private String emailProdutor;
 
     @Column(name="senha_produtor",  length = 100)
     private String senhaProdutor;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name="produtores_id")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name="produtor_id", nullable = true)
     private List<ProdutosEntity> produtos = new ArrayList<>();
 
     @Column(name="cnpj_produtor",  length = 14)
@@ -57,7 +58,4 @@ public class ProdutorEntity {
 
     @Column(name="long_produtor",  length = 10)
     private String longitudeProdutor;
-
-
-
 }

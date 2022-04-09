@@ -1,7 +1,12 @@
 package br.com.agricolab.controller;
 
+import br.com.agricolab.core.produtor.processors.ProdutorProcessor;
+import br.com.agricolab.core.produtor.dto.ProdutorRequestDto;
+import br.com.agricolab.core.produtor.mapper.ProdutorRequestDtoMapper;
+import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
+import br.com.agricolab.repository.mapper.ProdutorEntityMapper;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produtor")
@@ -18,7 +24,15 @@ public class ProdutorController {
     private ProdutorRepository produtorRepository;
 
     @Autowired
+    private ProdutorProcessor produtorProcessor;
+
+    @Autowired
     ProdutorService produtorService;
+
+    ProdutorController(ProdutorRepository produtorRepository, ProdutorProcessor produtorProcessor) {
+        this.produtorRepository = produtorRepository;
+        this.produtorProcessor = produtorProcessor;
+    }
 
     @GetMapping(path = "/all")
     public List findAll(){
@@ -26,33 +40,34 @@ public class ProdutorController {
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Integer id){
-        return produtorRepository.findById(id)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
+    public ProdutorRequestDto findById(@PathVariable Integer id){
+        Optional<ProdutorEntity> produtorEntity = produtorRepository.findById(id);
+
+        if(produtorEntity.isPresent()){
+            Produtor produtor = ProdutorEntityMapper.INSTANCE.produtorToEntity(produtorEntity.get());
+            return ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtor);
+        }
+        return new ProdutorRequestDto();
     }
 
     @PostMapping
-    public ProdutorEntity create(@RequestBody ProdutorEntity produtor){
-        return produtorRepository.save(produtor);
+    public ProdutorRequestDto create(@RequestBody ProdutorRequestDto produtorResquest){
+
+        Produtor produtor = ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtorResquest);
+
+        produtor = produtorProcessor.createProdutor(produtor);
+
+        return ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtor);
     }
 
-    @PutMapping("/{id}")
-    ProdutorEntity modificaProdutor(@RequestBody ProdutorEntity novoProdutor, @PathVariable Integer id) {
+    @PatchMapping("/{id}")
+    ProdutorRequestDto modificaProdutor(@RequestBody ProdutorRequestDto novoProdutor, @PathVariable Integer id) {
 
-        return produtorRepository.findById(id)
-                .map(produtor -> {
-                    produtor.setCpfProdutor(novoProdutor.getCpfProdutor());
-                    produtor.setCnpjProdutor(novoProdutor.getCnpjProdutor());
-                    produtor.setEmailProdutor(novoProdutor.getEmailProdutor());
-                    produtor.setEnderecoProdutor(novoProdutor.getEnderecoProdutor());
-                    produtor.setTelefoneProdutor(novoProdutor.getTelefoneProdutor());
-                    return produtorRepository.save(produtor);
-                })
-                .orElseGet(() -> {
-                    novoProdutor.setIdProdutor(id);
-                    return produtorRepository.save(novoProdutor);
-                });
+        Produtor produtorRequest = ProdutorRequestDtoMapper.INSTANCE.produtorToDto(novoProdutor);
+
+        Produtor produtor = produtorProcessor.modificaProdutor(produtorRequest,id);
+
+        return ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtor);
     }
 
     @DeleteMapping("/{id}")

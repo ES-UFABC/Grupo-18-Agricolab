@@ -1,7 +1,7 @@
 package br.com.agricolab.service;
 
 import br.com.agricolab.domain.Produto;
-import br.com.agricolab.mapper.ProdutosMapper;
+import br.com.agricolab.core.produtos.mapper.ProdutosMapper;
 import br.com.agricolab.repository.adapter.ProdutoRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ProdutorEntity;
@@ -30,7 +30,7 @@ public class ProdutorService {
         ProdutosEntity produtosConverter = mapper.toProdutos(produtos);
         produtoRepository.save(produtosConverter);
 
-        produtorEntity.getProdutos().add(produtosConverter);
+       // produtorEntity.getProdutos().add(produtosConverter);
 
         return produtorRepository.save(produtorEntity);
 
