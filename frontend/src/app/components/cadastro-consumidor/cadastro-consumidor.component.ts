@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { onErrorResumeNext } from 'rxjs/operators';
 import { CadastroService } from 'src/app/service/cadastro.service';
-import  { GeoApiService } from 'src/app/service/geo-api.service'
+import { GeoApiService } from 'src/app/service/geo-api.service';
 
 export interface FormInput {
   name: string;
