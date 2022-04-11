@@ -2,8 +2,13 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+<<<<<<< HEAD
 import { Consumidor } from '../model/consumidor.model';
 import { Produtor } from '../model/produtor.model';
+=======
+import { Produtor } from '../model/produtor';
+import { Consumidor } from '../model/consumidor';
+>>>>>>> 20e65fe9f2721f9cb3de34d7bd63cd5ec4877875
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -38,7 +43,10 @@ export class CadastroService {
     return this.http.delete<Produtor>(`${this.API}/produtor/${id}`).pipe(take(1));
   }
 
+<<<<<<< HEAD
   //Consumidor
+=======
+>>>>>>> 20e65fe9f2721f9cb3de34d7bd63cd5ec4877875
   getConsumidores(): Observable<Consumidor[]> {
     return this.http.get<Consumidor[]>(`${this.API}/consumidor`).pipe(take(1));
   }
@@ -58,5 +66,4 @@ export class CadastroService {
   deleteConsumidor(id: number): Observable<Consumidor> {
     return this.http.delete<Consumidor>(`${this.API}/consumidor/${id}`).pipe(take(1));
   }
-
 }
