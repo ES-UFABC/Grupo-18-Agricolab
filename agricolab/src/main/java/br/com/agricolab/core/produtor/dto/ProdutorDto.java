@@ -1,5 +1,6 @@
 package br.com.agricolab.core.produtor.dto;
 
+import br.com.agricolab.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -43,6 +46,9 @@ public class ProdutorDto implements Serializable {
 
     @JsonProperty("latitudeProdutor")
     private String latitudeProdutor;
+
+    @JsonProperty("produtos")
+    private List<Produto> produtos;
 
     @JsonProperty("longitudeProdutor")
     private String longitudeProdutor;

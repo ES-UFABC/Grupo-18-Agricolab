@@ -20,11 +20,9 @@ public interface ProdutorEntityMapper {
     @Mapping(source = "complementoEnderecoProdutor", target = "complementoEnderecoProdutor")
     @Mapping(source = "latitudeProdutor", target = "latitudeProdutor")
     @Mapping(source = "longitudeProdutor", target = "longitudeProdutor")
-    @Mapping(target = "produtos",ignore = true)
     ProdutorEntity produtorToEntity(Produtor produtor);
 
     @InheritInverseConfiguration
-    @Mapping(target = "produtos",ignore = true)
     Produtor produtorToEntity(ProdutorEntity produtor);
 
 }
