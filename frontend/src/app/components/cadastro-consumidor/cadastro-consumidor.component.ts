@@ -110,6 +110,7 @@ export class CadastroConsumidorComponent implements OnInit {
     const params = {
       nomeConsumidor: this.cadastroForm.get('nome')?.value,
       emailConsumidor: this.cadastroForm.get('email')?.value,
+      senhaConsumidor: this.cadastroForm.get('senha')?.value,
       telefoneConsumidor: this.cadastroForm.get('telefone')?.value,
       cpfConsumidor: this.cadastroForm.get('cpf')?.value,
       complementoEnderecoconsumidor: this.cadastroForm.get('enderecoComplemento')?.value,

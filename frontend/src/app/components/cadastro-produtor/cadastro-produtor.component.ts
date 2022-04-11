@@ -112,6 +112,7 @@ export class CadastroProdutorComponent implements OnInit {
     const params = {
       nomeProdutor: this.cadastroForm.get('nome')?.value,
       emailProdutor: this.cadastroForm.get('email')?.value,
+      senhaProdutor: this.cadastroForm.get('senha')?.value,
       telefoneProdutor: this.cadastroForm.get('telefone')?.value,
       cnpjProdutor: this.cadastroForm.get('cnpj')?.value,
       cpfProdutor: this.cadastroForm.get('cpf')?.value,

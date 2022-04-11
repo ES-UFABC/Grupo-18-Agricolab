@@ -51,8 +51,8 @@ export class CadastroService {
     return this.http.post<Consumidor>(`${this.API}/consumidor`, params).pipe(take(1));
   }
 
-  putConsumidor(params): Observable<Consumidor> {
-    return this.http.put<Consumidor>(`${this.API}/consumidor`, params).pipe(take(1));
+  putConsumidor(params, id): Observable<Consumidor> {
+    return this.http.put<Consumidor>(`${this.API}/consumidor/${id}`, params).pipe(take(1));
   }
 
   deleteConsumidor(id: number): Observable<Consumidor> {
