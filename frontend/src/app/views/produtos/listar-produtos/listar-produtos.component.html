@@ -21,8 +21,8 @@
                 <p>{{ produto.quantidadeProduto || '-' }}</p>
                 <p>R$ {{ produto.valorProduto || '-' }}</p>
                 <div class="buttons">
-                    <a [routerLink]="['../../perfil']" class="simple-button">Editar</a>
-                    <a [routerLink]="['../../perfil']" class="simple-button-red">Apagar</a>
+                    <a [routerLink]="['../editar']" [queryParams]="{ idProduto: produto.idProduto, nomeProduto: produto.nomeProduto }" class="simple-button">Editar</a>
+                    <a [routerLink]="['../apagar']" [queryParams]="{ idProduto: produto.idProduto, nomeProduto: produto.nomeProduto }" class="simple-button-red">Apagar</a>
                 </div>
             </div>
             <p class="none-message" *ngIf="!produtosArray.length">Nenhum produto para listar.</p>
