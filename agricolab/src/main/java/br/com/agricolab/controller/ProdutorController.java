@@ -5,9 +5,11 @@ import br.com.agricolab.core.produtor.mapper.ProdutorDtoMapper;
 import br.com.agricolab.core.produtor.processors.ProdutorProcessor;
 import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.domain.Produto;
+import br.com.agricolab.repository.adapter.ProdutoRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ProdutorEntityMapper;
 import br.com.agricolab.repository.model.ProdutorEntity;
+import br.com.agricolab.repository.model.ProdutosEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,9 @@ public class ProdutorController {
 
     @Autowired
     private ProdutorRepository produtorRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     @Autowired
     private ProdutorProcessor produtorProcessor;
@@ -95,6 +100,11 @@ public class ProdutorController {
         produtorService.replace(produtoNovo, id);
         return ResponseEntity.noContent().build();
 
+    }
+    
+    @GetMapping(path = "/produto/all")
+    public List findAllProdutos(){
+        return produtoRepository.findAll();
     }
 
 

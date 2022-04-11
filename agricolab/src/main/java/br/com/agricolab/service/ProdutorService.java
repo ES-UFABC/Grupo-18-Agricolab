@@ -30,7 +30,7 @@ public class ProdutorService {
         ProdutosEntity produtosConverter = mapper.toProdutos(produtos);
         produtoRepository.save(produtosConverter);
 
-       // produtorEntity.getProdutos().add(produtosConverter);
+        produtorEntity.getProdutos().add(produtosConverter);
 
         return produtorRepository.save(produtorEntity);
 
