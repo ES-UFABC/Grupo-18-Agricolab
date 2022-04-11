@@ -1,11 +1,9 @@
-<header class="logo">
-    <a [routerLink]="['']"><img src="./../../../assets/logo_png_agricolab_200x200.png" alt="Logo Agricolab"></a>
-    <a [routerLink]="['']"><h4>Agricolab</h4></a>
-</header>
+<app-inner-header></app-inner-header>
+
 <main class="main">
     <form
     #form="ngForm"
-    (ngSubmit)="login($event)"
+    (ngSubmit)="login()"
     [formGroup]="loginForm"
     id="login-form"
     >
@@ -20,8 +18,9 @@
                 <input type="password" formControlName="senha" name="senha" [class.invalid-input]="form.submitted && !loginForm.get('senha')?.valid">
             </div>
         </section>
+        <p *ngIf="!isUserValid">Email ou senha incorretos ou não existem.</p>
 
         <button type="submit" class="simple-button">Entrar</button>
-        <a [routerLink]="['../login']">Esqueci minha senha</a>
+        <!-- <a [routerLink]="['../login']">Esqueci minha senha</a> -->
     </form>
 </main>

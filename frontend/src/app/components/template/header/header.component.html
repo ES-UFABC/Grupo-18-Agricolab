@@ -11,6 +11,9 @@
         <li><a [routerLink]="['time']">Nosso time</a></li>
         <li><a [routerLink]="['contato']">Contato</a></li>
     </ul>
-    <a [routerLink]="['login']" class="simple-button">Login</a>
-    <a [routerLink]="['cadastro']" class="simple-button">Cadastro</a>
+
+    <a *ngIf="!user.idUsuario" [routerLink]="['login']" class="simple-button">Login</a>
+    <a *ngIf="!user.idUsuario" [routerLink]="['cadastro']" class="simple-button">Cadastro</a>
+    <a *ngIf="user.idUsuario" [routerLink]="['perfil']" class="simple-button">Perfil</a>
+    <a *ngIf="user.idUsuario" (click)="logout()" class="simple-button">Sair</a>
 </nav>

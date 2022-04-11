@@ -18,6 +18,15 @@ import { CadastroConsumidorComponent } from './components/cadastro-consumidor/ca
 import { MapaComponent } from './views/mapa/mapa.component';
 import { TimeComponent } from './views/time/time.component';
 import { ContatoComponent } from './views/contato/contato.component';
+import { PerfilComponent } from './views/perfil/perfil.component';
+import { InnerHeaderComponent } from './components/template/inner-header/inner-header.component';
+import { ApagarComponent } from './views/perfil/apagar/apagar.component';
+import { EditarComponent } from './views/perfil/editar/editar.component';
+import { ProdutosComponent } from './views/produtos/produtos.component';
+import { ListarProdutosComponent } from './views/produtos/listar-produtos/listar-produtos.component';
+import { EditarProdutosComponent } from './views/produtos/editar-produtos/editar-produtos.component';
+import { ApagarProdutosComponent } from './views/produtos/apagar-produtos/apagar-produtos.component';
+import { CadastrarProdutosComponent } from './views/produtos/cadastrar-produtos/cadastrar-produtos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,16 @@ import { ContatoComponent } from './views/contato/contato.component';
     CadastroConsumidorComponent,
     MapaComponent,
     TimeComponent,
-    ContatoComponent
+    ContatoComponent,
+    PerfilComponent,
+    InnerHeaderComponent,
+    ApagarComponent,
+    EditarComponent,
+    ProdutosComponent,
+    ListarProdutosComponent,
+    EditarProdutosComponent,
+    ApagarProdutosComponent,
+    CadastrarProdutosComponent,
   ],
   imports: [
     BrowserModule,
