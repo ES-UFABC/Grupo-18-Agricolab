@@ -49,7 +49,7 @@ public class ConsumidorEntity implements Serializable {
     private String enderecoConsumidor;
 
     @Column(name="compl_end_consumidor",  length = 40)
-    private String complementoEnderecoconsumidor;
+    private String complementoEnderecoConsumidor;
 
     @Column(name="lat_consumidor",  length = 10)
     private String latitudeConsumidor;

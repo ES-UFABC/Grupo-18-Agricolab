@@ -9,13 +9,13 @@ public class Consumidor {
 
     private Integer id;
 
-    private String nome;
-
     private String tipoConsumidor;
 
     private String nomeConsumidor;
 
     private String emailConsumidor;
+
+    private String senhaConsumidor;
 
     private String cnpjConsumidor;
 

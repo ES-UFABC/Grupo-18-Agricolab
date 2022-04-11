@@ -1,23 +1,32 @@
 package br.com.agricolab.controller;
 
-
-
+import br.com.agricolab.core.consumidor.dto.ConsumidorDto;
+import br.com.agricolab.core.consumidor.mapper.ConsumidorDtoMapper;
+import br.com.agricolab.core.consumidor.processors.ConsumidorProcessor;
+import br.com.agricolab.domain.Consumidor;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
+import br.com.agricolab.repository.mapper.ConsumidorEntityMapper;
 import br.com.agricolab.repository.model.ConsumidorEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/consumidor")
 public class ConsumidorController {
 
+    @Autowired
     private ConsumidorRepository consumidorRepository;
 
-    ConsumidorController(ConsumidorRepository consumidorRepository) {
+    @Autowired
+    private ConsumidorProcessor consumidorProcessor;
+
+    ConsumidorController(ConsumidorRepository consumidorRepository,ConsumidorProcessor consumidorProcessor) {
         this.consumidorRepository = consumidorRepository;
+        this.consumidorProcessor = consumidorProcessor;
     }
 
     @GetMapping(path = "/all")
@@ -26,41 +35,34 @@ public class ConsumidorController {
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Integer id){
-        return consumidorRepository.findById(id)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
+    public ConsumidorDto findById(@PathVariable Integer id){
+        Optional<ConsumidorEntity> consumidorEntity = consumidorRepository.findById(id);
+
+        if(consumidorEntity.isPresent()){
+            Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(consumidorEntity.get());
+            return ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidor);
+        }
+        return new ConsumidorDto();
     }
 
     @PostMapping
-    public ConsumidorEntity create(@RequestBody ConsumidorEntity produtor){
+    public ConsumidorDto create(@RequestBody ConsumidorDto consumidorRequest){
 
+        Consumidor consumidor = ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidorRequest);
 
-        return consumidorRepository.save(produtor);
+        consumidor = consumidorProcessor.createConsumidor(consumidor);
+
+        return ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidor);
     }
 
-    @PutMapping("/{id}")
-    ConsumidorEntity modificaConsumidor(@RequestBody ConsumidorEntity novoConsumidor, @PathVariable Integer id) {
+    @PatchMapping("/{id}")
+    ConsumidorDto modificaConsumidor(@RequestBody ConsumidorDto novoConsumidor, @PathVariable Integer id) {
+        Consumidor consumidorRequest = ConsumidorDtoMapper.INSTANCE.consumidorToDto(novoConsumidor);
 
-        return consumidorRepository.findById(id)
-                .map(consumidor -> {
-                    consumidor.setCpfConsumidor(novoConsumidor.getCpfConsumidor());
-                    consumidor.setCnpjConsumidor(novoConsumidor.getCnpjConsumidor());
-                    consumidor.setEmailConsumidor(novoConsumidor.getEmailConsumidor());
-                    consumidor.setEnderecoConsumidor(novoConsumidor.getEnderecoConsumidor());
-                    consumidor.setTelefoneConsumidor(novoConsumidor.getTelefoneConsumidor());
-                    consumidor.setLatitudeConsumidor(novoConsumidor.getLatitudeConsumidor());
-                    consumidor.setLongitudeConsumidor(novoConsumidor.getLongitudeConsumidor());
-                    consumidor.setNomeConsumidor(novoConsumidor.getNomeConsumidor());
-                    consumidor.setSegmentoConsumidorPJ(novoConsumidor.getSegmentoConsumidorPJ());
-                    consumidor.setTipoConsumidor(novoConsumidor.getTipoConsumidor());
-                    consumidor.setComplementoEnderecoconsumidor(novoConsumidor.getComplementoEnderecoconsumidor());
-                    return consumidorRepository.save(consumidor);
-                })
-                .orElseGet(() -> {
-                    novoConsumidor.setIdConsumidor(id);
-                    return consumidorRepository.save(novoConsumidor);
-                });
+        Consumidor consumidor = consumidorProcessor.modificaConsumidor(consumidorRequest,id);
+
+        return ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidor);
+
     }
 
     @DeleteMapping("/{id}")

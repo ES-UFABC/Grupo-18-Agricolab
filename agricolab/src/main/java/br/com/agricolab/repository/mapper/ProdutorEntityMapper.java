@@ -1,6 +1,5 @@
 package br.com.agricolab.repository.mapper;
 
-import br.com.agricolab.core.produtor.dto.ProdutorRequestDto;
 import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import org.mapstruct.*;

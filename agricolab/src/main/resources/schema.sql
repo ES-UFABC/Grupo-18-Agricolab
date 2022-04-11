@@ -22,6 +22,7 @@ CREATE TABLE consumidores (
       email_consumidor VARCHAR(100) NULL,
       cnpj_consumidor VARCHAR(14) NULL,
       cpf_consumidor VARCHAR(11) NULL,
+      senha_consumidor VARCHAR(100) NULL,
       telefone_consumidor VARCHAR(20) NULL,
       endereco_consumidor VARCHAR(100) NULL,
       compl_end_consumidor VARCHAR(40) NULL, -- Complemento endereço

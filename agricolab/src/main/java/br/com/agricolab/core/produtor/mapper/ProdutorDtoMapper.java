@@ -1,6 +1,6 @@
 package br.com.agricolab.core.produtor.mapper;
 
-import br.com.agricolab.core.produtor.dto.ProdutorRequestDto;
+import br.com.agricolab.core.produtor.dto.ProdutorDto;
 import br.com.agricolab.domain.Produtor;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -10,8 +10,8 @@ import org.mapstruct.factory.Mappers;
 import java.util.Objects;
 
 @Mapper
-public interface  ProdutorRequestDtoMapper {
-    ProdutorRequestDtoMapper INSTANCE = Mappers.getMapper(ProdutorRequestDtoMapper.class);
+public interface ProdutorDtoMapper {
+    ProdutorDtoMapper INSTANCE = Mappers.getMapper(ProdutorDtoMapper.class);
 
     @Mapping(source = "nomeProdutor", target = "nomeProdutor")
     @Mapping(source = "id", target = "idProdutor")
@@ -24,11 +24,11 @@ public interface  ProdutorRequestDtoMapper {
     @Mapping(source = "latitudeProdutor", target = "latitudeProdutor")
     @Mapping(source = "longitudeProdutor", target = "longitudeProdutor")
     @Mapping(source = "senhaProdutor", target = "senhaProdutor")
-    ProdutorRequestDto produtorToDto(Produtor produtor);
+    ProdutorDto produtorToDto(Produtor produtor);
 
     @InheritInverseConfiguration
     @Mapping(target = "produtos", ignore = true)
-    Produtor produtorToDto(ProdutorRequestDto produtor);
+    Produtor produtorToDto(ProdutorDto produtor);
 
     default Produtor updateProdutor(Produtor produtor, Produtor produtorRequest){
 

@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ProdutorRequestDto implements Serializable {
+public class ProdutorDto implements Serializable {
 
     @JsonProperty("idProdutor")
     private String idProdutor;

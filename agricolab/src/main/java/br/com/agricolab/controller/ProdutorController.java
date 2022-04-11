@@ -1,8 +1,8 @@
 package br.com.agricolab.controller;
 
+import br.com.agricolab.core.produtor.dto.ProdutorDto;
+import br.com.agricolab.core.produtor.mapper.ProdutorDtoMapper;
 import br.com.agricolab.core.produtor.processors.ProdutorProcessor;
-import br.com.agricolab.core.produtor.dto.ProdutorRequestDto;
-import br.com.agricolab.core.produtor.mapper.ProdutorRequestDtoMapper;
 import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
@@ -41,34 +41,34 @@ public class ProdutorController {
     }
 
     @GetMapping(path = {"/{id}"})
-    public ProdutorRequestDto findById(@PathVariable Integer id){
+    public ProdutorDto findById(@PathVariable Integer id){
         Optional<ProdutorEntity> produtorEntity = produtorRepository.findById(id);
 
         if(produtorEntity.isPresent()){
             Produtor produtor = ProdutorEntityMapper.INSTANCE.produtorToEntity(produtorEntity.get());
-            return ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtor);
+            return ProdutorDtoMapper.INSTANCE.produtorToDto(produtor);
         }
-        return new ProdutorRequestDto();
+        return new ProdutorDto();
     }
 
     @PostMapping
-    public ProdutorRequestDto create(@RequestBody ProdutorRequestDto produtorResquest){
+    public ProdutorDto create(@RequestBody ProdutorDto produtorResquest){
 
-        Produtor produtor = ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtorResquest);
+        Produtor produtor = ProdutorDtoMapper.INSTANCE.produtorToDto(produtorResquest);
 
         produtor = produtorProcessor.createProdutor(produtor);
 
-        return ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtor);
+        return ProdutorDtoMapper.INSTANCE.produtorToDto(produtor);
     }
 
     @PatchMapping("/{id}")
-    ProdutorRequestDto modificaProdutor(@RequestBody ProdutorRequestDto novoProdutor, @PathVariable Integer id) {
+    ProdutorDto modificaProdutor(@RequestBody ProdutorDto novoProdutor, @PathVariable Integer id) {
 
-        Produtor produtorRequest = ProdutorRequestDtoMapper.INSTANCE.produtorToDto(novoProdutor);
+        Produtor produtorRequest = ProdutorDtoMapper.INSTANCE.produtorToDto(novoProdutor);
 
         Produtor produtor = produtorProcessor.modificaProdutor(produtorRequest,id);
 
-        return ProdutorRequestDtoMapper.INSTANCE.produtorToDto(produtor);
+        return ProdutorDtoMapper.INSTANCE.produtorToDto(produtor);
     }
 
     @DeleteMapping("/{id}")

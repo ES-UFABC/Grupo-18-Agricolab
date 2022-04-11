@@ -1,7 +1,6 @@
 package br.com.agricolab.core.produtor.processors;
 
-import br.com.agricolab.core.produtor.dto.ProdutorRequestDto;
-import br.com.agricolab.core.produtor.mapper.ProdutorRequestDtoMapper;
+import br.com.agricolab.core.produtor.mapper.ProdutorDtoMapper;
 import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ProdutorEntityMapper;
@@ -9,8 +8,6 @@ import br.com.agricolab.repository.model.ProdutorEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
-
-import java.util.Objects;
 
 @Component
 public class ProdutorProcessor {
@@ -43,7 +40,7 @@ public class ProdutorProcessor {
 
         Produtor produtor = ProdutorEntityMapper.INSTANCE.produtorToEntity(produtorEntity);
 
-        produtor =  ProdutorRequestDtoMapper.INSTANCE.updateProdutor(produtor,produtorRequest);
+        produtor =  ProdutorDtoMapper.INSTANCE.updateProdutor(produtor,produtorRequest);
 
         ProdutorEntity produtorEntityNovo = ProdutorEntityMapper.INSTANCE.produtorToEntity(produtor);
 
