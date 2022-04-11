@@ -1,6 +1,6 @@
 <form
 #form="ngForm"
-(ngSubmit)="cadastraProdutor($event)"
+(ngSubmit)="fazCadastro($event)"
 [formGroup]="cadastroForm"
 id="cadastro-form"
 *ngIf="showForm"
@@ -18,12 +18,12 @@ id="cadastro-form"
         <ng-template #elseBlock>
             <button type="submit" class="simple-button-blue">Enviar</button>
         </ng-template>
-        <a href="javascript: void(0);" class="simple-button-red" *ngIf="qualInput" (click)="voltaForm()">Voltar</a>
+        <a href="javascript: void(0);" class="simple-button-red" (click)="voltaForm()">Voltar</a>
     </div>
 </form>
 
 <section class="finished" *ngIf="!showForm">
-    <h2>{{ isFormSucess ? 'Cadastro efetuado com sucesso!' : 'Falha ao realizar o cadastro' }}</h2>
+    <h2>{{ isFormSucess ? 'Cadastro efetuado com sucesso!' : 'Falha ao realizar o cadastro. Tente novamente mais tarde.' }}</h2>
     <a [routerLink]="['']" class="simple-button-blue">Home</a>
     <a [routerLink]="['../login']" class="simple-button-blue">Login</a>
 </section>

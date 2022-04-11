@@ -13,14 +13,11 @@ export class CadastroService {
 
   private readonly API = `${environment.API}`;
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(
     private http: HttpClient,
   ) { }
 
+  //Produtor
   getProdutores(): Observable<Produtor[]> {
     return this.http.get<Produtor[]>(`${this.API}/produtor`).pipe(take(1));
   }

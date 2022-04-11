@@ -19,7 +19,8 @@
 }
 
 .main {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 600px;
     padding: 1rem 2rem;
     display: flex;
     justify-content: center;
@@ -34,6 +35,9 @@
     background-color: #00386f;
     width: 90vw;
     height: 50vh;
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 410px;
 }
 
 .main h1 {
@@ -84,6 +88,11 @@
     -webkit-text-fill-color: #fff !important;
 }
 
+.invalid-input {
+    border-bottom: 2px solid red !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
 @media only screen and (min-width: 768px) {
 
     .logo img {
@@ -92,5 +101,7 @@
 
     .main form {
         width: 25vw;
+
+        max-width: initial;
     }
 }
