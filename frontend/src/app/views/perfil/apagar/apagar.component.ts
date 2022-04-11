@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CadastroService } from 'src/app/service/cadastro.service';
-import { setUsuario } from '../../login/login.component';
+import { logoutUsuario, setUsuario } from '../../login/login.component';
 
 @Component({
   selector: 'app-apagar',
@@ -21,7 +21,8 @@ export class ApagarComponent implements OnInit {
 
   apagar() {
     this.cadastroService.deleteConsumidor(Number(this.user.idUsuario)).subscribe(data => {
-      this.router.navigate(['/']);
+      logoutUsuario();
+      window.location.reload();
     })
   }
 }
