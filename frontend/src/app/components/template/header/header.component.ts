@@ -6,6 +6,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { logoutUsuario, setUsuario, UserSession } from 'src/app/views/login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -26,10 +27,16 @@ import {
 export class HeaderComponent implements OnInit {
   mobile: boolean = false;
   showMenu = false;
-
+  user: UserSession = setUsuario();
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    logoutUsuario();
+    window.location.reload();
   }
 
 }
