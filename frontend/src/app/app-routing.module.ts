@@ -70,13 +70,11 @@ const routes: Routes = [
   },
   {
     path: 'time',
-    component: HomeComponent
-    // component: TimeComponent
+    component: TimeComponent
   },
   {
     path: 'contato',
-    component: HomeComponent
-    // component: ContatoComponent
+    component: ContatoComponent
   },
 ];
 
