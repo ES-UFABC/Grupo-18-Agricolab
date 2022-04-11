@@ -1,8 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { onErrorResumeNext } from 'rxjs/operators';
 import { CadastroService } from 'src/app/service/cadastro.service';
-import { GeoApiService } from 'src/app/service/geo-api.service';
-import { FormInput } from '../cadastro-produtor/cadastro-produtor.component';
+
+export interface FormInput {
+  name: string;
+  label: string;
+  type: string;
+  value: string;
+  obrigatorio: boolean;
+}
 
 @Component({
   selector: 'app-cadastro-consumidor',
@@ -134,12 +141,11 @@ export class CadastroConsumidorComponent implements OnInit {
         this.showForm = false;
         this.isFormSucess = false;
       });
-
     },
     err => {
       this.showForm = false;
       this.isFormSucess = false;
     });
-
   }
+
 }
