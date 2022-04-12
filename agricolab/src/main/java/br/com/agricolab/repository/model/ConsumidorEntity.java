@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -56,6 +58,10 @@ public class ConsumidorEntity implements Serializable {
 
     @Column(name="long_consumidor",  length = 10)
     private String longitudeConsumidor;
+
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name="pedidos_id", nullable = true)
+    private List<PedidosEntity> pedidos = new ArrayList<>();
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_usuario")
