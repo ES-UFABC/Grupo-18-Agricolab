@@ -4,10 +4,14 @@ import br.com.agricolab.core.consumidor.dto.ConsumidorDto;
 import br.com.agricolab.core.consumidor.mapper.ConsumidorDtoMapper;
 import br.com.agricolab.core.consumidor.processors.ConsumidorProcessor;
 import br.com.agricolab.domain.Consumidor;
+import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
+import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ConsumidorEntityMapper;
 import br.com.agricolab.repository.model.ConsumidorEntity;
+import br.com.agricolab.repository.model.ProdutorEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,10 +28,9 @@ public class ConsumidorController {
     @Autowired
     private ConsumidorProcessor consumidorProcessor;
 
-    ConsumidorController(ConsumidorRepository consumidorRepository,ConsumidorProcessor consumidorProcessor) {
-        this.consumidorRepository = consumidorRepository;
-        this.consumidorProcessor = consumidorProcessor;
-    }
+    @Autowired
+    private ProdutorRepository produtorRepository;
+
 
     @GetMapping(path = "/all")
     public List findAll(){
@@ -67,7 +70,16 @@ public class ConsumidorController {
 
     @DeleteMapping("/{id}")
     void deleteProdutor(@PathVariable Integer id) {
+
         consumidorRepository.deleteById(id);
+    }
+
+    @PostMapping("/pedidos/{idProdutor}/{idConsumidor}")
+    public ResponseEntity<ConsumidorEntity> adicionaPedidos(@RequestBody Produto pedidosConsumidor, @PathVariable Integer idProdutor, @PathVariable Integer idConsumidor) throws Exception {
+        ProdutorEntity produtor = produtorRepository.findByIdProdutor(idProdutor);
+        ConsumidorEntity consumidorPedidos = consumidorRepository.findByIdConsumidor(idConsumidor);
+
+        return ResponseEntity.ok(consumidorProcessor.registroPedidos(produtor, pedidosConsumidor, consumidorPedidos));
     }
 
 }

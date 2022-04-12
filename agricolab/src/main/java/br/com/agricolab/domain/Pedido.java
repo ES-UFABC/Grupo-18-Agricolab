@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Produto {
+public class Pedido {
 
-    private String nomeProduto;
-    private Integer quantidadeProduto;
-    private BigDecimal valorProduto;
+    private String nomePedido;
+    private Integer quantidadePedido;
+    private BigDecimal valorPedido;
 
 }
