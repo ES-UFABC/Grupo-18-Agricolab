@@ -4,6 +4,7 @@ import br.com.agricolab.domain.Produto;
 import br.com.agricolab.core.produtos.mapper.ProdutosMapper;
 import br.com.agricolab.repository.adapter.ProdutoRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
+import br.com.agricolab.repository.model.ConsumidorEntity;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.repository.model.ProdutosEntity;
 import org.mapstruct.factory.Mappers;
@@ -53,6 +54,18 @@ public class ProdutorService {
             produto.setQuantidadeProduto(produtoNovo.getQuantidadeProduto());
 
             produtoRepository.save(produto);
+
+    }
+
+    public ProdutorEntity login(String email, String password) throws Exception{
+
+        ProdutorEntity userLogin = produtorRepository.findByEmailProdutorAndSenhaProdutor(email, password);
+
+        if (userLogin == null){
+            throw new Exception("bad credentials");
+        }
+
+        return userLogin;
 
     }
 }
