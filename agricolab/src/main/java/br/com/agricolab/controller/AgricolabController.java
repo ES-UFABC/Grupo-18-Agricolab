@@ -4,7 +4,9 @@ package br.com.agricolab.controller;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ConsumidorEntity;
+import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.service.ConsumidorService;
+import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,9 @@ public class AgricolabController {
 
     @Autowired
     ConsumidorService consumidorService;
+
+    @Autowired
+    ProdutorService produtorService;
 
     @Autowired
     ConsumidorRepository consumidorRepository;
@@ -33,6 +38,19 @@ public class AgricolabController {
         }
         return null;
     }
+
+    @PostMapping(path ="produtor/login")
+    public ResponseEntity<ProdutorEntity> loginProdutor(@RequestBody ProdutorEntity request) throws Exception {
+        String email = request.getEmailProdutor();
+        String password = request.getSenhaProdutor();
+
+        if (email != null && password != null) {
+            return ResponseEntity.ok(produtorService.login(email, password));
+        }
+        return null;
+    }
+
+
 
     public boolean validacaoEmail(String email) {
        if(consumidorRepository.findByEmailConsumidor(email) || produtorRepository.findByEmailProdutor(email) ){

@@ -76,7 +76,7 @@ public class ConsumidorController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteProdutor(@PathVariable Integer id) {
+    void deleteConsumidor(@PathVariable Integer id) {
 
         consumidorRepository.deleteById(id);
     }
