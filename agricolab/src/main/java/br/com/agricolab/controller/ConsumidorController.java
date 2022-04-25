@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,8 +60,8 @@ public class ConsumidorController {
     //    API que aciona a query que calcula e filtra os produtores por raio
 
     @GetMapping(path = {"/nextprodutores/{latitudeConsumidor}:{longitudeConsumidor}"})
-    public List<Produtor> findNearProdutores(@PathVariable Double latitudeConsumidor, @PathVariable Double longitudeConsumidor){
-        return produtorRepository.findNearProd(3.0, latitudeConsumidor,longitudeConsumidor);
+    public List<Produtor> findNearProdutores(@PathVariable BigDecimal latitudeConsumidor, @PathVariable BigDecimal longitudeConsumidor){
+        return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
     }
 
 
