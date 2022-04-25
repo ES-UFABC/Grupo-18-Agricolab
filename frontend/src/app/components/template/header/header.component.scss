@@ -4,8 +4,9 @@
     position: fixed;
     right: 1.25rem;
     top: 1rem;
-    z-index: 20;
+    z-index: 100;
     padding: 2px 5px;
+    background-color: rgba(0, 55, 111, 0.3);
 }
 
 .bg-white {
@@ -52,7 +53,7 @@
 .nav {
     background-color: #00386f;
     position: fixed;
-    z-index: 10;
+    z-index: 90;
     top: 0;
     right: 0;
     bottom: 0;
