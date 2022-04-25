@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface ProdutorRepository extends JpaRepository<ProdutorEntity, Integer> {
 
     ProdutorEntity findByIdProdutor(Integer idProdutor);
+    ProdutorEntity findByEmailProdutorAndSenhaProdutor(String email, String password);
 
 
     boolean findByEmailProdutor(String email);
