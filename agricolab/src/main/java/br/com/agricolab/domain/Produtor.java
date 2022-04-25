@@ -3,6 +3,7 @@ package br.com.agricolab.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -29,9 +30,9 @@ public class Produtor {
 
     private String tipoProdutor;
 
-    private String latitudeProdutor;
+    private BigDecimal latitudeProdutor;
 
-    private String longitudeProdutor;
+    private BigDecimal longitudeProdutor;
 
     private List<Produto> produtos;
 }

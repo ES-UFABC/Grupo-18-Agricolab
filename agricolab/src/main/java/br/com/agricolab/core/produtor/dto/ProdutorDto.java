@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,12 +46,12 @@ public class ProdutorDto implements Serializable {
     private String tipoProdutor;
 
     @JsonProperty("latitudeProdutor")
-    private String latitudeProdutor;
+    private BigDecimal latitudeProdutor;
 
     @JsonProperty("produtos")
     private List<Produto> produtos;
 
     @JsonProperty("longitudeProdutor")
-    private String longitudeProdutor;
+    private BigDecimal longitudeProdutor;
 
 }

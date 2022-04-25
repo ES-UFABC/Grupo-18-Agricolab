@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Builder
@@ -48,10 +49,9 @@ public class ConsumidorDto implements Serializable {
     private String tipoConsumidor;
 
     @JsonProperty("latitudeConsumidor")
-    private String latitudeConsumidor;
-
+    private BigDecimal latitudeConsumidor;
 
     @JsonProperty("longitudeConsumidor")
-    private String longitudeConsumidor;
+    private BigDecimal longitudeConsumidor;
 
 }
