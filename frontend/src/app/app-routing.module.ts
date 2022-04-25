@@ -65,8 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'mapa',
-    component: HomeComponent
-    // component: MapaComponent
+    component: MapaComponent
   },
   {
     path: 'time',
