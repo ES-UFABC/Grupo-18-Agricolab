@@ -39,7 +39,7 @@ public class AgricolabController {
         return null;
     }
 
-    @PostMapping(path ="produtor/login")
+    @PostMapping(path ="/produtor/login")
     public ResponseEntity<ProdutorEntity> loginProdutor(@RequestBody ProdutorEntity request) throws Exception {
         String email = request.getEmailProdutor();
         String password = request.getSenhaProdutor();
@@ -51,9 +51,9 @@ public class AgricolabController {
     }
 
 
-    @GetMapping("validacao")
-    public boolean validacaoEmail(String email) {
-       if(consumidorRepository.findByEmailConsumidor(email) || produtorRepository.findByEmailProdutor(email) ){
+    @GetMapping("/validacao/{email}")
+    public Boolean validacaoEmail(@PathVariable String email) {
+       if(consumidorRepository.findByEmailConsumidor(email) != null || produtorRepository.findByEmailProdutor(email) != null ){
            return true;
        }
        return false;

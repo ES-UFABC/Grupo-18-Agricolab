@@ -9,7 +9,7 @@ public interface ConsumidorRepository extends JpaRepository<ConsumidorEntity, In
 
     ConsumidorEntity findByEmailConsumidorAndSenhaConsumidor(String emailConsumidor, String senhaConsumidor);
 
-    boolean findByEmailConsumidor(String email);
+    ConsumidorEntity findByEmailConsumidor(String email);
 
     ConsumidorEntity findByIdConsumidor(int id);
 }
