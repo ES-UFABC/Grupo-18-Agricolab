@@ -16,7 +16,7 @@ public interface ProdutorRepository extends JpaRepository<ProdutorEntity, Intege
 
     ProdutorEntity findByEmailProdutorAndSenhaProdutor(String email, String password);
 
-    String findByEmailProdutor(String email);
+    ProdutorEntity findByEmailProdutor(String email);
 
     //    Query que calcula os raios até os produtores e filtra os menores que um raio determinado
     @Query(value = "SELECT * FROM produtores p WHERE SQRT((POW(p.lat_produtor,2) - POW(?2,2)) + (POW(p.long_produtor,2) - POW(?3,2))) <= ?1", nativeQuery = true)
