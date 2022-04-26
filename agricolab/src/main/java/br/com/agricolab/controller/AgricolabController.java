@@ -51,7 +51,7 @@ public class AgricolabController {
     }
 
 
-
+    @GetMapping("validacao")
     public boolean validacaoEmail(String email) {
        if(consumidorRepository.findByEmailConsumidor(email) || produtorRepository.findByEmailProdutor(email) ){
            return true;

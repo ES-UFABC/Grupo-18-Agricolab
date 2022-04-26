@@ -6,6 +6,7 @@ import br.com.agricolab.core.consumidor.processors.ConsumidorProcessor;
 import br.com.agricolab.domain.Consumidor;
 import br.com.agricolab.domain.Pedido;
 import br.com.agricolab.domain.Produto;
+import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.PedidosRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +56,14 @@ public class ConsumidorController {
         }
         return new ConsumidorDto();
     }
+
+    //    API que aciona a query que calcula e filtra os produtores por raio
+
+    @GetMapping(path = {"/nextprodutores/{latitudeConsumidor}:{longitudeConsumidor}"})
+    public List<Produtor> findNearProdutores(@PathVariable BigDecimal latitudeConsumidor, @PathVariable BigDecimal longitudeConsumidor){
+        return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
+    }
+
 
     @PostMapping
     public ConsumidorDto create(@RequestBody ConsumidorDto consumidorRequest){

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,10 +55,10 @@ public class ConsumidorEntity implements Serializable {
     private String complementoEnderecoConsumidor;
 
     @Column(name="lat_consumidor",  length = 10)
-    private String latitudeConsumidor;
+    private BigDecimal latitudeConsumidor;
 
     @Column(name="long_consumidor",  length = 10)
-    private String longitudeConsumidor;
+    private BigDecimal longitudeConsumidor;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name="pedidos_id", nullable = true)

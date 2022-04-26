@@ -1,11 +1,11 @@
 package br.com.agricolab.repository.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -54,8 +54,8 @@ public class ProdutorEntity implements Serializable {
     private String complementoEnderecoProdutor;
 
     @Column(name="lat_produtor",  length = 10)
-    private String latitudeProdutor;
+    private BigDecimal latitudeProdutor;
 
     @Column(name="long_produtor",  length = 10)
-    private String longitudeProdutor;
+    private BigDecimal longitudeProdutor;
 }
