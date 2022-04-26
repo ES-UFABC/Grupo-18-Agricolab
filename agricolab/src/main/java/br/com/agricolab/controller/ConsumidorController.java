@@ -59,7 +59,7 @@ public class ConsumidorController {
 
     //    API que aciona a query que calcula e filtra os produtores por raio
 
-    @GetMapping(path = {"/nextprodutores/{latitudeConsumidor}:{longitudeConsumidor}"})
+    @GetMapping(path = {"/nextprodutores/{latitudeConsumidor}/{longitudeConsumidor}"})
     public List<Produtor> findNearProdutores(@PathVariable BigDecimal latitudeConsumidor, @PathVariable BigDecimal longitudeConsumidor){
         return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
     }
