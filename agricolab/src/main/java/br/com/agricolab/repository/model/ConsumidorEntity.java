@@ -54,10 +54,10 @@ public class ConsumidorEntity implements Serializable {
     @Column(name="compl_end_consumidor",  length = 40)
     private String complementoEnderecoConsumidor;
 
-    @Column(name="lat_consumidor",  length = 10)
+    @Column(name="lat_consumidor", scale = 8, precision = 10)
     private BigDecimal latitudeConsumidor;
 
-    @Column(name="long_consumidor",  length = 10)
+    @Column(name="long_consumidor", scale = 8, precision = 10)
     private BigDecimal longitudeConsumidor;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
