@@ -53,9 +53,9 @@ public class ProdutorEntity implements Serializable {
     @Column(name="compl_end_produtor",  length = 40)
     private String complementoEnderecoProdutor;
 
-    @Column(name="lat_produtor",  length = 10)
+    @Column(name="lat_produtor", scale = 8, precision = 10)
     private BigDecimal latitudeProdutor;
 
-    @Column(name="long_produtor",  length = 10)
+    @Column(name="long_produtor", scale = 8, precision = 10)
     private BigDecimal longitudeProdutor;
 }
