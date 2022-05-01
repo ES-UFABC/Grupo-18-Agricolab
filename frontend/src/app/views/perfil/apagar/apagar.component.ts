@@ -20,9 +20,17 @@ export class ApagarComponent implements OnInit {
   }
 
   apagar() {
-    this.cadastroService.deleteConsumidor(Number(this.user.idUsuario)).subscribe(data => {
-      logoutUsuario();
-      window.location.reload();
-    })
+    if (this.user.isProdutor) {
+      this.cadastroService.deleteProdutor(Number(this.user.idUsuario)).subscribe(data => {
+        logoutUsuario();
+        window.location.reload();
+      })
+    } else {
+      this.cadastroService.deleteConsumidor(Number(this.user.idUsuario)).subscribe(data => {
+        logoutUsuario();
+        window.location.reload();
+      })
+    }
+
   }
 }
