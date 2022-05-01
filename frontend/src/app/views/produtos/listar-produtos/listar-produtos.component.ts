@@ -23,21 +23,6 @@ export class ListarProdutosComponent implements OnInit {
   listaProdutos(idUsuario: string | null) {
     this.cadastroService.getProdutor(Number(idUsuario)).subscribe(data => {
       this.produtosArray = data.produtos ? data.produtos : [];
-
-      this.produtosArray = [
-        {
-          "idProduto": 5,
-          "nomeProduto": "alface",
-          "quantidadeProduto": 200,
-          "valorProduto": 20.00
-        },
-        {
-          "idProduto": 6,
-          "nomeProduto": "tomate",
-          "quantidadeProduto": 100,
-          "valorProduto": 30.00
-        }
-      ];
     })
   }
 }
