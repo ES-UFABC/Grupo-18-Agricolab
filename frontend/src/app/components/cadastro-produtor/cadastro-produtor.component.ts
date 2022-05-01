@@ -118,22 +118,22 @@ export class CadastroProdutorComponent implements OnInit {
       cpfProdutor: this.cadastroForm.get('cpf')?.value,
       complementoEnderecoProdutor: this.cadastroForm.get('enderecoComplemento')?.value,
       enderecoProdutor: endereco,
-      latitudeProdutor: '',
-      longitudeProdutor: '',
+      latitudeProdutor: 0,
+      longitudeProdutor: 0,
     };
 
     const enderecoGeo =
+      (rua && rua.toUpperCase().includes('RUA') ? '' : 'Rua ') +
+      (rua ? rua + ' ' : '') +
       (numero ? numero + ' ' : '') +
-      (rua ? rua + ', ' : '') +
-      (bairro ? bairro + ', ' : '') +
-      (cidade ? cidade + ', ' : '') +
-      (estado ? estado + ', ' : '') + 'Brasil';
+      (cidade ? cidade + ' ' : '') +
+      (estado ? estado + ' ' : '');
 
-    this.geoApiService.getGeocoding(enderecoGeo).subscribe(geoData => {
+    this.geoApiService.getGeocodingMapTiler(enderecoGeo).subscribe(geoData => {
 
-      if(geoData && geoData.data && geoData.data.length > 0) {
-        params.latitudeProdutor = geoData.data[0].latitude;
-        params.longitudeProdutor = geoData.data[0].longitude;
+      if(geoData && geoData.features && geoData.features.length > 0) {
+        params.latitudeProdutor = geoData.features[0].center[1];
+        params.longitudeProdutor = geoData.features[0].center[0];
       }
   
       this.cadastroService.postProdutor(params).subscribe(data => {

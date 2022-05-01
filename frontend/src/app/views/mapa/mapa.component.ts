@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import * as maptiler from '@maptiler/geocoder';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Produtor } from 'src/app/model/produtor.model';
+import { MapaService } from 'src/app/service/mapa.service';
 
 @Component({
   selector: 'app-mapa',
@@ -16,7 +17,10 @@ export class MapaComponent implements OnInit, AfterViewInit {
   marcadoresArray: any = [];
   distanciaValue: number = 1;
 
-  constructor(public sanitizer: DomSanitizer) { }
+  constructor(
+    public sanitizer: DomSanitizer,
+    public mapaService: MapaService
+  ) { }
 
   ngOnInit(): void {
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -97,74 +101,16 @@ export class MapaComponent implements OnInit, AfterViewInit {
   buscaProdutores() {
     const endereco: any = window.localStorage.getItem('inputPesquisa');
     const enderecoObject = endereco ? JSON.parse(endereco) : '';
-    
+
     this.limpaMarcadores(this.marcadoresArray);
 
     if(enderecoObject) {
-      console.log(this.distanciaValue)
-      //chama o serviço passando lat e lng
-      const retorno: Produtor[] = [
-        {
-          "idProdutor": 1,
-          "nomeProdutor": "TESTE",
-          "tipoProdutor": "pj",
-          "emailProdutor": "javaad2@email.com",
-          "senhaProdutor": "senhateste",
-          "produtos": [
-            {
-              "idProduto": 29,
-              "nomeProduto": "batata",
-              "quantidadeProduto": 396,
-              "valorProduto": 505.00
-            },
-            {
-              "idProduto": 30,
-              "nomeProduto": "teste2",
-              "quantidadeProduto": 382,
-              "valorProduto": 505.00
-            },
-            {
-              "idProduto": 31,
-              "nomeProduto": "teste3",
-              "quantidadeProduto": 398,
-              "valorProduto": 505.00
-            },
-            {
-              "idProduto": 32,
-              "nomeProduto": "alface",
-              "quantidadeProduto": 398,
-              "valorProduto": 50.00
-            }
-          ],
-          "cnpjProdutor": "1201212132",
-          "cpfProdutor": "",
-          "telefoneProdutor": "111-1111",
-          "enderecoProdutor": "rua dos bobos",
-          "complementoEnderecoProdutor": "casa",
-          "latitudeProdutor": "-23.6414027",
-          "longitudeProdutor": "-46.5302458"
-        },
-        {
-          "idProdutor": 2,
-          "nomeProdutor": "TESTE2",
-          "tipoProdutor": "pj",
-          "emailProdutor": "java2@email.com",
-          "senhaProdutor": "senhateste",
-          "produtos": [],
-          "cnpjProdutor": "1201212132",
-          "cpfProdutor": "",
-          "telefoneProdutor": "111-1111",
-          "enderecoProdutor": "rua dos bobos",
-          "complementoEnderecoProdutor": "casa",
-          "latitudeProdutor": "-23.6409469",
-          "longitudeProdutor": "-46.5321533"
-        }
-      ];
+      this.mapaService.findProdutores(enderecoObject.center[1], enderecoObject.center[0]).subscribe(data => {
+        this.criaMarcadores(data);
+      })
 
       this.mapa.panTo([enderecoObject.center[1], enderecoObject.center[0]]);
-      this.criaMarcadores(retorno);
     }
-
   }
 
   limpaMarcadores(marcadores: any[]) {
