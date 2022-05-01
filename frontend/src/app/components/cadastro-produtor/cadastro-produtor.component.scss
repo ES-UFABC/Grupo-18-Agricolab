@@ -14,7 +14,6 @@
     border-bottom: 2px solid #00386f;
     padding: 0.5rem 0.75rem;
     background-color: rgba(255, 255, 255, 0.0);
-    margin-bottom: 5rem;
 }
 
 .form-input input:hover {
@@ -29,6 +28,14 @@
 .form-input input:-webkit-autofill { 
     -webkit-background-clip: text;
     -webkit-text-fill-color: #000 !important;
+}
+
+.email-usado {
+    margin: 0.5rem 0;
+}
+
+.buttons {
+    margin-top: 5rem;
 }
 
 .invalid-input {
