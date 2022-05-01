@@ -12,6 +12,7 @@ id="cadastro-form"
         </label>
         <input type="{{ input.type }}" name="{{ input.name }}" formControlName="{{ input.name }}" [hidden]="isHidden(i)" [class.invalid-input]="campoInvalido">
     </div>
+    <p class="email-usado" *ngIf="isEmailCadastrado">Email já utilizado.</p>
 
     <div class="buttons">
         <a href="javascript: void(0);" class="simple-button-blue" *ngIf="qualInput !== inputFinal; else elseBlock;" (click)="avancaForm()">Avançar</a>

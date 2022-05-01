@@ -58,4 +58,9 @@ export class CadastroService {
   deleteConsumidor(id: number): Observable<Consumidor> {
     return this.http.delete<Consumidor>(`${this.API}/consumidor/${id}`).pipe(take(1));
   }
+
+  //Valida Email
+  validaEmail(email: string): Observable<Boolean> {
+    return this.http.get<Boolean>(`${this.API}/api/agricolab/v1/validacao/${email}`).pipe(take(1));
+  }
 }
