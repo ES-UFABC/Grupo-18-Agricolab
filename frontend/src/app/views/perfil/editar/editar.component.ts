@@ -149,8 +149,8 @@ export class EditarComponent implements OnInit {
         cpfProdutor: this.cadastroForm.get('cpf')?.value,
         complementoEnderecoProdutor: this.cadastroForm.get('enderecoComplemento')?.value,
         enderecoProdutor: endereco,
-        latitudeProdutor: '',
-        longitudeProdutor: '',
+        latitudeProdutor: 0,
+        longitudeProdutor: 0,
       };
     } else {
       params = {
@@ -161,26 +161,26 @@ export class EditarComponent implements OnInit {
         cpfConsumidor: this.cadastroForm.get('cpf')?.value,
         complementoEnderecoconsumidor: this.cadastroForm.get('enderecoComplemento')?.value,
         enderecoConsumidor: endereco,
-        latitudeConsumidor: '',
-        longitudeConsumidor: '',
+        latitudeConsumidor: 0,
+        longitudeConsumidor: 0,
       };
     }
 
     const enderecoGeo =
+      (rua && rua.toUpperCase().includes('RUA') ? '' : 'Rua ') +
+      (rua ? rua + ' ' : '') +
       (numero ? numero + ' ' : '') +
-      (rua ? rua + ', ' : '') +
-      (bairro ? bairro + ', ' : '') +
-      (cidade ? cidade + ', ' : '') +
-      (estado ? estado + ', ' : '') + 'Brasil';
+      (cidade ? cidade + ' ' : '') +
+      (estado ? estado + ' ' : '');
 
-    this.geoApiService.getGeocoding(enderecoGeo).subscribe(geoData => {
+    this.geoApiService.getGeocodingMapTiler(enderecoGeo).subscribe(geoData => {
 
-      if((geoData && geoData.data && geoData.data.length > 0) && this.user.isProdutor) {
-        params.latitudeProdutor = geoData.data[0].latitude;
-        params.longitudeProdutor = geoData.data[0].longitude;
+      if((geoData && geoData.features && geoData.features.length > 0) && this.user.isProdutor) {
+        params.latitudeProdutor = geoData.features[0].center[1];
+        params.longitudeProdutor = geoData.features[0].center[0];
       } else {
-        params.latitudeConsumidor = geoData.data[0].latitude;
-        params.longitudeConsumidor = geoData.data[0].longitude;
+        params.latitudeConsumidor = geoData.features[0].center[1];
+        params.longitudeConsumidor = geoData.features[0].center[0];
       }
   
       if(this.user.isProdutor) {
