@@ -1,5 +1,7 @@
 package br.com.agricolab.domain;
 
+import br.com.agricolab.repository.model.ProdutorEntity;
+import br.com.agricolab.repository.model.ProdutosEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,5 +36,5 @@ public class Produtor {
 
     private BigDecimal longitudeProdutor;
 
-    private List<Produto> produtos;
+    private List<ProdutosEntity> produtos;
 }
