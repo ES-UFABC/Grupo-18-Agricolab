@@ -15,6 +15,7 @@ import br.com.agricolab.repository.model.ConsumidorEntity;
 import br.com.agricolab.repository.model.PedidosEntity;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.repository.model.ProdutosEntity;
+import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,9 @@ public class ConsumidorController {
     @Autowired
     private PedidosRepository pedidosRepository;
 
+    @Autowired
+    private ProdutorService produtorService;
+
 
     @GetMapping(path = "/all")
     public List findAll(){
@@ -60,8 +64,11 @@ public class ConsumidorController {
     //    API que aciona a query que calcula e filtra os produtores por raio
 
     @GetMapping(path = {"/nextprodutores/{latitudeConsumidor}/{longitudeConsumidor}"})
-    public List<Produtor> findNearProdutores(@PathVariable BigDecimal latitudeConsumidor, @PathVariable BigDecimal longitudeConsumidor){
-        return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
+    public List<ProdutorEntity> findNearProdutores(@PathVariable BigDecimal latitudeConsumidor, @PathVariable BigDecimal longitudeConsumidor){
+        //return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
+        return produtorService.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
+
+
     }
 
 
