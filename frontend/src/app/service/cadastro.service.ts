@@ -30,8 +30,8 @@ export class CadastroService {
     return this.http.post<Produtor>(`${this.API}/produtor`, params).pipe(take(1));
   }
 
-  putProdutor(params): Observable<Produtor> {
-    return this.http.put<Produtor>(`${this.API}/produtor`, params).pipe(take(1));
+  patchProdutor(params, id): Observable<Produtor> {
+    return this.http.patch<Produtor>(`${this.API}/produtor/${id}`, params).pipe(take(1));
   }
 
   deleteProdutor(id: number): Observable<Produtor> {
@@ -51,11 +51,16 @@ export class CadastroService {
     return this.http.post<Consumidor>(`${this.API}/consumidor`, params).pipe(take(1));
   }
 
-  putConsumidor(params, id): Observable<Consumidor> {
-    return this.http.put<Consumidor>(`${this.API}/consumidor/${id}`, params).pipe(take(1));
+  patchConsumidor(params, id): Observable<Consumidor> {
+    return this.http.patch<Consumidor>(`${this.API}/consumidor/${id}`, params).pipe(take(1));
   }
 
   deleteConsumidor(id: number): Observable<Consumidor> {
     return this.http.delete<Consumidor>(`${this.API}/consumidor/${id}`).pipe(take(1));
+  }
+
+  //Valida Email
+  validaEmail(email: string): Observable<Boolean> {
+    return this.http.get<Boolean>(`${this.API}/api/agricolab/v1/validacao/${email}`).pipe(take(1));
   }
 }

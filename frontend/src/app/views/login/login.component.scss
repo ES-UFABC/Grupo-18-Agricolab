@@ -81,6 +81,18 @@
     background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+.produtor-checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.produtor-checkbox label {
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
 @media only screen and (min-width: 768px) {
     
     .main form {

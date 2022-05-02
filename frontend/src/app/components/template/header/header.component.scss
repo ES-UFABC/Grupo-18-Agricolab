@@ -6,7 +6,7 @@
     top: 1rem;
     z-index: 100;
     padding: 2px 5px;
-    background-color: rgba(0, 55, 111, 0.3);
+    // background-color: rgba(0, 55, 111, 0.3);
 }
 
 .bg-white {
@@ -27,6 +27,7 @@
     width: 35px;
     height: 5px;
     background-color: #fff;
+    outline: rgba(0, 43, 87, 0.3) 1px solid;
     margin: 6px 0;
     transition: 0.4s;
     border-radius: 5px;

@@ -40,6 +40,11 @@
 - Após clonar o projeto, navegue até a pasta "frontend" com seu terminal
 - Execute o comando "npm install" para instalar as dependências do projeto
 
+### Para visualizar na rede local (permite abrir no smartphone)
+
+- No terminal, execute o comando "npm start-host" ou "ng serve --host 0.0.0.0"
+- Localize o IP da sua máquina que está rodando o projeto e acesse por http://SEU-IP-DA-MAQUINA:4200 em seu smartphone
+
 ========================
 
 # Como usar

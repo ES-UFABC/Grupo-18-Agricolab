@@ -38,6 +38,7 @@ export class CadastroConsumidorComponent implements OnInit {
   qualInput: number = 0;
   inputFinal: number = this.formInputs.length - 1;
   campoInvalido: boolean | undefined = false;
+  isEmailCadastrado: boolean | undefined = false;
   showForm: boolean = true;
   isFormSucess: boolean = false;
 
@@ -67,18 +68,35 @@ export class CadastroConsumidorComponent implements OnInit {
     });
   }
 
-  avancaForm() {
+  avancaForm = () => {
     if(this.validaInput(this.qualInput)) return;
-    if(this.qualInput < this.inputFinal) this.qualInput++;
+    if(this.formInputs[this.qualInput].name === 'email') {
+      this.validaEmail(this.cadastroForm.get('email')?.value);
+    } else {
+      if(this.qualInput < this.inputFinal) this.qualInput++;
+    };
   }
 
   voltaForm(): void {
     if(this.qualInput > 0) {
       this.qualInput--;
       this.campoInvalido = false;
+      this.isEmailCadastrado = false;
     } else {
       this.voltarEvent.emit();
     }
+  }
+
+  validaEmail = (email: string) => {
+    this.cadastroService.validaEmail(email).subscribe(data => {
+      if(data) {
+        this.campoInvalido = true;
+        this.isEmailCadastrado = true;
+      } else {
+        this.isEmailCadastrado = false;
+        if(this.qualInput < this.inputFinal) this.qualInput++;
+      }
+    })
   }
 
   validaInput(position: number): boolean {
@@ -115,23 +133,22 @@ export class CadastroConsumidorComponent implements OnInit {
       cpfConsumidor: this.cadastroForm.get('cpf')?.value,
       complementoEnderecoconsumidor: this.cadastroForm.get('enderecoComplemento')?.value,
       enderecoConsumidor: endereco,
-      latitudeConsumidor: '',
-      longitudeConsumidor: '',
+      latitudeConsumidor: 0,
+      longitudeConsumidor: 0,
     };
 
-    // const enderecoGeo = endereco.replace(/;/g, ', ').concat(', Brasil');
     const enderecoGeo =
+      (rua && rua.toUpperCase().includes('RUA') ? '' : 'Rua ') +
+      (rua ? rua + ' ' : '') +
       (numero ? numero + ' ' : '') +
-      (rua ? rua + ', ' : '') +
-      (bairro ? bairro + ', ' : '') +
-      (cidade ? cidade + ', ' : '') +
-      (estado ? estado + ', ' : '') + 'Brasil';
+      (cidade ? cidade + ' ' : '') +
+      (estado ? estado + ' ' : '');
 
-    this.geoApiService.getGeocoding(enderecoGeo).subscribe(geoData => {
+    this.geoApiService.getGeocodingMapTiler(enderecoGeo).subscribe(geoData => {
 
-      if(geoData && geoData.data && geoData.data.length > 0) {
-        params.latitudeConsumidor = geoData.data[0].latitude;
-        params.longitudeConsumidor = geoData.data[0].longitude;
+      if(geoData && geoData.features && geoData.features.length > 0) {
+        params.latitudeConsumidor = geoData.features[0].center[1];
+        params.longitudeConsumidor = geoData.features[0].center[0];
       }
 
       this.cadastroService.postConsumidor(params).subscribe(data => {

@@ -28,7 +28,8 @@ export class ApagarProdutosComponent implements OnInit {
 
   apagar() {
     this.produtoService.deleteProduto(this.idProduto).subscribe(data => {
-      this.router.navigateByUrl('../../produtos/listar')
+      this.router.navigateByUrl('/produtos/listar')
     })
   }
+
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormInput } from 'src/app/components/cadastro-produtor/cadastro-produtor.component';
 import { Consumidor } from 'src/app/model/consumidor.model';
+import { Produtor } from 'src/app/model/produtor.model';
 import { CadastroService } from 'src/app/service/cadastro.service';
 import { GeoApiService } from 'src/app/service/geo-api.service';
 import { setUsuario, UserSession } from '../../login/login.component';
@@ -60,15 +61,25 @@ export class EditarComponent implements OnInit {
   }
 
   buscaUsuario(idUsuario: string | null) {
-    this.cadastroService.getConsumidor(Number(idUsuario)).subscribe(data => {
-      console.log(data);
+    if (this.user.isProdutor) {
+      this.cadastroService.getProdutor(Number(idUsuario)).subscribe(data => {
 
-      const dadosConvertidos = this.converterDadosRetorno(data);
-
-      this.formInputs.forEach(input => {
-        this.cadastroForm.get(input.name)?.setValue(dadosConvertidos[input.name]);
+        const dadosConvertidos = this.converterDadosRetornoProdutor(data);
+  
+        this.formInputs.forEach(input => {
+          this.cadastroForm.get(input.name)?.setValue(dadosConvertidos[input.name]);
+        })
       })
-    })
+    } else {
+      this.cadastroService.getConsumidor(Number(idUsuario)).subscribe(data => {
+
+        const dadosConvertidos = this.converterDadosRetorno(data);
+  
+        this.formInputs.forEach(input => {
+          this.cadastroForm.get(input.name)?.setValue(dadosConvertidos[input.name]);
+        })
+      })
+    }
   }
 
   converterDadosRetorno(dadosUsuario: Consumidor) {
@@ -81,6 +92,24 @@ export class EditarComponent implements OnInit {
       telefone: this.validaString(dadosUsuario.telefoneConsumidor),
       cpf: this.validaString(dadosUsuario.cpfConsumidor),
       enderecoComplemento: this.validaString(dadosUsuario.complementoEnderecoconsumidor),
+      enderecoRua: this.validaString(enderecoArray[0]),
+      enderecoNumero: this.validaString(enderecoArray[1]),
+      enderecoBairro: this.validaString(enderecoArray[2]),
+      enderecoCidade: this.validaString(enderecoArray[3]),
+      enderecoEstado: this.validaString(enderecoArray[4]),
+    }
+  }
+
+  converterDadosRetornoProdutor(dadosUsuario: Produtor) {
+    const enderecoArray = dadosUsuario.enderecoProdutor.split(';');
+
+    return {
+      nome: this.validaString(dadosUsuario.nomeProdutor),
+      email: this.validaString(dadosUsuario.emailProdutor),
+      senha: this.validaString(dadosUsuario.senhaProdutor),
+      telefone: this.validaString(dadosUsuario.telefoneProdutor),
+      cpf: this.validaString(dadosUsuario.cpfProdutor),
+      enderecoComplemento: this.validaString(dadosUsuario.complementoEnderecoProdutor),
       enderecoRua: this.validaString(enderecoArray[0]),
       enderecoNumero: this.validaString(enderecoArray[1]),
       enderecoBairro: this.validaString(enderecoArray[2]),
@@ -109,40 +138,70 @@ export class EditarComponent implements OnInit {
       (cidade ? cidade : '') + ';' +
       (estado ? estado : '');
 
-    const params = {
-      nomeConsumidor: this.cadastroForm.get('nome')?.value,
-      emailConsumidor: this.cadastroForm.get('email')?.value,
-      senhaConsumidor: this.cadastroForm.get('senha')?.value,
-      telefoneConsumidor: this.cadastroForm.get('telefone')?.value,
-      cpfConsumidor: this.cadastroForm.get('cpf')?.value,
-      complementoEnderecoconsumidor: this.cadastroForm.get('enderecoComplemento')?.value,
-      enderecoConsumidor: endereco,
-      latitudeConsumidor: '',
-      longitudeConsumidor: '',
-    };
+    let params;
+
+    if (this.user.isProdutor) {
+      params = {
+        nomeProdutor: this.cadastroForm.get('nome')?.value,
+        emailProdutor: this.cadastroForm.get('email')?.value,
+        senhaProdutor: this.cadastroForm.get('senha')?.value,
+        telefoneProdutor: this.cadastroForm.get('telefone')?.value,
+        cpfProdutor: this.cadastroForm.get('cpf')?.value,
+        complementoEnderecoProdutor: this.cadastroForm.get('enderecoComplemento')?.value,
+        enderecoProdutor: endereco,
+        latitudeProdutor: 0,
+        longitudeProdutor: 0,
+      };
+    } else {
+      params = {
+        nomeConsumidor: this.cadastroForm.get('nome')?.value,
+        emailConsumidor: this.cadastroForm.get('email')?.value,
+        senhaConsumidor: this.cadastroForm.get('senha')?.value,
+        telefoneConsumidor: this.cadastroForm.get('telefone')?.value,
+        cpfConsumidor: this.cadastroForm.get('cpf')?.value,
+        complementoEnderecoconsumidor: this.cadastroForm.get('enderecoComplemento')?.value,
+        enderecoConsumidor: endereco,
+        latitudeConsumidor: 0,
+        longitudeConsumidor: 0,
+      };
+    }
 
     const enderecoGeo =
+      (rua && rua.toUpperCase().includes('RUA') ? '' : 'Rua ') +
+      (rua ? rua + ' ' : '') +
       (numero ? numero + ' ' : '') +
-      (rua ? rua + ', ' : '') +
-      (bairro ? bairro + ', ' : '') +
-      (cidade ? cidade + ', ' : '') +
-      (estado ? estado + ', ' : '') + 'Brasil';
+      (cidade ? cidade + ' ' : '') +
+      (estado ? estado + ' ' : '');
 
-    this.geoApiService.getGeocoding(enderecoGeo).subscribe(geoData => {
+    this.geoApiService.getGeocodingMapTiler(enderecoGeo).subscribe(geoData => {
 
-      if(geoData && geoData.data && geoData.data.length > 0) {
-        params.latitudeConsumidor = geoData.data[0].latitude;
-        params.longitudeConsumidor = geoData.data[0].longitude;
+      if((geoData && geoData.features && geoData.features.length > 0) && this.user.isProdutor) {
+        params.latitudeProdutor = geoData.features[0].center[1];
+        params.longitudeProdutor = geoData.features[0].center[0];
+      } else {
+        params.latitudeConsumidor = geoData.features[0].center[1];
+        params.longitudeConsumidor = geoData.features[0].center[0];
       }
   
-      this.cadastroService.putConsumidor(params, this.user.idUsuario).subscribe(data => {
-        this.showForm = false;
-        this.isFormSucess = true;
-      },
-      err => {
-        this.showForm = false;
-        this.isFormSucess = false;
-      });
+      if(this.user.isProdutor) {
+        this.cadastroService.patchProdutor(params, this.user.idUsuario).subscribe(data => {
+          this.showForm = false;
+          this.isFormSucess = true;
+        },
+        err => {
+          this.showForm = false;
+          this.isFormSucess = false;
+        });
+      } else {
+        this.cadastroService.patchConsumidor(params, this.user.idUsuario).subscribe(data => {
+          this.showForm = false;
+          this.isFormSucess = true;
+        },
+        err => {
+          this.showForm = false;
+          this.isFormSucess = false;
+        });
+      }
     },
     err => {
       this.showForm = false;
