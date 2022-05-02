@@ -75,23 +75,27 @@ public class ProdutorService {
     }
 
     public List<ProdutorEntity> findNearProd(BigDecimal range, BigDecimal latitudeConsumidor, BigDecimal longitudeConsumidor) {
-        //"SELECT * FROM produtores p WHERE SQRT((POW(p.lat_produtor,2) - POW(?2,2)) + (POW(p.long_produtor,2) - POW(?3,2))) <= ?1"
         List<ProdutorEntity> produtores = produtorRepository.findAll();
         List<ProdutorEntity> produtorEncontrado = new ArrayList<>();
 
-       // produtores.stream().forEach(produtor -> Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
-       //         - Math.pow(longitudeConsumidor.doubleValue(), 2))));
-
-
-        for(ProdutorEntity produtor : produtores) {
-
-            if (produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null) {
-                if (Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
-                        - Math.pow(longitudeConsumidor.doubleValue(), 2))) <= range.doubleValue()) {
+        produtores.stream().forEach(produtor -> {
+            if(produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null){
+                if(Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
+                        - Math.pow(longitudeConsumidor.doubleValue(), 2))) <= range.doubleValue()){
                     produtorEncontrado.add(produtor);
                 }
             }
-        }
+        });
+
+
+      //  for(ProdutorEntity produtor : produtores) {
+        //    if (produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null) {
+        //        if(Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
+        //                - Math.pow(longitudeConsumidor.doubleValue(), 2))) <= range.doubleValue()) {
+         //           produtorEncontrado.add(produtor);
+         //       }
+        //    }
+        //}
 
         return produtorEncontrado;
 
