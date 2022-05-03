@@ -74,28 +74,41 @@ public class ProdutorService {
 
     }
 
-    public List<ProdutorEntity> findNearProd(BigDecimal range, BigDecimal latitudeConsumidor, BigDecimal longitudeConsumidor) {
+    public List<ProdutorEntity> findNearProd(Double range, Double latitudeConsumidor, Double longitudeConsumidor) {
         List<ProdutorEntity> produtores = produtorRepository.findAll();
         List<ProdutorEntity> produtorEncontrado = new ArrayList<>();
 
-        produtores.stream().forEach(produtor -> {
+        /*produtores.stream().forEach(produtor -> {
             if(produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null){
                 if(Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
                         - Math.pow(longitudeConsumidor.doubleValue(), 2))) <= range.doubleValue()){
                     produtorEncontrado.add(produtor);
                 }
             }
+        });*/
+
+
+        produtores.stream().forEach(produtor -> {
+            if(produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null){
+                if(Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue() - latitudeConsumidor, 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue() - longitudeConsumidor, 2)
+                ))<= range){
+                    produtorEncontrado.add(produtor);
+                }
+            }
         });
 
 
-      //  for(ProdutorEntity produtor : produtores) {
-        //    if (produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null) {
-        //        if(Math.sqrt((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
-        //                - Math.pow(longitudeConsumidor.doubleValue(), 2))) <= range.doubleValue()) {
-         //           produtorEncontrado.add(produtor);
-         //       }
-        //    }
-        //}
+        /*for(ProdutorEntity produtor : produtores) {
+            if (produtor.getLatitudeProdutor() != null && produtor.getLongitudeProdutor() != null) {
+                if(Math.sqrt(((Math.pow(produtor.getLatitudeProdutor().doubleValue(), 2)) - Math.pow(latitudeConsumidor.doubleValue(), 2)) + (Math.pow(produtor.getLongitudeProdutor().doubleValue(), 2)
+                        - Math.pow(longitudeConsumidor.doubleValue(), 2))) <= range.doubleValue()) {
+                    produtorEncontrado.add(produtor);
+                }
+            }
+        }*/
+
+
+
 
         return produtorEncontrado;
 
