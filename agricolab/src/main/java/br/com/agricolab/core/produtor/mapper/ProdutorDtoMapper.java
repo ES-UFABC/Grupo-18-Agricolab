@@ -63,7 +63,7 @@ public interface ProdutorDtoMapper {
             produtor.setLatitudeProdutor(produtorRequest.getLatitudeProdutor());
 
         if(!Objects.isNull(produtorRequest.getLatitudeProdutor()))
-            produtor.setLatitudeProdutor(produtorRequest.getLatitudeProdutor());
+            produtor.setLongitudeProdutor(produtorRequest.getLongitudeProdutor());
 
         return produtor;
     }

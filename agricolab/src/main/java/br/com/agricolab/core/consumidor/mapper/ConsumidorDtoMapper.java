@@ -62,7 +62,7 @@ public interface ConsumidorDtoMapper {
             Consumidor.setLatitudeConsumidor(ConsumidorRequest.getLatitudeConsumidor());
 
         if(!Objects.isNull(ConsumidorRequest.getLatitudeConsumidor()))
-            Consumidor.setLatitudeConsumidor(ConsumidorRequest.getLatitudeConsumidor());
+            Consumidor.setLongitudeConsumidor(ConsumidorRequest.getLongitudeConsumidor());
 
         return Consumidor;
     }
