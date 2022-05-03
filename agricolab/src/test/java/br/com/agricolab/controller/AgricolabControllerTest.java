@@ -98,7 +98,7 @@ public class AgricolabControllerTest {
 
         Mockito.when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenThrow(Exception.class);
 
-        agricolabController.loginProdutor(produtorEntity);
+        Assertions.assertThat(agricolabController.loginProdutor(produtorEntity)).isEqualTo(Exception.class);
 
     }
 
