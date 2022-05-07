@@ -1,0 +1,43 @@
+.produto {
+    background-color: #00386f;
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90vw;
+}
+
+.produto p {
+    color: #fff;
+    font-weight: 100;
+}
+
+.produto span {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.produto-form {
+    display: flex;
+    align-items: center;
+}
+
+.produto-form p {
+    margin-right: 0.5rem;
+}
+
+.produto-form select {
+    height: 39px;
+    width: 3rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+    
+    .produto {
+        min-width: 22rem;
+        margin: 1rem;
+    }
+}
