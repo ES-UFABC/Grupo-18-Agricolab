@@ -20,6 +20,7 @@ import java.util.List;
 public class ProdutorService {
 
     private final ProdutosMapper mapper = Mappers.getMapper(ProdutosMapper.class);
+    Integer contador = 0;
 
 
 
@@ -29,18 +30,31 @@ public class ProdutorService {
     @Autowired
     ProdutoRepository produtoRepository;
 
-    public ProdutorEntity cadastro(Integer id, Produto produtos) {
+    public ProdutorEntity cadastro(Integer id, Produto produtos) throws Exception {
 
         ProdutorEntity produtorEntity = produtorRepository.findByIdProdutor(id);
 
         ProdutosEntity produtosConverter = mapper.toProdutos(produtos);
-        produtoRepository.save(produtosConverter);
-
-        produtorEntity.getProdutos().add(produtosConverter);
-
-        return produtorRepository.save(produtorEntity);
 
 
+        for(ProdutosEntity produtosProdutor : produtorEntity.getProdutos()) {
+            if (produtosConverter.getNomeProduto().equals(produtosProdutor.getNomeProduto())) {
+                throw new Exception("produto ja cadastrado");
+            }
+            contador++;
+        }
+
+        if(contador != 0){
+
+            produtoRepository.save(produtosConverter);
+
+            produtorEntity.getProdutos().add(produtosConverter);
+
+             produtorRepository.save(produtorEntity);
+
+        }
+
+        return produtorEntity;
     }
 
     public void delete(Integer id) {
