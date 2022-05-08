@@ -99,7 +99,7 @@ public class ConsumidorController {
     }
 
     @PostMapping("/pedidos/{idProdutor}/{idConsumidor}")
-    public ResponseEntity<ConsumidorEntity> adicionaPedido(@RequestBody Pedido pedidosConsumidor, @PathVariable Integer idProdutor, @PathVariable Integer idConsumidor) throws Exception {
+    public ResponseEntity<ConsumidorEntity> adicionaPedido(@RequestBody List<Pedido> pedidosConsumidor, @PathVariable Integer idProdutor, @PathVariable Integer idConsumidor) throws Exception {
         ProdutorEntity produtor = produtorRepository.findByIdProdutor(idProdutor);
         ConsumidorEntity consumidorPedidos = consumidorRepository.findByIdConsumidor(idConsumidor);
 

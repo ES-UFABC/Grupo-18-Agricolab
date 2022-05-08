@@ -68,13 +68,13 @@ public class ConsumidorProcessor {
         return consumidor;
     }
 
-    public ConsumidorEntity registroPedidos(ProdutorEntity produtor, Pedido produto, ConsumidorEntity consumidorPedidos) throws Exception {
+    public ConsumidorEntity registroPedidos(ProdutorEntity produtor, List<Pedido> pedidos, ConsumidorEntity consumidorPedidos) throws Exception {
 
 
-
+    for(Pedido produto : pedidos) {
         produtor.getProdutos().stream().forEach(
                 con -> {
-                    if (con.getNomeProduto().equals(produto.getNomePedido())){
+                    if (con.getNomeProduto().equals(produto.getNomePedido())) {
                         con.setQuantidadeProduto(con.getQuantidadeProduto() - produto.getQuantidadePedido());
                         produto.setValorPedido(BigDecimal.valueOf(produto.getQuantidadePedido()).multiply(con.getValorProduto()));
 
@@ -89,15 +89,17 @@ public class ConsumidorProcessor {
                 });
 
         List<ProdutosEntity> produtosNome = produtor.getProdutos();
-        for(ProdutosEntity produtoNome: produtosNome){
-            if(produtoNome.getNomeProduto().equals(produto.getNomePedido())){
-                return consumidorRepository.save(consumidorPedidos);
+
+        for (ProdutosEntity produtoNome : produtosNome) {
+            if (produtoNome.getNomeProduto().equals(produto.getNomePedido())) {
+                consumidorRepository.save(consumidorPedidos);
             }
 
         }
+    }
 
+        return consumidorPedidos;
 
-        throw new Exception("produto não encontrado");
 
 
 }
