@@ -1,6 +1,7 @@
 package br.com.agricolab.core.produtor.dto;
 
 import br.com.agricolab.domain.Produto;
+import br.com.agricolab.repository.model.PedidosEntity;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.repository.model.ProdutosEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +53,9 @@ public class ProdutorDto implements Serializable {
 
     @JsonProperty("produtos")
     private List<ProdutosEntity> produtos;
+
+    @JsonProperty("pedidos_recebidos")
+    private List<PedidosEntity> pedidosRecebidos;
 
     @JsonProperty("longitudeProdutor")
     private BigDecimal longitudeProdutor;

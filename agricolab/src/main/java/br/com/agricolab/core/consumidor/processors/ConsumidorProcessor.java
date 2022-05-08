@@ -7,6 +7,7 @@ import br.com.agricolab.domain.Pedido;
 import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.PedidosRepository;
+import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ConsumidorEntityMapper;
 import br.com.agricolab.repository.model.ConsumidorEntity;
 import br.com.agricolab.repository.model.PedidosEntity;
@@ -30,6 +31,9 @@ public class ConsumidorProcessor {
 
     @Autowired
     private PedidosRepository pedidosRepository;
+
+    @Autowired
+    private ProdutorRepository produtorRepository;
 
 
     public Consumidor createConsumidor(Consumidor Consumidor){
@@ -79,9 +83,9 @@ public class ConsumidorProcessor {
                         produto.setValorPedido(BigDecimal.valueOf(produto.getQuantidadePedido()).multiply(con.getValorProduto()));
 
                         PedidosEntity pedidosEntity = mapper.toPedidos(produto);
-
                         pedidosRepository.save(pedidosEntity);
                         consumidorPedidos.getPedidos().add(pedidosEntity);
+                        produtor.getPedidosRecebidos().add(pedidosEntity);
 
                     }
 
@@ -92,13 +96,16 @@ public class ConsumidorProcessor {
 
         for (ProdutosEntity produtoNome : produtosNome) {
             if (produtoNome.getNomeProduto().equals(produto.getNomePedido())) {
-                consumidorRepository.save(consumidorPedidos);
+                return consumidorRepository.save(consumidorPedidos);
             }
 
         }
+
+
     }
 
-        return consumidorPedidos;
+
+        throw new Exception("produto não existe");
 
 
 

@@ -35,6 +35,10 @@ public class ProdutorEntity implements Serializable {
     private String senhaProdutor;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name="pedidos_recebidos_id")
+    private List<PedidosEntity> pedidosRecebidos = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name="produtor_id", nullable = true)
     private List<ProdutosEntity> produtos = new ArrayList<>();
 

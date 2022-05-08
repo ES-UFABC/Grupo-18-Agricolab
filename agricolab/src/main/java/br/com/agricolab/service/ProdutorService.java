@@ -36,25 +36,15 @@ public class ProdutorService {
 
         ProdutosEntity produtosConverter = mapper.toProdutos(produtos);
 
+        produtoRepository.save(produtosConverter);
 
-        for(ProdutosEntity produtosProdutor : produtorEntity.getProdutos()) {
-            if (produtosConverter.getNomeProduto().equals(produtosProdutor.getNomeProduto())) {
-                throw new Exception("produto ja cadastrado");
-            }
-            contador++;
-        }
+        produtorEntity.getProdutos().add(produtosConverter);
 
-        if(contador != 0){
+        return produtorRepository.save(produtorEntity);
 
-            produtoRepository.save(produtosConverter);
 
-            produtorEntity.getProdutos().add(produtosConverter);
 
-             produtorRepository.save(produtorEntity);
 
-        }
-
-        return produtorEntity;
     }
 
     public void delete(Integer id) {
