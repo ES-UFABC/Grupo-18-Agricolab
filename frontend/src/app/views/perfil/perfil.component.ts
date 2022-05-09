@@ -19,6 +19,9 @@ export class PerfilComponent implements OnInit {
 
   logout() {
     logoutUsuario();
+    setTimeout(() => {
+      logoutUsuario();
+    }, 1000);
     window.location.reload();
   }
 }
