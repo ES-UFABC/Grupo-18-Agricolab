@@ -25,7 +25,6 @@ import { logoutUsuario, setUsuario, UserSession } from 'src/app/views/login/logi
   ]
 })
 export class HeaderComponent implements OnInit {
-  mobile: boolean = false;
   showMenu = false;
   user: UserSession = setUsuario();
   
@@ -36,6 +35,9 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     logoutUsuario();
+    setTimeout(() => {
+      logoutUsuario();
+    }, 1000);
     window.location.reload();
   }
 
