@@ -1,0 +1,29 @@
+<app-inner-header></app-inner-header>
+
+<section class="pedidos">
+    <h1>Pedidos</h1>
+
+    <a [routerLink]="['../../perfil']" class="simple-button-red">Voltar</a>
+
+    <div class="container">
+        <div class="lista">
+            <div class="lista-header">
+                <p>Id</p>
+                <p>Produto</p>
+                <p>Quantidade</p>
+                <p>Valor Total</p>
+                <p>Ações</p>
+            </div>
+            <div class="lista-itens" *ngFor="let pedido of pedidosArray; index as i;">
+                <p>{{ pedido.idProduto || '-' }}</p>
+                <p>{{ pedido.nomeProduto || '-' }}</p>
+                <p>{{ pedido.quantidadeProduto || '-' }}</p>
+                <p>{{ (pedido.valorProduto | currency:'BRL') || '-' }}</p>
+                <div class="buttons">
+                    <a [routerLink]="['../apagar']" [queryParams]="{ idProduto: pedido.idProduto, nomeProduto: pedido.nomeProduto }" class="simple-button-red">Cancelar</a>
+                </div>
+            </div>
+            <p class="none-message" *ngIf="!pedidosArray.length">Nenhum produto para listar.</p>
+        </div>
+    </div>
+</section>

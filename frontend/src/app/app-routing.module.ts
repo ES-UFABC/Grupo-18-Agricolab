@@ -5,6 +5,8 @@ import { ContatoComponent } from './views/contato/contato.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { MapaComponent } from './views/mapa/mapa.component';
+import { ListarPedidosComponent } from './views/pedidos/listar-pedidos/listar-pedidos.component';
+import { PedidosComponent } from './views/pedidos/pedidos.component';
 import { ApagarComponent } from './views/perfil/apagar/apagar.component';
 import { EditarComponent } from './views/perfil/editar/editar.component';
 import { PerfilComponent } from './views/perfil/perfil.component';
@@ -66,6 +68,14 @@ const routes: Routes = [
   {
     path: 'mapa',
     component: MapaComponent
+  },
+  {
+    path: 'pedidos/listar',
+    component: ListarPedidosComponent
+  },
+  {
+    path: 'pedidos/:id',
+    component: PedidosComponent
   },
   {
     path: 'time',

@@ -27,6 +27,7 @@ export function logoutUsuario() {
   window.localStorage.removeItem('nomeUsuario');
   window.localStorage.removeItem('emailUsuario');
   window.localStorage.removeItem('isProdutor');
+  window.localStorage.removeItem('carrinhoPedido');
 }
 
 @Component({
