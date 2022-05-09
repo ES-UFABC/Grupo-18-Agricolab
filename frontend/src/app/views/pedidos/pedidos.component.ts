@@ -27,6 +27,8 @@ export class PedidosComponent implements OnInit {
   getProdutor(id: string) {
     this.cadastroService.getProdutor(Number(id)).subscribe(data => {
       this.produtor = data;
+      this.produtor.enderecoProdutor = this.produtor.enderecoProdutor ? this.produtor.enderecoProdutor.split(';').join(' ') : '';
     })
   }
+
 }

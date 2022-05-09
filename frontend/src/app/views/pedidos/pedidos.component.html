@@ -13,7 +13,9 @@
     <h1>Produtos</h1>
 
     <div class="lista-produtos">
-        <app-item-pedido *ngFor="let produto of produtor.produtos" [produto]="produto"></app-item-pedido>
+        <app-item-pedido *ngFor="let produto of produtor.produtos" [produto]="produto" [idProdutor]="produtor.idProdutor"></app-item-pedido>
     </div>
     <p class="none-message" *ngIf="produtor.produtos && !produtor.produtos.length">Nenhum produto para listar.</p>
 </section>
+
+<app-carrinho class="carrinho-icon"></app-carrinho>
