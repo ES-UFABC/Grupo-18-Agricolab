@@ -121,6 +121,8 @@ export class MapaComponent implements OnInit, AfterViewInit {
 
   criaMarcadores(produtores: Produtor[]) {
     produtores.forEach(produtor => {
+      produtor.enderecoProdutor = produtor.enderecoProdutor ? produtor.enderecoProdutor.split(';').join(' ') : '';
+      
       const popup = this.criaPopup(produtor);
       const marcador = L.marker([Number(produtor.latitudeProdutor), Number(produtor.longitudeProdutor)]).bindPopup(popup).addTo(this.mapa);
       // const marcador = L.marker([Number(produtor.latitudeProdutor), Number(produtor.longitudeProdutor)], {icon: this.marcadorPadrao}).bindPopup(popup).addTo(this.mapa);
@@ -132,7 +134,9 @@ export class MapaComponent implements OnInit, AfterViewInit {
     return `<p style="font-size: 1.2rem; font-weight: bold; color: black;">${produtor.nomeProdutor}</p>
     <p style="font-size: 1rem; font-weight: 400; color: black; margin: 0;"><strong>Telefone:</strong> ${produtor.telefoneProdutor}</p>
     <p style="font-size: 1rem; font-weight: 400; color: black; margin: 0;"><strong>Email:</strong> ${produtor.emailProdutor}</p>
-    <p style="font-size: 1rem; font-weight: 400; color: black; margin-top: 0;"><strong>Endereço:</strong> ${produtor.enderecoProdutor}</p>`;
+    <p style="font-size: 1rem; font-weight: 400; color: black; margin-top: 0;"><strong>Endereço:</strong> ${produtor.enderecoProdutor}</p>
+    <a class="simple-button-blue" style="padding: 0.5rem 1.5rem; color: #fff;" href="../pedidos/${produtor.idProdutor}">Ver Produtos</a>
+    <p style="height: 0.1rem;"></p>`;
   }
 
   //Criação dos marcadores personalizados no Leaflet
