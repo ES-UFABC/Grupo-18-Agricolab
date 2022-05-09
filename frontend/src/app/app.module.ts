@@ -29,6 +29,9 @@ import { ApagarProdutosComponent } from './views/produtos/apagar-produtos/apagar
 import { CadastrarProdutosComponent } from './views/produtos/cadastrar-produtos/cadastrar-produtos.component';
 import { PedidosComponent } from './views/pedidos/pedidos.component';
 import { ItemPedidoComponent } from './components/item-pedido/item-pedido.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { ListarPedidosComponent } from './views/pedidos/listar-pedidos/listar-pedidos.component';
+import { ItemCarrinhoComponent } from './components/item-carrinho/item-carrinho.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { ItemPedidoComponent } from './components/item-pedido/item-pedido.compon
     CadastrarProdutosComponent,
     PedidosComponent,
     ItemPedidoComponent,
+    CarrinhoComponent,
+    ListarPedidosComponent,
+    ItemCarrinhoComponent,
   ],
   imports: [
     BrowserModule,
