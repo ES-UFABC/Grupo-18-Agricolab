@@ -13,8 +13,12 @@
     >
         <p>Qtd:</p>
         <select formControlName="quantidade" name="qtd" id="qtd">
-            <option [ngValue]="i" *ngFor="let item of [].constructor(11); let i = index;">{{i}}</option>
+            <option [ngValue]="i" *ngFor="let item of [].constructor(10); let i = index;">{{i + 1}}</option>
         </select>
-        <button type="submit" class="simple-button">Adicionar</button>
+        <button type="submit" class="simple-button">{{ textoBotao }}</button>
     </form>
+
+    <div class="adicionado" [class.display-none]="!itemAdded" [class.display]="itemAdded">
+        <p>Produto adicionado ao carrinho!</p>
+    </div>
 </div>
