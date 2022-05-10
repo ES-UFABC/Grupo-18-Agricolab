@@ -18,4 +18,4 @@
     <p class="none-message" *ngIf="produtor.produtos && !produtor.produtos.length">Nenhum produto para listar.</p>
 </section>
 
-<app-carrinho class="carrinho-icon"></app-carrinho>
+<app-carrinho class="carrinho-icon" [idProdutor]="produtor.idProdutor"></app-carrinho>
