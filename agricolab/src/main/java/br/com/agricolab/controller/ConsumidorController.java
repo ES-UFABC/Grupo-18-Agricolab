@@ -64,9 +64,9 @@ public class ConsumidorController {
     //    API que aciona a query que calcula e filtra os produtores por raio
 
     @GetMapping(path = {"/nextprodutores/{latitudeConsumidor}/{longitudeConsumidor}"})
-    public List<ProdutorEntity> findNearProdutores(@PathVariable BigDecimal latitudeConsumidor, @PathVariable BigDecimal longitudeConsumidor){
+    public List<ProdutorEntity> findNearProdutores(@PathVariable Double latitudeConsumidor, @PathVariable Double longitudeConsumidor){
         //return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
-        return produtorService.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
+        return produtorService.findNearProd(3.0, latitudeConsumidor,longitudeConsumidor);
 
 
     }
@@ -99,7 +99,7 @@ public class ConsumidorController {
     }
 
     @PostMapping("/pedidos/{idProdutor}/{idConsumidor}")
-    public ResponseEntity<ConsumidorEntity> adicionaPedido(@RequestBody Pedido pedidosConsumidor, @PathVariable Integer idProdutor, @PathVariable Integer idConsumidor) throws Exception {
+    public ResponseEntity<ConsumidorEntity> adicionaPedido(@RequestBody List<Pedido> pedidosConsumidor, @PathVariable Integer idProdutor, @PathVariable Integer idConsumidor) throws Exception {
         ProdutorEntity produtor = produtorRepository.findByIdProdutor(idProdutor);
         ConsumidorEntity consumidorPedidos = consumidorRepository.findByIdConsumidor(idConsumidor);
 
