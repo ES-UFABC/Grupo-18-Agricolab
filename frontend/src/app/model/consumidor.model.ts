@@ -1,3 +1,5 @@
+import { PedidoConsumidor } from "./pedido-consumidor.model";
+
 export class Consumidor {
     idConsumidor: number;
     tipoConsumidor: string;
@@ -9,7 +11,8 @@ export class Consumidor {
     cpfConsumidor: string;
     telefoneConsumidor: string;
     enderecoConsumidor: string;
-    complementoEnderecoconsumidor: string;
+    complementoEnderecoConsumidor: string;
     latitudeConsumidor: string;
     longitudeConsumidor: string;
+    pedidos: PedidoConsumidor[];
 }
