@@ -18,8 +18,12 @@
         </div>
     </div>
     <ng-template #elseBlock>
-        <div class="carrinho-container-sucess">
+        <div class="carrinho-container-sucess" *ngIf="!isPedidoFeitoErro">
             <h2>Pedido enviado com sucesso!</h2>
+            <p>Por favor, aguarde a página recarregar.</p>
+        </div>
+        <div class="carrinho-container-sucess" *ngIf="isPedidoFeitoErro">
+            <h2>Erro ao enviar o pedido!</h2>
             <p>Por favor, aguarde a página recarregar.</p>
         </div>
     </ng-template>
