@@ -5,7 +5,9 @@ import { ContatoComponent } from './views/contato/contato.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { MapaComponent } from './views/mapa/mapa.component';
+import { ApagarPedidoComponent } from './views/pedidos/apagar-pedido/apagar-pedido.component';
 import { ListarPedidosComponent } from './views/pedidos/listar-pedidos/listar-pedidos.component';
+import { PedidosRecebidosComponent } from './views/pedidos/pedidos-recebidos/pedidos-recebidos.component';
 import { PedidosComponent } from './views/pedidos/pedidos.component';
 import { ApagarComponent } from './views/perfil/apagar/apagar.component';
 import { EditarComponent } from './views/perfil/editar/editar.component';
@@ -44,8 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'produtos',
-    component: ProdutosComponent,
-    // component: window.localStorage.getItem('idUsuario') ? ProdutosComponent : LoginComponent,
+    component: window.localStorage.getItem('idUsuario') && window.localStorage.getItem('isProdutor') === 'true' ? ProdutosComponent : LoginComponent,
     children: [
       {
         path: 'listar',
@@ -71,7 +72,15 @@ const routes: Routes = [
   },
   {
     path: 'pedidos/listar',
-    component: ListarPedidosComponent
+    component: window.localStorage.getItem('idUsuario') && window.localStorage.getItem('isProdutor') === 'false' ? ListarPedidosComponent : LoginComponent,
+  },
+  {
+    path: 'pedidos/apagar',
+    component: window.localStorage.getItem('idUsuario') && window.localStorage.getItem('isProdutor') === 'false' ? ApagarPedidoComponent : LoginComponent,
+  },
+  {
+    path: 'pedidos/recebidos',
+    component: window.localStorage.getItem('idUsuario') && window.localStorage.getItem('isProdutor') === 'true' ? PedidosRecebidosComponent : LoginComponent,
   },
   {
     path: 'pedidos/:id',
