@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PedidoConsumidor } from 'src/app/model/pedido-consumidor.model';
 import { Produto } from 'src/app/model/produto.model';
 import { CadastroService } from 'src/app/service/cadastro.service';
 import { setUsuario, UserSession } from '../../login/login.component';
@@ -10,7 +11,7 @@ import { setUsuario, UserSession } from '../../login/login.component';
 })
 export class ListarPedidosComponent implements OnInit {
   user: UserSession = setUsuario();
-  pedidosArray: Produto[] = [];
+  pedidosArray: PedidoConsumidor[] = [];
 
   constructor(
     public cadastroService: CadastroService,
@@ -22,7 +23,7 @@ export class ListarPedidosComponent implements OnInit {
 
   listaProdutos(idUsuario: string | null) {
     this.cadastroService.getConsumidor(Number(idUsuario)).subscribe(data => {
-      // this.pedidosArray = data.produtos ? data.produtos : [];
+      this.pedidosArray = data.pedidos ? data.pedidos : [];
     })
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   trigger,
   state,
@@ -9,6 +9,7 @@ import {
 import { setUsuario, UserSession } from 'src/app/views/login/login.component';
 import { Pedido } from 'src/app/model/pedido.model';
 import { ProdutoPedido } from 'src/app/model/produto-pedido.model';
+import { PedidoService } from 'src/app/service/pedidos.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -27,13 +28,18 @@ import { ProdutoPedido } from 'src/app/model/produto-pedido.model';
   ]
 })
 export class CarrinhoComponent implements OnInit {
+  @Input() idProdutor: number;
+
   showMenu = false;
   user: UserSession = setUsuario();
   listaProdutos: ProdutoPedido[];
   isPedidoFeito: boolean = false;
+  isPedidoFeitoErro: boolean = false;
   totalFinal: number = 0;
 
-  constructor() { }
+  constructor(
+    public pedidoService: PedidoService
+  ) { }
 
   ngOnInit(): void {
     this.pegaItensCarrinho();
@@ -51,21 +57,53 @@ export class CarrinhoComponent implements OnInit {
   }
 
   calculaPrecoTotal(listaProdutos: ProdutoPedido[]) {
-    this.totalFinal = listaProdutos.map(item => item.precoPedido).reduce((acc, value) => acc + value);
+    this.totalFinal = listaProdutos.length 
+      ? listaProdutos.map(item => item.precoPedido).reduce((acc, value) => acc + value)
+      : 0;
   }
 
   fecharPedido() {
-    const pedido: any = window.localStorage.getItem('carrinhoPedido');
+    const pedido: any = localStorage.getItem('carrinhoPedido');
     const pedidoObject: Pedido = pedido ? JSON.parse(pedido) : '';
 
     if(pedidoObject) {
+      const params = pedidoObject.listaProdutos.map(item => {
+        return {
+          nomePedido: item.nomePedido,
+          quantidadePedido: item.quantidadePedido,
+        }
+      });
 
-      window.localStorage.removeItem('carrinhoPedido');
-      this.isPedidoFeito = true;
-      this.totalFinal = 0;
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      this.pedidoService.postPedido(params, this.idProdutor, localStorage.getItem('idUsuario')).subscribe(data => {
+        localStorage.removeItem('carrinhoPedido');
+        this.isPedidoFeito = true;
+        this.isPedidoFeitoErro = false;
+        this.totalFinal = 0;
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      },
+      err => {
+        this.isPedidoFeito = true;
+        this.isPedidoFeitoErro = true;
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      })
+
+    }
+  }
+
+  removerItem(event: ProdutoPedido) {
+    const pedido: any = localStorage.getItem('carrinhoPedido');
+    const pedidoObject: Pedido = pedido ? JSON.parse(pedido) : '';
+
+    if(pedidoObject) {
+      const pedidoFiltered = pedidoObject.listaProdutos.filter(item => item.nomePedido !== event.nomePedido);
+      pedidoObject.listaProdutos = pedidoFiltered;
+
+      localStorage.setItem('carrinhoPedido', JSON.stringify(pedidoObject));
+      this.pegaItensCarrinho();
     }
   }
 

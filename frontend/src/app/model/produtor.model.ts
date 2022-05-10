@@ -1,3 +1,4 @@
+import { PedidoConsumidor } from "./pedido-consumidor.model";
 import { Produto } from "./produto.model";
 
 export class Produtor {
@@ -6,6 +7,7 @@ export class Produtor {
     tipoProdutor: string;
     emailProdutor: string;
     senhaProdutor: string;
+    pedidosRecebidos: PedidoConsumidor[];
     produtos: Produto[];
     cnpjProdutor: string;
     cpfProdutor: string;

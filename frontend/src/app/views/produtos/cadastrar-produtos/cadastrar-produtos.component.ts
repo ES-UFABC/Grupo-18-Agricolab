@@ -44,8 +44,8 @@ export class CadastrarProdutosComponent implements OnInit {
  
     const params = {
       nomeProduto: this.cadastroForm.get('nome')?.value,
-      quantidadeProduto: this.cadastroForm.get('quantidade')?.value,
-      valorProduto: this.cadastroForm.get('valor')?.value,
+      quantidadeProduto: Number(this.cadastroForm.get('quantidade')?.value),
+      valorProduto: Number(this.cadastroForm.get('valor')?.value.replace(',', '.')),
     };
 
     this.produtoService.postProduto(params, this.user.idUsuario).subscribe(data => {

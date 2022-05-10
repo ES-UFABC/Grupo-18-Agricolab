@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/model/pedido.model';
@@ -13,6 +13,7 @@ import { setUsuario, UserSession } from 'src/app/views/login/login.component';
 export class ItemPedidoComponent implements OnInit {
   @Input() produto: Produto;
   @Input() idProdutor: number;
+
   produtoForm: FormGroup;
   itemAdded: boolean = false;
   user: UserSession = setUsuario();
@@ -67,6 +68,7 @@ export class ItemPedidoComponent implements OnInit {
 
         if(produtoNoCarrinho !== -1) {
           pedidoObject.listaProdutos[produtoNoCarrinho].quantidadePedido = qtd;
+          pedidoObject.listaProdutos[produtoNoCarrinho].precoPedido = qtd * Number(this.produto.valorProduto);
 
         } else {
           pedidoObject.listaProdutos.push({

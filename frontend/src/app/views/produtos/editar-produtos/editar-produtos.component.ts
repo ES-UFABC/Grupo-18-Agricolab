@@ -57,7 +57,7 @@ export class EditarProdutosComponent implements OnInit {
     const params = {
       nomeProduto: this.cadastroForm.get('nome')?.value,
       quantidadeProduto: Number(this.cadastroForm.get('quantidade')?.value),
-      valorProduto: Number(this.cadastroForm.get('valor')?.value),
+      valorProduto: Number(this.cadastroForm.get('valor')?.value.replace(',', '.')),
     };
 
     this.produtoService.putProduto(params, this.idProduto).subscribe(data => {

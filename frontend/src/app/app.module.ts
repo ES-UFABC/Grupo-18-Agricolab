@@ -32,6 +32,8 @@ import { ItemPedidoComponent } from './components/item-pedido/item-pedido.compon
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { ListarPedidosComponent } from './views/pedidos/listar-pedidos/listar-pedidos.component';
 import { ItemCarrinhoComponent } from './components/item-carrinho/item-carrinho.component';
+import { ApagarPedidoComponent } from './views/pedidos/apagar-pedido/apagar-pedido.component';
+import { PedidosRecebidosComponent } from './views/pedidos/pedidos-recebidos/pedidos-recebidos.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { ItemCarrinhoComponent } from './components/item-carrinho/item-carrinho.
     CarrinhoComponent,
     ListarPedidosComponent,
     ItemCarrinhoComponent,
+    ApagarPedidoComponent,
+    PedidosRecebidosComponent,
   ],
   imports: [
     BrowserModule,

@@ -91,7 +91,7 @@ export class EditarComponent implements OnInit {
       senha: this.validaString(dadosUsuario.senhaConsumidor),
       telefone: this.validaString(dadosUsuario.telefoneConsumidor),
       cpf: this.validaString(dadosUsuario.cpfConsumidor),
-      enderecoComplemento: this.validaString(dadosUsuario.complementoEnderecoconsumidor),
+      enderecoComplemento: this.validaString(dadosUsuario.complementoEnderecoConsumidor),
       enderecoRua: this.validaString(enderecoArray[0]),
       enderecoNumero: this.validaString(enderecoArray[1]),
       enderecoBairro: this.validaString(enderecoArray[2]),
