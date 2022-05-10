@@ -51,21 +51,36 @@ export class CarrinhoComponent implements OnInit {
   }
 
   calculaPrecoTotal(listaProdutos: ProdutoPedido[]) {
-    this.totalFinal = listaProdutos.map(item => item.precoPedido).reduce((acc, value) => acc + value);
+    this.totalFinal = listaProdutos.length 
+      ? listaProdutos.map(item => item.precoPedido).reduce((acc, value) => acc + value)
+      : 0;
   }
 
   fecharPedido() {
-    const pedido: any = window.localStorage.getItem('carrinhoPedido');
+    const pedido: any = localStorage.getItem('carrinhoPedido');
     const pedidoObject: Pedido = pedido ? JSON.parse(pedido) : '';
 
     if(pedidoObject) {
 
-      window.localStorage.removeItem('carrinhoPedido');
+      localStorage.removeItem('carrinhoPedido');
       this.isPedidoFeito = true;
       this.totalFinal = 0;
       setTimeout(() => {
         window.location.reload();
       }, 1000);
+    }
+  }
+
+  removerItem(event: ProdutoPedido) {
+    const pedido: any = localStorage.getItem('carrinhoPedido');
+    const pedidoObject: Pedido = pedido ? JSON.parse(pedido) : '';
+
+    if(pedidoObject) {
+      const pedidoFiltered = pedidoObject.listaProdutos.filter(item => item.nomePedido !== event.nomePedido);
+      pedidoObject.listaProdutos = pedidoFiltered;
+
+      localStorage.setItem('carrinhoPedido', JSON.stringify(pedidoObject));
+      this.pegaItensCarrinho();
     }
   }
 
