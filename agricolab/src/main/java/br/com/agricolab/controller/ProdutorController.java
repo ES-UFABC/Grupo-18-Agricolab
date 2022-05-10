@@ -83,7 +83,7 @@ public class ProdutorController {
 
 
     @PostMapping("/cadastro/produto/{id}")
-    public ResponseEntity<ProdutorEntity> cadastroProdutos(@RequestBody Produto produtos, @PathVariable Integer id){
+    public ResponseEntity<ProdutorEntity> cadastroProdutos(@RequestBody Produto produtos, @PathVariable Integer id) throws Exception {
         return ResponseEntity.ok(produtorService.cadastro(id, produtos));
 
     }

@@ -7,6 +7,7 @@ import br.com.agricolab.domain.Pedido;
 import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.PedidosRepository;
+import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ConsumidorEntityMapper;
 import br.com.agricolab.repository.model.ConsumidorEntity;
 import br.com.agricolab.repository.model.PedidosEntity;
@@ -30,6 +31,9 @@ public class ConsumidorProcessor {
 
     @Autowired
     private PedidosRepository pedidosRepository;
+
+    @Autowired
+    private ProdutorRepository produtorRepository;
 
 
     public Consumidor createConsumidor(Consumidor Consumidor){
@@ -68,20 +72,20 @@ public class ConsumidorProcessor {
         return consumidor;
     }
 
-    public ConsumidorEntity registroPedidos(ProdutorEntity produtor, Pedido produto, ConsumidorEntity consumidorPedidos) throws Exception {
+    public ConsumidorEntity registroPedidos(ProdutorEntity produtor, List<Pedido> pedidos, ConsumidorEntity consumidorPedidos) throws Exception {
 
 
-
+    for(Pedido produto : pedidos) {
         produtor.getProdutos().stream().forEach(
                 con -> {
-                    if (con.getNomeProduto().equals(produto.getNomePedido())){
+                    if (con.getNomeProduto().equals(produto.getNomePedido())) {
                         con.setQuantidadeProduto(con.getQuantidadeProduto() - produto.getQuantidadePedido());
                         produto.setValorPedido(BigDecimal.valueOf(produto.getQuantidadePedido()).multiply(con.getValorProduto()));
 
                         PedidosEntity pedidosEntity = mapper.toPedidos(produto);
-
                         pedidosRepository.save(pedidosEntity);
                         consumidorPedidos.getPedidos().add(pedidosEntity);
+                        produtor.getPedidosRecebidos().add(pedidosEntity);
 
                     }
 
@@ -89,15 +93,20 @@ public class ConsumidorProcessor {
                 });
 
         List<ProdutosEntity> produtosNome = produtor.getProdutos();
-        for(ProdutosEntity produtoNome: produtosNome){
-            if(produtoNome.getNomeProduto().equals(produto.getNomePedido())){
+
+        for (ProdutosEntity produtoNome : produtosNome) {
+            if (produtoNome.getNomeProduto().equals(produto.getNomePedido())) {
                 return consumidorRepository.save(consumidorPedidos);
             }
 
         }
 
 
-        throw new Exception("produto não encontrado");
+    }
+
+
+        throw new Exception("produto não existe");
+
 
 
 }
