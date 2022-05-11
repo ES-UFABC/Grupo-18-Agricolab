@@ -6,6 +6,7 @@ import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { MapaComponent } from './views/mapa/mapa.component';
 import { ApagarPedidoComponent } from './views/pedidos/apagar-pedido/apagar-pedido.component';
+import { ApagarPedidosRecebidosComponent } from './views/pedidos/apagar-pedidos-recebidos/apagar-pedidos-recebidos.component';
 import { ListarPedidosComponent } from './views/pedidos/listar-pedidos/listar-pedidos.component';
 import { PedidosRecebidosComponent } from './views/pedidos/pedidos-recebidos/pedidos-recebidos.component';
 import { PedidosComponent } from './views/pedidos/pedidos.component';
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'pedidos/recebidos',
     component: window.localStorage.getItem('idUsuario') && window.localStorage.getItem('isProdutor') === 'true' ? PedidosRecebidosComponent : LoginComponent,
+  },
+  {
+    path: 'pedidos/recebidos/apagar',
+    component: window.localStorage.getItem('idUsuario') && window.localStorage.getItem('isProdutor') === 'true' ? ApagarPedidosRecebidosComponent : LoginComponent,
   },
   {
     path: 'pedidos/:id',

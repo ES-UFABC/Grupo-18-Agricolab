@@ -14,5 +14,6 @@ export class Consumidor {
     complementoEnderecoConsumidor: string;
     latitudeConsumidor: string;
     longitudeConsumidor: string;
+    pedidosConsumidor: PedidoConsumidor[];
     pedidos: PedidoConsumidor[];
 }
