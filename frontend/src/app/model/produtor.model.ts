@@ -7,7 +7,7 @@ export class Produtor {
     tipoProdutor: string;
     emailProdutor: string;
     senhaProdutor: string;
-    pedidosRecebidos: PedidoConsumidor[];
+    pedidos_recebidos: PedidoConsumidor[];
     produtos: Produto[];
     cnpjProdutor: string;
     cpfProdutor: string;
