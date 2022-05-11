@@ -20,7 +20,7 @@
                 <p>{{ pedido.quantidadePedido || '-' }}</p>
                 <p>{{ (pedido.valorPedido | currency:'BRL') || '-' }}</p>
                 <div class="buttons">
-                    <a [routerLink]="['../apagar']" [queryParams]="{ idPedido: pedido.idPedido }" class="simple-button-red">Cancelar</a>
+                    <a [routerLink]="['../recebidos/apagar']" [queryParams]="{ idPedido: pedido.idPedido }" class="simple-button-red">Cancelar</a>
                 </div>
             </div>
             <p class="none-message" *ngIf="!pedidosArray.length">Nenhum produto para listar.</p>

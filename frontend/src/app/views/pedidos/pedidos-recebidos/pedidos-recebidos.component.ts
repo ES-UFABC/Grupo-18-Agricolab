@@ -22,7 +22,7 @@ export class PedidosRecebidosComponent implements OnInit {
 
   listaProdutos(idUsuario: string | null) {
     this.cadastroService.getProdutor(Number(idUsuario)).subscribe(data => {
-      this.pedidosArray = data.pedidos_recebidos ? data.pedidos_recebidos : [];
+      this.pedidosArray = data.pedidosRecebidos ? data.pedidosRecebidos : [];
     })
   }
 }
