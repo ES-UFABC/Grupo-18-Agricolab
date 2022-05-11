@@ -15,4 +15,5 @@ export class Consumidor {
     latitudeConsumidor: string;
     longitudeConsumidor: string;
     pedidosConsumidor: PedidoConsumidor[];
+    pedidos: PedidoConsumidor[];
 }
