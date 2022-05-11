@@ -26,7 +26,7 @@ public class Consumidor {
 
     private String telefoneConsumidor;
 
-    private String EnderecoConsumidor;
+    private String enderecoConsumidor;
 
     private String complementoEnderecoConsumidor;
 

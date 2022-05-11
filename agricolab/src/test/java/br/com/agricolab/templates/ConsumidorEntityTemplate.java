@@ -5,6 +5,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class ConsumidorEntityTemplate implements TemplateLoader {
@@ -29,8 +30,8 @@ public class ConsumidorEntityTemplate implements TemplateLoader {
                 add("telefoneConsumidor","1111111111");
                 add("enderecoConsumidor","Rua teste");
                 add("complementoEnderecoConsumidor",null);
-                add("latitudeConsumidor","12,12121");
-                add("longitudeConsumidor","15,12121");
+                add("latitudeConsumidor", new BigDecimal("12.12121"));
+                add("longitudeConsumidor", new BigDecimal("15.12121"));
                 add("pedidos",new ArrayList<>());
 
             }

@@ -28,7 +28,8 @@ public class ProdutorDtoTemplate implements TemplateLoader {
                 add("tipoProdutor","pj");
                 add("latitudeProdutor",new BigDecimal("12.12121"));
                 add("produtos", new ArrayList<>());
-                add("longitudeProdutor",new BigDecimal("15.12121"));
+                add("longitudeProdutor",new BigDecimal("15.1212"));
+                add("pedidosRecebidos",new ArrayList<>());
 
 
             }

@@ -46,10 +46,10 @@ public class ProdutorControllerTest {
     ProdutorService produtorService;
 
     @Spy
-    ProdutorEntityMapper produtorEntityMapper = Mappers.getMapper(ProdutorEntityMapper.class);
+    ProdutorEntityMapper produtorEntityMapper = ProdutorEntityMapper.INSTANCE;
 
     @Spy
-    ProdutorDtoMapper produtorDtoMapper = Mappers.getMapper(ProdutorDtoMapper.class);
+    ProdutorDtoMapper produtorDtoMapper = ProdutorDtoMapper.INSTANCE;
 
     @InjectMocks
     ProdutorController produtorController;
@@ -91,6 +91,8 @@ public class ProdutorControllerTest {
 
 
         produtorController.findById(1);
+
+        Assertions.assertThat(produtorController.findById(1)).isEqualTo(produtorDto);
 
 
     }
