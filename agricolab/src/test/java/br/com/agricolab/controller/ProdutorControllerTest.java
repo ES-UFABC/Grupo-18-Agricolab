@@ -83,9 +83,7 @@ public class ProdutorControllerTest {
 
         final ProdutorDto produtorDto = Fixture.from(ProdutorDto.class).gimme(ProdutorDtoTemplate.VALIDO);
 
-        Optional<ProdutorEntity> produtorEntityOptional = produtorRepository.findById(1);
-
-        when(produtorRepository.findById(1)).thenReturn(produtorEntityOptional);
+        when(produtorRepository.findById(1)).thenReturn(Optional.ofNullable(produtorEntity));
 
         when(produtorEntityMapper.produtorToEntity(produtorEntity)).thenReturn(produtor);
 
@@ -93,10 +91,6 @@ public class ProdutorControllerTest {
 
 
         produtorController.findById(1);
-
-
-
-
 
 
     }
