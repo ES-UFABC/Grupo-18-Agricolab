@@ -20,6 +20,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static org.mockito.Mockito.when;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AgricolabControllerTest {
 
@@ -53,7 +55,7 @@ public class AgricolabControllerTest {
         Assertions.assertThat(consumidorEntity.getEmailConsumidor()).isNotNull();
         Assertions.assertThat(consumidorEntity.getSenhaConsumidor()).isNotNull();
 
-        Mockito.when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenReturn(consumidorEntity);
+        when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenReturn(consumidorEntity);
 
         agricolabController.loginUser(consumidorEntity);
 
@@ -67,7 +69,7 @@ public class AgricolabControllerTest {
         Assertions.assertThat(produtorEntity.getEmailProdutor()).isNotNull();
         Assertions.assertThat(produtorEntity.getSenhaProdutor()).isNotNull();
 
-        Mockito.when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenReturn(produtorEntity);
+        when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenReturn(produtorEntity);
 
         agricolabController.loginProdutor(produtorEntity);
 
@@ -81,9 +83,11 @@ public class AgricolabControllerTest {
         Assertions.assertThat(consumidorEntity.getEmailConsumidor()).isNotNull();
         Assertions.assertThat(consumidorEntity.getSenhaConsumidor()).isNotNull();
 
-        Mockito.when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenThrow(Exception.class);
+        when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenThrow(Exception.class);
 
         agricolabController.loginUser(consumidorEntity);
+
+        Assertions.assertThat( agricolabController.loginUser(consumidorEntity)).isEqualTo(consumidorEntity);
 
     }
 
@@ -96,7 +100,7 @@ public class AgricolabControllerTest {
         Assertions.assertThat(produtorEntity.getEmailProdutor()).isNotNull();
         Assertions.assertThat(produtorEntity.getSenhaProdutor()).isNotNull();
 
-        Mockito.when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenThrow(Exception.class);
+        when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenThrow(Exception.class);
 
         Assertions.assertThat(agricolabController.loginProdutor(produtorEntity)).isEqualTo(Exception.class);
 
@@ -128,6 +132,27 @@ public class AgricolabControllerTest {
 
         Assertions.assertThat(agricolabController.loginProdutor(loginProdutor)).isEqualTo(null);
 
+    }
+
+    @Test
+    public void validacaoFalse(){
+
+        final ProdutorEntity loginProdutor = Fixture.from(ProdutorEntity.class).gimme(ProdutorEntityTemplate.LOGIN_INCORRETO);
+
+        when(produtorRepository.findByEmailProdutor("teste@hotmail.com")).thenReturn(null);
+        agricolabController.validacaoEmail("teste@hotmail.com");
+        Assertions.assertThat(agricolabController.validacaoEmail("produtor@hotmail.com")).isEqualTo(false);
+
+    }
+
+
+    @Test
+    public void validacaoTrue(){
+        final ProdutorEntity loginProdutor = Fixture.from(ProdutorEntity.class).gimme(ProdutorEntityTemplate.LOGIN_INCORRETO);
+
+        when(produtorRepository.findByEmailProdutor("produtor@hotmail.com")).thenReturn(loginProdutor);
+        agricolabController.validacaoEmail("produtor@hotmail.com");
+        Assertions.assertThat(agricolabController.validacaoEmail("produtor@hotmail.com")).isEqualTo(true);
     }
 
 

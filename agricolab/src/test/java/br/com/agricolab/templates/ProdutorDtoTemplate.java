@@ -1,6 +1,6 @@
 package br.com.agricolab.templates;
 
-import br.com.agricolab.domain.Produtor;
+import br.com.agricolab.core.produtor.dto.ProdutorDto;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
@@ -8,16 +8,16 @@ import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class ProdutorTemplate implements TemplateLoader {
+public class ProdutorDtoTemplate implements TemplateLoader {
 
     public static final String VALIDO = "valido";
 
     @Override
     public void load() {
 
-        Fixture.of(Produtor.class).addTemplate(VALIDO, new Rule(){
+        Fixture.of(ProdutorDto.class).addTemplate(VALIDO, new Rule(){
             {
-                add("id","1");
+                add("idProdutor","1");
                 add("nomeProdutor","teste");
                 add("emailProdutor","testeprodutor@hotmail.com");
                 add("enderecoProdutor","rua teste produtor");
