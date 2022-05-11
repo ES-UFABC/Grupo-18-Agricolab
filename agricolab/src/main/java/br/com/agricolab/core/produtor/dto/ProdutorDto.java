@@ -54,7 +54,7 @@ public class ProdutorDto implements Serializable {
     @JsonProperty("produtos")
     private List<ProdutosEntity> produtos;
 
-    @JsonProperty("pedidos_recebidos")
+    @JsonProperty("pedidosRecebidos")
     private List<PedidosEntity> pedidosRecebidos;
 
     @JsonProperty("longitudeProdutor")

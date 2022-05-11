@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pedido {
 
+    private Integer idPedido;
     private String nomePedido;
     private Integer quantidadePedido;
     private BigDecimal valorPedido;
