@@ -1,6 +1,5 @@
 package br.com.agricolab.controller;
 
-
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ConsumidorEntity;

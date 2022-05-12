@@ -23,9 +23,9 @@ public interface ConsumidorEntityMapper {
     @Mapping(source = "complementoEnderecoConsumidor", target = "complementoEnderecoConsumidor")
     @Mapping(source = "latitudeConsumidor", target = "latitudeConsumidor")
     @Mapping(source = "longitudeConsumidor", target = "longitudeConsumidor")
-    ConsumidorEntity ConsumidorToEntity(Consumidor consumidor);
+    ConsumidorEntity consumidorToEntity(Consumidor consumidor);
 
     @InheritInverseConfiguration
-    Consumidor ConsumidorToEntity(ConsumidorEntity consumidor);
+    Consumidor consumidorToEntity(ConsumidorEntity consumidor);
 
 }
