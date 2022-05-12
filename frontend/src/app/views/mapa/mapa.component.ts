@@ -17,6 +17,20 @@ export class MapaComponent implements OnInit, AfterViewInit {
   marcadoresArray: any = [];
   distanciaValue: number = 1;
 
+  iconRetinaUrl = './assets/marker-icon-2x.png';
+  iconUrl = './assets/pointer_green.png';
+  shadowUrl = './assets/marker-shadow.png';
+  iconDefault = L.icon({
+    iconRetinaUrl: this.iconRetinaUrl,
+    iconUrl: this.iconUrl,
+    shadowUrl: this.shadowUrl,
+    iconSize: [25, 47],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+  });
+
   constructor(
     public sanitizer: DomSanitizer,
     public mapaService: MapaService
@@ -38,6 +52,7 @@ export class MapaComponent implements OnInit, AfterViewInit {
     this.mapa.setView(latlngInicio, 15);
     this.tileMapbox().addTo(this.mapa);
     L.control.zoom({position: 'bottomright'}).addTo(this.mapa);
+    L.Marker.prototype.options.icon = this.iconDefault;
 
     // this.pegarGeolocation();
   }
