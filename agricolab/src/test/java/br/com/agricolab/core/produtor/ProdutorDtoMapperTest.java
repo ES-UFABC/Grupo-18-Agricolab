@@ -3,7 +3,6 @@ package br.com.agricolab.core.produtor;
 import br.com.agricolab.core.produtor.dto.ProdutorDto;
 import br.com.agricolab.core.produtor.mapper.ProdutorDtoMapper;
 import br.com.agricolab.domain.Produtor;
-import br.com.agricolab.domain.Produtor;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

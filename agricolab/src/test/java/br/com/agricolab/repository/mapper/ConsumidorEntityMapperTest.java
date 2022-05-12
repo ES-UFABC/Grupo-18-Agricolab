@@ -1,6 +1,5 @@
 package br.com.agricolab.repository.mapper;
 
-import br.com.agricolab.core.consumidor.mapper.ConsumidorDtoMapper;
 import br.com.agricolab.domain.Consumidor;
 import br.com.agricolab.repository.model.ConsumidorEntity;
 import org.assertj.core.api.Assertions;

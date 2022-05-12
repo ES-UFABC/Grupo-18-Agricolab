@@ -1,7 +1,5 @@
 package br.com.agricolab.repository.mapper;
 
-import br.com.agricolab.core.produtor.dto.ProdutorDto;
-import br.com.agricolab.core.produtor.mapper.ProdutorDtoMapper;
 import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import org.assertj.core.api.Assertions;
