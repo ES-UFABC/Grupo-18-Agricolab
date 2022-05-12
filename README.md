@@ -52,6 +52,7 @@
 - Configurar uma nova aplicação como na imagem abaixo:
 ![config](https://user-images.githubusercontent.com/32601542/167998253-0a3bac85-039e-4399-9d74-4bbe04fb3af7.png)
 - Rodar com as teclas "Shift + f10"
+
 ========================
 
 # Como usar
@@ -63,6 +64,7 @@
 
 ## Frontend
 - Após rodar a aplicação, o back end estará rodando na porta http://localhost:8080
+
 =======
 
 # Banco dados - Entidades
