@@ -30,8 +30,8 @@ public class AgricolabController {
 
     @PostMapping(path ="/login")
     public ResponseEntity<ConsumidorEntity> loginUser(@RequestBody ConsumidorEntity request) throws Exception {
-        String email = request.getEmailConsumidor();
-        String password = request.getSenhaConsumidor();
+        final String email = request.getEmailConsumidor();
+        final String password = request.getSenhaConsumidor();
 
         if (email != null && password != null) {
             return ResponseEntity.ok(consumidorService.login(email, password));
@@ -41,8 +41,8 @@ public class AgricolabController {
 
     @PostMapping(path ="/produtor/login")
     public ResponseEntity<ProdutorEntity> loginProdutor(@RequestBody ProdutorEntity request) throws Exception {
-        String email = request.getEmailProdutor();
-        String password = request.getSenhaProdutor();
+        final String email = request.getEmailProdutor();
+        final String password = request.getSenhaProdutor();
 
         if (email != null && password != null) {
             return ResponseEntity.ok(produtorService.login(email, password));

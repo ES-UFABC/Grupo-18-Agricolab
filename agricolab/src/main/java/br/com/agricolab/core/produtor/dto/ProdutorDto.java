@@ -1,8 +1,6 @@
 package br.com.agricolab.core.produtor.dto;
 
-import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.model.PedidosEntity;
-import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.repository.model.ProdutosEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Builder

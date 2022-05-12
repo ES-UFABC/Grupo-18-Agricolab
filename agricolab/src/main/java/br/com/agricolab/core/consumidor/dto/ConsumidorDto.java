@@ -1,7 +1,6 @@
 package br.com.agricolab.core.consumidor.dto;
 
 import br.com.agricolab.domain.Pedido;
-import br.com.agricolab.domain.Produto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
