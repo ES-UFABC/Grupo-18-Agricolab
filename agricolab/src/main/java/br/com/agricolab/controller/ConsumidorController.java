@@ -5,22 +5,17 @@ import br.com.agricolab.core.consumidor.mapper.ConsumidorDtoMapper;
 import br.com.agricolab.core.consumidor.processors.ConsumidorProcessor;
 import br.com.agricolab.domain.Consumidor;
 import br.com.agricolab.domain.Pedido;
-import br.com.agricolab.domain.Produto;
-import br.com.agricolab.domain.Produtor;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.PedidosRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ConsumidorEntityMapper;
 import br.com.agricolab.repository.model.ConsumidorEntity;
-import br.com.agricolab.repository.model.PedidosEntity;
 import br.com.agricolab.repository.model.ProdutorEntity;
-import br.com.agricolab.repository.model.ProdutosEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,10 +47,10 @@ public class ConsumidorController {
 
     @GetMapping(path = {"/{id}"})
     public ConsumidorDto findById(@PathVariable Integer id){
-        Optional<ConsumidorEntity> consumidorEntity = consumidorRepository.findById(id);
+        final Optional<ConsumidorEntity> consumidorEntity = consumidorRepository.findById(id);
 
         if(consumidorEntity.isPresent()){
-            Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(consumidorEntity.get());
+            final Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(consumidorEntity.get());
             return ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidor);
         }
         return new ConsumidorDto();
@@ -67,8 +62,6 @@ public class ConsumidorController {
     public List<ProdutorEntity> findNearProdutores(@PathVariable Double latitudeConsumidor, @PathVariable Double longitudeConsumidor){
         //return produtorRepository.findNearProd(new BigDecimal("3.0"), latitudeConsumidor,longitudeConsumidor);
         return produtorService.findNearProd(3.0, latitudeConsumidor,longitudeConsumidor);
-
-
     }
 
 
@@ -84,9 +77,9 @@ public class ConsumidorController {
 
     @PatchMapping("/{id}")
     ConsumidorDto modificaConsumidor(@RequestBody ConsumidorDto novoConsumidor, @PathVariable Integer id) {
-        Consumidor consumidorRequest = ConsumidorDtoMapper.INSTANCE.consumidorToDto(novoConsumidor);
+        final Consumidor consumidorRequest = ConsumidorDtoMapper.INSTANCE.consumidorToDto(novoConsumidor);
 
-        Consumidor consumidor = consumidorProcessor.modificaConsumidor(consumidorRequest,id);
+        final Consumidor consumidor = consumidorProcessor.modificaConsumidor(consumidorRequest,id);
 
         return ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidor);
 
@@ -100,8 +93,8 @@ public class ConsumidorController {
 
     @PostMapping("/pedidos/{idProdutor}/{idConsumidor}")
     public ResponseEntity<ConsumidorEntity> adicionaPedido(@RequestBody List<Pedido> pedidosConsumidor, @PathVariable Integer idProdutor, @PathVariable Integer idConsumidor) throws Exception {
-        ProdutorEntity produtor = produtorRepository.findByIdProdutor(idProdutor);
-        ConsumidorEntity consumidorPedidos = consumidorRepository.findByIdConsumidor(idConsumidor);
+        final ProdutorEntity produtor = produtorRepository.findByIdProdutor(idProdutor);
+        final ConsumidorEntity consumidorPedidos = consumidorRepository.findByIdConsumidor(idConsumidor);
 
         return ResponseEntity.ok(consumidorProcessor.registroPedidos(produtor, pedidosConsumidor, consumidorPedidos));
     }

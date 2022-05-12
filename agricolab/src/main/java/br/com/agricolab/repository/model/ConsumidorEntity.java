@@ -64,7 +64,4 @@ public class ConsumidorEntity implements Serializable {
     @JoinColumn(name="pedidos_id", nullable = true)
     private List<PedidosEntity> pedidos = new ArrayList<>();
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_usuario")
-//    UsuarioEntity usuario;
 }

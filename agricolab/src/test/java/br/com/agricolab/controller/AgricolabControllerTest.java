@@ -41,8 +41,6 @@ public class AgricolabControllerTest {
     @Before
     public void setup(){
         FixtureFactoryLoader.loadTemplates("br.com.agricolab.templates");
-
-
     }
 
     @Test
@@ -56,7 +54,6 @@ public class AgricolabControllerTest {
         Mockito.when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenReturn(consumidorEntity);
 
         agricolabController.loginUser(consumidorEntity);
-
     }
 
     @Test
@@ -70,7 +67,6 @@ public class AgricolabControllerTest {
         Mockito.when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenReturn(produtorEntity);
 
         agricolabController.loginProdutor(produtorEntity);
-
     }
 
     @Test(expected = Exception.class)
