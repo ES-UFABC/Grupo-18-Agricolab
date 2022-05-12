@@ -62,7 +62,7 @@
 - Com as dependências instaladas, execute o comando "npm start" ou "ng serve"
 - Após a aplicação ser inicializada, ela deve estar rodando na porta http://localhost:4200
 
-## Frontend
+## Backend
 - Após rodar a aplicação, o back end estará rodando na porta http://localhost:8080
 
 =======
