@@ -15,6 +15,7 @@ import br.com.agricolab.templates.ConsumidorEntityTemplate;
 import br.com.agricolab.templates.ConsumidorTemplate;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
+import org.apache.coyote.Response;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -22,6 +23,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.junit.Test;
 import org.mockito.Spy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -90,6 +93,33 @@ public class ConsumidorControllerTest {
 
         Assertions.assertThat(consumidorController.findById(1)).isEqualTo(consumidorDto);
 
+
+    }
+
+    @Test
+    public void deveDeletarConsumidor(){
+
+        Assertions.assertThatCode(() -> consumidorController.deleteConsumidor(1)).doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = consumidorController.deleteConsumidor(1);
+
+        Assertions.assertThat(entity).isNotNull();
+
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+
+
+    }
+
+    @Test
+    public void deveDeletarPedido(){
+
+        Assertions.assertThatCode(() -> consumidorController.deletePedido(1)).doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = consumidorController.deletePedido(1);
+
+        Assertions.assertThat(entity).isNotNull();
+
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 
 
     }

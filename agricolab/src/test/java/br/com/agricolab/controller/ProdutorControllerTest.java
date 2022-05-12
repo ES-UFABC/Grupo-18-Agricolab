@@ -23,6 +23,8 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -93,6 +95,34 @@ public class ProdutorControllerTest {
         produtorController.findById(1);
 
         Assertions.assertThat(produtorController.findById(1)).isEqualTo(produtorDto);
+
+
+    }
+
+    @Test
+    public void deveDeletarProdutor(){
+
+        Assertions.assertThatCode(() -> produtorController.deleteProdutor(1)).doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = produtorController.deleteProdutor(1);
+
+        Assertions.assertThat(entity).isNotNull();
+
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+
+
+    }
+
+    @Test
+    public void deveDeletarProduto(){
+
+        Assertions.assertThatCode(() -> produtorController.deleteProdutos(1)).doesNotThrowAnyException();
+
+        ResponseEntity<Void> entity = produtorController.deleteProdutos(1);
+
+        Assertions.assertThat(entity).isNotNull();
+
+        Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 
 
     }

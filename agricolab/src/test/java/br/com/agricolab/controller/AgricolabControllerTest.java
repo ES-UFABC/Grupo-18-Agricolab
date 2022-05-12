@@ -12,13 +12,18 @@ import br.com.agricolab.templates.ProdutorEntityTemplate;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import org.assertj.core.api.Assertions;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 
@@ -57,7 +62,11 @@ public class AgricolabControllerTest {
 
         when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenReturn(consumidorEntity);
 
-        agricolabController.loginUser(consumidorEntity);
+
+
+        ResponseEntity <ConsumidorEntity> responseEntity = agricolabController.loginUser(consumidorEntity);
+
+        Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
     }
 
@@ -72,6 +81,12 @@ public class AgricolabControllerTest {
         when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenReturn(produtorEntity);
 
         agricolabController.loginProdutor(produtorEntity);
+
+        ResponseEntity <ProdutorEntity> responseEntity = agricolabController.loginProdutor(produtorEntity);
+
+
+        Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+
 
     }
 

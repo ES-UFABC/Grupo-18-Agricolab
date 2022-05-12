@@ -17,6 +17,7 @@ import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.repository.model.ProdutosEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -93,9 +94,9 @@ public class ConsumidorController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteConsumidor(@PathVariable Integer id) {
-
+    ResponseEntity<Void> deleteConsumidor(@PathVariable Integer id) {
         consumidorRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping("/pedidos/{idProdutor}/{idConsumidor}")
