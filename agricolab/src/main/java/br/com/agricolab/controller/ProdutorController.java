@@ -93,8 +93,8 @@ public class ProdutorController {
 
     @DeleteMapping("/delete/produto/{id}")
     public ResponseEntity<Void> deleteProdutos(@PathVariable Integer id){
-        produtorService.delete(id);
-        return ResponseEntity.noContent().build();
+        produtoRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
 
