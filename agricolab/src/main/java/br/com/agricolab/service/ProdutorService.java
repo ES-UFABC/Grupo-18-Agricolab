@@ -47,13 +47,6 @@ public class ProdutorService {
 
     }
 
-    public void delete(Integer id) {
-        ProdutosEntity produtosEntity = produtoRepository.findByIdProduto(id);
-
-        produtoRepository.deleteById(produtosEntity.getIdProduto());
-
-    }
-
     public void replace(Produto produtoNovo, Integer id) {
 
             ProdutosEntity produto = produtoRepository.findByIdProduto(id);

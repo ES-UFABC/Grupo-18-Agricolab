@@ -114,21 +114,5 @@ public class ProdutorControllerTest {
 
     }
 
-    @Test
-    public void deveDeletarProduto(){
-
-
-        Assertions.assertThatCode(() -> produtorController.deleteProdutos(1)).doesNotThrowAnyException();
-
-        ResponseEntity<Void> entity = produtorController.deleteProdutos(1);
-
-        Assertions.assertThat(entity).isNotNull();
-
-        Assertions.assertThat(entity.getStatusCode()).isEqualTo(null);
-
-
-    }
-
-
 
 }

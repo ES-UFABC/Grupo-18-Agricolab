@@ -42,6 +42,7 @@ public class ProdutorEntityTemplate implements TemplateLoader {
                 add("tipoProdutor","pj");
                 add("latitudeProdutor",new BigDecimal("12.12121"));
                 add("produtos", new ArrayList<>());
+                add("pedidosRecebidos", new ArrayList<>());
                 add("longitudeProdutor",new BigDecimal("15.1212"));
             }
         });

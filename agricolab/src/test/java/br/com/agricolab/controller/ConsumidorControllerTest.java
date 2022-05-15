@@ -157,6 +157,22 @@ public class ConsumidorControllerTest {
         Assertions.assertThat(consumidorController.findNearProdutores(15.1221, 12.1221)).isEqualTo(produtores);
 
     }
+
+    @Test
+    public void deveCriarConsumidor(){
+        final ConsumidorEntity consumidorEntity = Fixture.from(ConsumidorEntity.class).gimme(ConsumidorEntityTemplate.VALIDO);
+        final ConsumidorDto consumidorDto = Fixture.from(ConsumidorDto.class).gimme(ConsumidorDtoTemplate.VALIDO);
+        final Consumidor consumidor = Fixture.from(Consumidor.class).gimme(ConsumidorTemplate.VALIDO);
+
+
+
+        when(consumidorProcessor.createConsumidor(consumidor)).thenReturn(consumidor);
+
+        when(consumidorDtoMapper.consumidorToDto(consumidor)).thenReturn(consumidorDto);
+
+        Assertions.assertThat(consumidorController.create(consumidorDto)).isEqualTo(consumidorDto);
+
+    }
 }
 
 
