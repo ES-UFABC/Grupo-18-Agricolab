@@ -15,7 +15,7 @@ export class MapaComponent implements OnInit, AfterViewInit {
   url = './assets/autocomplete.html';
   urlSafe: SafeResourceUrl;
   marcadoresArray: any = [];
-  distanciaValue: number = 1;
+  distanciaValue: number = 15;
 
   iconRetinaUrl = './assets/marker-icon-2x.png';
   iconUrl = './assets/pointer_green.png';
@@ -124,7 +124,8 @@ export class MapaComponent implements OnInit, AfterViewInit {
         this.criaMarcadores(data);
       })
 
-      this.mapa.panTo([enderecoObject.center[1], enderecoObject.center[0]]);
+      this.mapa.setView({lat: enderecoObject.center[1], lng: enderecoObject.center[0]}, this.distanciaValue);
+      // this.mapa.panTo([enderecoObject.center[1], enderecoObject.center[0]]);
     }
   }
 
