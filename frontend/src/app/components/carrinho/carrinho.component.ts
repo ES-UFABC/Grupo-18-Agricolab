@@ -32,7 +32,7 @@ export class CarrinhoComponent implements OnInit {
 
   showMenu = false;
   user: UserSession = setUsuario();
-  listaProdutos: ProdutoPedido[];
+  listaProdutos: ProdutoPedido[] = [];
   isPedidoFeito: boolean = false;
   isPedidoFeitoErro: boolean = false;
   totalFinal: number = 0;
@@ -50,7 +50,7 @@ export class CarrinhoComponent implements OnInit {
     const pedidoObject: Pedido = pedido ? JSON.parse(pedido) : '';
 
     if(pedidoObject) {
-      this.listaProdutos = pedidoObject.listaProdutos;
+      this.listaProdutos = pedidoObject.listaProdutos ? pedidoObject.listaProdutos : [];
       this.calculaPrecoTotal(this.listaProdutos);
       this.isPedidoFeito = false;
     }
