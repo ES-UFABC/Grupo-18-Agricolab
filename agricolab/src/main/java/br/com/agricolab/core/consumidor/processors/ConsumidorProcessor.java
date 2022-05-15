@@ -36,7 +36,7 @@ public class ConsumidorProcessor {
 
 
     public Consumidor createConsumidor(Consumidor Consumidor){
-        final ConsumidorEntity ConsumidorEntity = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(Consumidor);
+        final ConsumidorEntity ConsumidorEntity = ConsumidorEntityMapper.INSTANCE.consumidorToEntity(Consumidor);
 
         try {
             consumidorRepository.save(ConsumidorEntity);
@@ -44,7 +44,7 @@ public class ConsumidorProcessor {
             throw new RuntimeException("Consumidor já exite para esse email");
         }
 
-        return ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(ConsumidorEntity);
+        return ConsumidorEntityMapper.INSTANCE.consumidorToEntity(ConsumidorEntity);
     }
 
     public Consumidor modificaConsumidor(Consumidor ConsumidorRequest, int id){
@@ -56,11 +56,11 @@ public class ConsumidorProcessor {
             return this.createConsumidor(ConsumidorRequest);
         }
 
-        Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(ConsumidorEntity);
+        Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.consumidorToEntity(ConsumidorEntity);
 
         consumidor =  ConsumidorDtoMapper.INSTANCE.updateConsumidor(consumidor,ConsumidorRequest);
 
-        final ConsumidorEntity ConsumidorEntityNovo = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(consumidor);
+        final ConsumidorEntity ConsumidorEntityNovo = ConsumidorEntityMapper.INSTANCE.consumidorToEntity(consumidor);
 
         try {
             consumidorRepository.save(ConsumidorEntityNovo);

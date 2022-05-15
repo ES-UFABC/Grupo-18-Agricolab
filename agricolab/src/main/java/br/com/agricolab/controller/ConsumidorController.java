@@ -50,7 +50,7 @@ public class ConsumidorController {
         final Optional<ConsumidorEntity> consumidorEntity = consumidorRepository.findById(id);
 
         if(consumidorEntity.isPresent()){
-            final Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.ConsumidorToEntity(consumidorEntity.get());
+            final Consumidor consumidor = ConsumidorEntityMapper.INSTANCE.consumidorToEntity(consumidorEntity.get());
             return ConsumidorDtoMapper.INSTANCE.consumidorToDto(consumidor);
         }
         return new ConsumidorDto();

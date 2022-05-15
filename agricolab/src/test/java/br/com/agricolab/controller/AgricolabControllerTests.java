@@ -1,6 +1,5 @@
 package br.com.agricolab.controller;
 
-
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ConsumidorEntity;
@@ -21,7 +20,7 @@ import org.mockito.Mockito;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-public class AgricolabControllerTest {
+public class AgricolabControllerTests {
 
     @Mock
     ConsumidorService consumidorService;

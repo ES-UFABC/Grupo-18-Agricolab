@@ -2,10 +2,7 @@ package br.com.agricolab.core.consumidor.dto;
 
 import br.com.agricolab.domain.Pedido;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,6 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Setter
+@Getter
 public class ConsumidorDto implements Serializable {
 
     @JsonProperty("idConsumidor")
