@@ -11,12 +11,9 @@
 1. Wesley Batista Soares
 1. Paulo Consoni
 
-===========================================================================
 # Sobre
 
 O aplicativo agricolab consiste em uma aplicação Web que tem como principal objetivo conectar pequenos produtores da agrdicultura familiar com consumidores de alimentos de uma região. Esse serviço tem como proposta remover qualquer intermediário na relação entre os produtores e consumidores, fazendo com que os preços dos produtos possam ser reduzidos, aumentando a atratividade nessa relação.
-
-===========================================================================
 
 # Pré Requisitos
 
@@ -27,13 +24,9 @@ O aplicativo agricolab consiste em uma aplicação Web que tem como principal ob
 * NPM
 * Angular CLI
 
-===========================================================================
-
 # Desenho Infraestrutura
 
 ![image](https://user-images.githubusercontent.com/32601542/168683969-e110ec77-5926-4cb4-8944-cf4005574ee3.png)
-
-===========================================================================
 
 # Como instalar
 
