@@ -164,50 +164,124 @@ Exemplo Retorno:
 
 ### GET /produtor/{idProdutor}
 
+Retorna as informações de detalhe do produtor, de acordo com o Id enviado.
 
 Exemplo Retorno:
 ```
-
+{
+    "idProdutor": "1",
+    "nomeProdutor": "TESTE2",
+    "emailProdutor": "java2@email.com",
+    "enderecoProdutor": "rua dos bobos",
+    "complementoEnderecoProdutor": "casa",
+    "cnpjProdutor": "1201212132",
+    "senhaProdutor": "senhateste",
+    "telefoneProdutor": "111-1111",
+    "tipoProdutor": "pj",
+    "latitudeProdutor": 12.12121000,
+    "produtos": [
+        {
+            "idProduto": 132,
+            "nomeProduto": "testeedd",
+            "quantidadeProduto": 400,
+            "valorProduto": 110.15
+        }
+    ],
+    "pedidosRecebidos": [],
+    "longitudeProdutor": 15.12121000
+}
 ```
 ### PATCH /produtor/{idProdutor}
 
+Modifica um produtor já registrado com o id enviado. Apenas os parametros enviados no body serão modificados no produtor existente. Caso o produtor não exista, um novo produtor é criado com as inforamções enviadas. 
 
 Exemplo Body:
 ```
-
+{
+    "nomeProdutor": "TESTE2",
+    "enderecoProdutor": "rua dos bobos",
+    "complementoEnderecoProdutor": "casa",
+    "cnpjProdutor": "1201212132",
+    "senhaProdutor": "senhateste",
+    "telefoneProdutor": "111-1111",
+    "tipoProdutor": "pj",
+    "latitudeProdutor": "12.12121",
+    "longitudeProdutor": "15.12121"
+}
 ```
 
 Exemplo Retorno:
 ```
-
+{
+    "idProdutor": "9",
+    "nomeProdutor": "TESTE2",
+    "emailProdutor": "java3222@email.com",
+    "enderecoProdutor": "rua dos bobos",
+    "complementoEnderecoProdutor": "casa",
+    "cnpjProdutor": "1201212132",
+    "senhaProdutor": "senhateste",
+    "telefoneProdutor": "111-1111",
+    "tipoProdutor": "pj",
+    "latitudeProdutor": 12.12121,
+    "produtos": [],
+    "pedidosRecebidos": [],
+    "longitudeProdutor": 15.12121
+}
 ```
 
 ### DELETE /produtor/{idProdutor}
 
+Deleta um produtor, de acordo com o Id enviado.
 
 ### POST /produtor
 
+Cria um produtor na base.
+
 Exemplo Body:
 ```
-
+{
+    "nomeProdutor": "TESTE2",
+    "emailProdutor": "java3222Teste@email.com",
+    "enderecoProdutor": "rua dos bobos",
+    "complementoEnderecoProdutor": "casa",
+    "cnpjProdutor": "1201212132",
+    "senhaProdutor": "senhateste",
+    "telefoneProdutor": "111-1111",
+    "tipoProdutor": "pj",
+    "latitudeProdutor": "12.12121",
+    "longitudeProdutor": "15.12121"
+}
 ```
 
 Exemplo Retorno:
 ```
-
+{
+    "idProdutor": "10",
+    "nomeProdutor": "TESTE2",
+    "emailProdutor": "java3222Teste@email.com",
+    "enderecoProdutor": "rua dos bobos",
+    "complementoEnderecoProdutor": "casa",
+    "cnpjProdutor": "1201212132",
+    "senhaProdutor": "senhateste",
+    "telefoneProdutor": "111-1111",
+    "tipoProdutor": "pj",
+    "latitudeProdutor": 12.12121,
+    "produtos": [],
+    "pedidosRecebidos": [],
+    "longitudeProdutor": 15.12121
+}
 ```
 
 ### POST /api/agricolab/v1/produtor/login
 
+Realiza a autenticação para o login do produtor.
 
 Exemplo Body:
 ```
-
-```
-
-Exemplo Retorno:
-```
-
+{
+    "emailConsumidor": "java@email.com",
+    "senhaConsumidor": "senhateste"
+}
 ```
 
 ## Consumidor
