@@ -172,6 +172,11 @@ Exemplo Retorno:
 ### PATCH /produtor/{idProdutor}
 
 
+Exemplo Body:
+```
+
+```
+
 Exemplo Retorno:
 ```
 
@@ -182,9 +187,23 @@ Exemplo Retorno:
 
 ### POST /produtor
 
+Exemplo Body:
+```
+
+```
+
+Exemplo Retorno:
+```
+
+```
 
 ### POST /api/agricolab/v1/produtor/login
 
+
+Exemplo Body:
+```
+
+```
 
 Exemplo Retorno:
 ```
@@ -194,7 +213,6 @@ Exemplo Retorno:
 ## Consumidor
 
 ### GET /consumidor/all
-
 
 
 Exemplo Retorno:
@@ -213,6 +231,11 @@ Exemplo Retorno:
 ### PATCH /consumidor/{idConsumidor}
 
 
+Exemplo Body:
+```
+
+```
+
 Exemplo Retorno:
 ```
 
@@ -229,6 +252,11 @@ Exemplo Retorno:
 ### POST /consumidor
 
 
+Exemplo Body:
+```
+
+```
+
 Exemplo Retorno:
 ```
 
@@ -236,6 +264,11 @@ Exemplo Retorno:
 
 ### POST /api/agricolab/v1/login
 
+
+Exemplo Body:
+```
+
+```
 
 Exemplo Retorno:
 ```
@@ -254,6 +287,11 @@ Exemplo Retorno:
 
 ### POST /produtor/cadastro/produto/{idProdutor}
 
+Exemplo Body:
+```
+
+```
+
 Exemplo Retorno:
 ```
 
@@ -267,6 +305,11 @@ Exemplo Retorno:
 ```
 
 ### PUT /produtor/alterar/produto/{idProduto}
+
+Exemplo Body:
+```
+
+```
 
 Exemplo Retorno:
 ```
@@ -298,12 +341,22 @@ Exemplo Retorno:
 
 ### PUT /consumidor/alterar/pedido/{idPedido}
 
+Exemplo Body:
+```
+
+```
+
 Exemplo Retorno:
 ```
 
 ```
 
 ### POST /consumidor/pedidos/{idProdutor}/{idConsumidor}
+
+Exemplo Body:
+```
+
+```
 
 Exemplo Retorno:
 ```
