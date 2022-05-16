@@ -78,7 +78,7 @@
 
 Retorna uma lista de todos os produtores cadastrados.
 
-Exemplo:
+Exemplo Retorno:
 
 ```
 [
@@ -164,50 +164,157 @@ Exemplo:
 
 ### GET /produtor/{idProdutor}
 
+
+Exemplo Retorno:
+```
+
+```
 ### PATCH /produtor/{idProdutor}
+
+
+Exemplo Retorno:
+```
+
+```
 
 ### DELETE /produtor/{idProdutor}
 
+
 ### POST /produtor
 
+
 ### POST /api/agricolab/v1/produtor/login
+
+
+Exemplo Retorno:
+```
+
+```
 
 ## Consumidor
 
 ### GET /consumidor/all
 
+
+
+Exemplo Retorno:
+```
+
+```
+
 ### GET /consumidor/{idConsumidor}
+
+
+Exemplo Retorno:
+```
+
+```
 
 ### PATCH /consumidor/{idConsumidor}
 
+
+Exemplo Retorno:
+```
+
+```
+
 ### DELETE /consumidor/{idConsumidor}
+
+
+Exemplo Retorno:
+```
+
+```
 
 ### POST /consumidor
 
+
+Exemplo Retorno:
+```
+
+```
+
 ### POST /api/agricolab/v1/login
 
+
+Exemplo Retorno:
+```
+
+```
+
 ### GET /consumidor/nextprodutores/{Latitude}/{Longitude}
+
+
+Exemplo Retorno:
+```
+
+```
 
 ## Produtos
 
 ### POST /produtor/cadastro/produto/{idProdutor}
 
+Exemplo Retorno:
+```
+
+```
+
 ### DELETE /produtor/delete/produto/{idProduto}
+
+Exemplo Retorno:
+```
+
+```
 
 ### PUT /produtor/alterar/produto/{idProduto}
 
+Exemplo Retorno:
+```
+
+```
+
 ### GET /produtor/produto/all
+
+Exemplo Retorno:
+```
+
+```
 
 ## Pedidos
 
 ### GET /consumidor/pedido/all
 
+Exemplo Retorno:
+```
+
+```
+
 ### DELETE /consumidor/delete/pedido/{idPedido}
+
+Exemplo Retorno:
+```
+
+```
 
 ### PUT /consumidor/alterar/pedido/{idPedido}
 
+Exemplo Retorno:
+```
+
+```
+
 ### POST /consumidor/pedidos/{idProdutor}/{idConsumidor}
+
+Exemplo Retorno:
+```
+
+```
 
 ## Validacao
 
 ### GET /api/agricolab/v1/validacao/{email}
+
+Exemplo Retorno:
+```
+
+```
