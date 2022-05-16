@@ -27,9 +27,9 @@ O aplicativo agricolab consiste em uma aplicação Web que tem como principal ob
 
 ========================
 
-# Desenho Arquitetura
+# Desenho Infraestrutura
 
-![arquitetura](https://user-images.githubusercontent.com/32601542/157986724-677be37f-1cd3-4c84-9b58-eefe6afbde4c.png)
+![image](https://user-images.githubusercontent.com/32601542/168683969-e110ec77-5926-4cb4-8944-cf4005574ee3.png)
 
 ========================
 
