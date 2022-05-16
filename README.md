@@ -2,6 +2,8 @@
 
 [![tests](https://github.com/ES-UFABC/Grupo-18-Agricolab/actions/workflows/tests.yml/badge.svg)](https://github.com/ES-UFABC/Grupo-18-Agricolab/actions/workflows/tests.yml)
 
+# Integrantes
+
 1. Ananda de Oliveira Gonçalves Antenor
 1. Arthur Rigolon Lança
 1. Bruno Rios Sousa
@@ -9,12 +11,12 @@
 1. Wesley Batista Soares
 1. Paulo Consoni
 
-=======================
+===========================================================================
 # Sobre
 
 O aplicativo agricolab consiste em uma aplicação Web que tem como principal objetivo conectar pequenos produtores da agrdicultura familiar com consumidores de alimentos de uma região. Esse serviço tem como proposta remover qualquer intermediário na relação entre os produtores e consumidores, fazendo com que os preços dos produtos possam ser reduzidos, aumentando a atratividade nessa relação.
 
-=======================
+===========================================================================
 
 # Pré Requisitos
 
@@ -25,13 +27,13 @@ O aplicativo agricolab consiste em uma aplicação Web que tem como principal ob
 * NPM
 * Angular CLI
 
-========================
+===========================================================================
 
 # Desenho Infraestrutura
 
 ![image](https://user-images.githubusercontent.com/32601542/168683969-e110ec77-5926-4cb4-8944-cf4005574ee3.png)
 
-========================
+===========================================================================
 
 # Como instalar
 
@@ -55,8 +57,6 @@ O aplicativo agricolab consiste em uma aplicação Web que tem como principal ob
 ![config](https://user-images.githubusercontent.com/32601542/167998253-0a3bac85-039e-4399-9d74-4bbe04fb3af7.png)
 - Rodar com as teclas "Shift + f10"
 
-========================
-
 # Como usar
 
 ## Frontend
@@ -67,7 +67,14 @@ O aplicativo agricolab consiste em uma aplicação Web que tem como principal ob
 ## Backend
 - Após rodar a aplicação, o back end estará rodando na porta http://localhost:8080
 
-=======
+# Diagramas da aplicação
+
+## Diagrama de classe (Backend)
+![image](https://user-images.githubusercontent.com/32601542/168684533-81204f42-f4e9-4d7b-b14a-6a3d105cb668.png)
+
+## Diagrama de Sequencia
+
+![image](https://user-images.githubusercontent.com/32601542/168684767-8cba3ee7-6dd7-42e0-979e-1b875c264361.png)
 
 # Banco dados - Entidades
 ![repository](https://user-images.githubusercontent.com/32601542/157987135-902fce02-d728-4e4d-b72c-4830896a782c.png)
