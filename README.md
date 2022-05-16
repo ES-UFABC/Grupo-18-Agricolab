@@ -12,6 +12,8 @@
 =======================
 # Sobre
 
+O aplicativo agricolab consiste em uma aplicação Web que tem como principal objetivo conectar pequenos produtores da agrdicultura familiar com consumidores de alimentos de uma região. Esse serviço tem como proposta remover qualquer intermediário na relação entre os produtores e consumidores, fazendo com que os preços dos produtos possam ser reduzidos, aumentando a atratividade nessa relação.
+
 =======================
 
 # Pré Requisitos
