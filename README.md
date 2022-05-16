@@ -870,7 +870,10 @@ Exemplo Body:
 
 Exemplo Retorno:
 ```
-
+{
+    "nomeProduto": "alface",
+    "quantidadeProduto":2
+}
 ```
 
 ### POST /consumidor/pedidos/{idProdutor}/{idConsumidor}
