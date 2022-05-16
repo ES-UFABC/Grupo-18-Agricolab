@@ -7,7 +7,7 @@ import { ProdutoPedido } from 'src/app/model/produto-pedido.model';
   styleUrls: ['./item-carrinho.component.scss']
 })
 export class ItemCarrinhoComponent implements OnInit {
-  @Input() produto: ProdutoPedido;
+  @Input() produto: ProdutoPedido = new ProdutoPedido();
   @Output() removerItem: EventEmitter<ProdutoPedido> = new EventEmitter();
 
   constructor() { }

@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProdutoService } from 'src/app/service/produtos.service';
+import { ProdutoServiceMock } from 'src/app/service/produtos.service.mock';
 
 import { CadastrarProdutosComponent } from './cadastrar-produtos.component';
 
@@ -8,7 +11,11 @@ describe('CadastrarProdutosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CadastrarProdutosComponent ]
+      declarations: [ CadastrarProdutosComponent ],
+      imports: [ ReactiveFormsModule ],
+      providers: [
+        { provide: ProdutoService, useClass: ProdutoServiceMock },
+      ],
     })
     .compileComponents();
   });

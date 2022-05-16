@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 export interface FormInput {
   name: string;
@@ -18,7 +19,11 @@ export class CadastroComponent implements OnInit {
   showConsumidorForm: boolean = false;
   showProdutorForm: boolean = false;
 
-  constructor() { }
+  constructor(
+    private titleService: Title
+  ) { 
+    this.titleService.setTitle("Cadastro - Agricolab");
+  }
 
   ngOnInit(): void {
   }

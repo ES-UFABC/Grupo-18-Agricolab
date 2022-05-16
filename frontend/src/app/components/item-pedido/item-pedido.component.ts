@@ -11,7 +11,7 @@ import { setUsuario, UserSession } from 'src/app/views/login/login.component';
   styleUrls: ['./item-pedido.component.scss']
 })
 export class ItemPedidoComponent implements OnInit {
-  @Input() produto: Produto;
+  @Input() produto: Produto = new Produto();
   @Input() idProdutor: number;
 
   produtoForm: FormGroup;
