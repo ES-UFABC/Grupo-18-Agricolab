@@ -10,6 +10,7 @@ import br.com.agricolab.repository.adapter.PedidosRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.mapper.ConsumidorEntityMapper;
 import br.com.agricolab.repository.model.ConsumidorEntity;
+import br.com.agricolab.repository.model.PedidosEntity;
 import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.service.ProdutorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,9 +110,9 @@ public class ConsumidorController {
     }
 
     @PutMapping("/alterar/pedido/{id}")
-    public ResponseEntity<Void> alterarPedido(@RequestBody Pedido pedidoNovo, @PathVariable Integer id){
-        consumidorProcessor.replace(pedidoNovo, id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<PedidosEntity> alterarPedido(@RequestBody Pedido pedidoNovo, @PathVariable Integer id){
+
+        return ResponseEntity.ok(consumidorProcessor.replace(pedidoNovo, id));
 
     }
 
