@@ -70,3 +70,59 @@
 # Banco dados - Entidades
 TODO
 ![repository](https://user-images.githubusercontent.com/32601542/157987135-902fce02-d728-4e4d-b72c-4830896a782c.png)
+
+# End Points API's
+
+## Produtor
+
+### GET /produtor/all
+
+### GET /produtor/{idProdutor}
+
+### PATCH /produtor/{idProdutor}
+
+### DELETE /produtor/{idProdutor}
+
+### POST /produtor
+
+### POST /api/agricolab/v1/produtor/login
+
+## Consumidor
+
+### GET /consumidor/all
+
+### GET /consumidor/{idConsumidor}
+
+### PATCH /consumidor/{idConsumidor}
+
+### DELETE /consumidor/{idConsumidor}
+
+### POST /consumidor
+
+### POST /api/agricolab/v1/login
+
+### GET /consumidor/nextprodutores/{Latitude}/{Longitude}
+
+## Produtos
+
+### POST /produtor/cadastro/produto/{idProdutor}
+
+### DELETE /produtor/delete/produto/{idProduto}
+
+### PUT /produtor/alterar/produto/{idProduto}
+
+### GET /produtor/produto/all
+
+## Pedidos
+
+### GET /consumidor/pedido/all
+
+### DELETE /consumidor/delete/pedido/{idPedido}
+
+### PUT /consumidor/alterar/pedido/{idPedido}
+
+### POST /consumidor/pedidos/{idProdutor}/{idConsumidor}
+
+## Validacao
+
+### GET /api/agricolab/v1/validacao/{email}
