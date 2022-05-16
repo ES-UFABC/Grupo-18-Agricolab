@@ -884,6 +884,29 @@ Exemplo Body:
 
 Exemplo Retorno:
 ```
+{
+    "idConsumidor": 8,
+    "tipoConsumidor": "pj",
+    "segmentoConsumidorPJ": null,
+    "nomeConsumidor": "Bruno teste1",
+    "emailConsumidor": "javabruno@email.com",
+    "senhaConsumidor": "teste",
+    "cnpjConsumidor": "1201212132",
+    "cpfConsumidor": null,
+    "telefoneConsumidor": "111-1111",
+    "enderecoConsumidor": "rua dos bobos",
+    "complementoEnderecoConsumidor": null,
+    "latitudeConsumidor": 12.12121000,
+    "longitudeConsumidor": 15.12121000,
+    "pedidos": [
+        {
+            "idPedido": 183,
+            "nomePedido": "alface",
+            "quantidadePedido": 2,
+            "valorPedido": 220.30
+        }
+      ]
+    }
 
 ```
 
