@@ -68,7 +68,6 @@
 =======
 
 # Banco dados - Entidades
-TODO
 ![repository](https://user-images.githubusercontent.com/32601542/157987135-902fce02-d728-4e4d-b72c-4830896a782c.png)
 
 # End Points API's
@@ -76,6 +75,92 @@ TODO
 ## Produtor
 
 ### GET /produtor/all
+
+Retorna uma lista de todos os produtores cadastrados.
+
+Exemplo:
+
+```
+[
+    {
+        "idProdutor": 1,
+        "nomeProdutor": "TESTE2",
+        "tipoProdutor": "pj",
+        "emailProdutor": "java2@email.com",
+        "senhaProdutor": "senhateste",
+        "pedidosRecebidos": [],
+        "produtos": [
+            {
+                "idProduto": 132,
+                "nomeProduto": "testeedd",
+                "quantidadeProduto": 400,
+                "valorProduto": 110.15
+            }
+        ],
+        "cnpjProdutor": "1201212132",
+        "cpfProdutor": null,
+        "telefoneProdutor": "111-1111",
+        "enderecoProdutor": "rua dos bobos",
+        "complementoEnderecoProdutor": "casa",
+        "latitudeProdutor": 12.12121000,
+        "longitudeProdutor": 15.12121000
+    },
+    {
+        "idProdutor": 2,
+        "nomeProdutor": "TESTE2",
+        "tipoProdutor": "pj",
+        "emailProdutor": "java21@email.com",
+        "senhaProdutor": "senhateste",
+        "pedidosRecebidos": [
+            {
+                "idPedido": 141,
+                "nomePedido": "testenovo22",
+                "quantidadePedido": 2,
+                "valorPedido": 220.30
+            },
+            {
+                "idPedido": 169,
+                "nomePedido": "testenovo22",
+                "quantidadePedido": 2,
+                "valorPedido": 220.30
+            },
+            {
+                "idPedido": 171,
+                "nomePedido": "novo pedido",
+                "quantidadePedido": 2,
+                "valorPedido": 220.30
+            }
+        ],
+        "produtos": [
+            {
+                "idProduto": 126,
+                "nomeProduto": "testenovo22",
+                "quantidadeProduto": 382,
+                "valorProduto": 110.15
+            },
+            {
+                "idProduto": 133,
+                "nomeProduto": "testeedd",
+                "quantidadeProduto": 392,
+                "valorProduto": 110.15
+            },
+            {
+                "idProduto": 170,
+                "nomeProduto": "novo pedido",
+                "quantidadeProduto": 398,
+                "valorProduto": 110.15
+            }
+        ],
+        "cnpjProdutor": "1201212132",
+        "cpfProdutor": null,
+        "telefoneProdutor": "111-1111",
+        "enderecoProdutor": "rua dos bobos",
+        "complementoEnderecoProdutor": "casa",
+        "latitudeProdutor": 12.12121000,
+        "longitudeProdutor": 15.12121000
+    }
+]
+```
 
 ### GET /produtor/{idProdutor}
 
