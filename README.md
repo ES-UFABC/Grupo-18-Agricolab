@@ -727,57 +727,134 @@ Exemplo Retorno:
 
 ### POST /produtor/cadastro/produto/{idProdutor}
 
+Cadastro de produto para um produtor específico.
+
 Exemplo Body:
 ```
-
+{
+    "nomeProduto": "produto Novo",
+    "quantidadeProduto": 402,
+    "valorProduto": 210.15
+}
 ```
 
 Exemplo Retorno:
 ```
-
+{
+    "idProdutor": 1,
+    "nomeProdutor": "TESTE2",
+    "tipoProdutor": "pj",
+    "emailProdutor": "java2@email.com",
+    "senhaProdutor": "senhateste",
+    "pedidosRecebidos": [],
+    "produtos": [
+        {
+            "idProduto": 132,
+            "nomeProduto": "testeedd",
+            "quantidadeProduto": 400,
+            "valorProduto": 110.15
+        },
+        {
+            "idProduto": 207,
+            "nomeProduto": "testeedd",
+            "quantidadeProduto": 400,
+            "valorProduto": 110.15
+        },
+        {
+            "idProduto": 208,
+            "nomeProduto": "produto Novo",
+            "quantidadeProduto": 402,
+            "valorProduto": 210.15
+        }
+    ],
+    "cnpjProdutor": "1201212132",
+    "cpfProdutor": null,
+    "telefoneProdutor": "111-1111",
+    "enderecoProdutor": "rua dos bobos",
+    "complementoEnderecoProdutor": "casa",
+    "latitudeProdutor": 12.12121000,
+    "longitudeProdutor": 15.12121000
+}
 ```
 
 ### DELETE /produtor/delete/produto/{idProduto}
 
-Exemplo Retorno:
-```
-
-```
+Deleta um produto de acordo com o id enviado.
 
 ### PUT /produtor/alterar/produto/{idProduto}
 
+Altera um produto já cadastrado de acordo com o id do produto.
+
 Exemplo Body:
 ```
-
-```
-
-Exemplo Retorno:
-```
-
+{
+    "nomeProduto": "Produto novo 2",
+    "quantidadeProduto": 500,
+    "valorProduto": 120.15
+}
 ```
 
 ### GET /produtor/produto/all
 
+Retorna a lista de todos os produtos cadastrados.
+
 Exemplo Retorno:
 ```
-
+[
+    {
+        "idProduto": 126,
+        "nomeProduto": "testenovo22",
+        "quantidadeProduto": 382,
+        "valorProduto": 110.15
+    },
+    {
+        "idProduto": 132,
+        "nomeProduto": "testeedd",
+        "quantidadeProduto": 400,
+        "valorProduto": 110.15
+    },
+    {
+        "idProduto": 133,
+        "nomeProduto": "testeedd",
+        "quantidadeProduto": 392,
+        "valorProduto": 110.15
+    }
+]
 ```
 
 ## Pedidos
 
 ### GET /consumidor/pedido/all
 
+Retorna a lista de todos os pedidos cadastrados.
+
 Exemplo Retorno:
 ```
-
+[
+    {
+        "idPedido": 141,
+        "nomePedido": "testenovo22",
+        "quantidadePedido": 2,
+        "valorPedido": 220.30
+    },
+    {
+        "idPedido": 167,
+        "nomePedido": "teste1",
+        "quantidadePedido": 1,
+        "valorPedido": 120.15
+    },
+    {
+        "idPedido": 168,
+        "nomePedido": "teste1",
+        "quantidadePedido": 7,
+        "valorPedido": 841.05
+    }
+]
 ```
 
 ### DELETE /consumidor/delete/pedido/{idPedido}
 
-Exemplo Retorno:
-```
-
-```
+Deleta um pedido de acordo com o id do pedido.
 
 ### PUT /consumidor/alterar/pedido/{idPedido}
 
@@ -793,9 +870,14 @@ Exemplo Retorno:
 
 ### POST /consumidor/pedidos/{idProdutor}/{idConsumidor}
 
+Cria um pedido de acordo com o idConsumidor e o idProdutor enviado.
+
 Exemplo Body:
 ```
-
+{
+    "nomeProduto": "alface",
+    "quantidadeProduto":2
+}
 ```
 
 Exemplo Retorno:
@@ -807,7 +889,10 @@ Exemplo Retorno:
 
 ### GET /api/agricolab/v1/validacao/{email}
 
+Retorna um boolean informando se o email já existe na base ou não.
+
 Exemplo Retorno:
 ```
-
+true
 ```
+
