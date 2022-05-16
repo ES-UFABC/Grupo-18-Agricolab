@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ProdutoService } from 'src/app/service/produtos.service';
+import { ProdutoServiceMock } from 'src/app/service/produtos.service.mock';
 
 import { EditarProdutosComponent } from './editar-produtos.component';
 
@@ -8,7 +12,11 @@ describe('EditarProdutosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditarProdutosComponent ]
+      declarations: [ EditarProdutosComponent ],
+      imports: [ RouterModule.forRoot([]), ReactiveFormsModule ],
+      providers: [
+        { provide: ProdutoService, useClass: ProdutoServiceMock },
+      ],
     })
     .compileComponents();
   });

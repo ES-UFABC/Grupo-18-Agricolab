@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CadastroService } from 'src/app/service/cadastro.service';
+import { CadastroServiceMock } from 'src/app/service/cadastro.service.mock';
 
 import { ListarPedidosComponent } from './listar-pedidos.component';
 
@@ -8,7 +10,10 @@ describe('ListarPedidosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListarPedidosComponent ]
+      declarations: [ ListarPedidosComponent ],
+      providers: [
+        { provide: CadastroService, useClass: CadastroServiceMock },
+      ],
     })
     .compileComponents();
   });

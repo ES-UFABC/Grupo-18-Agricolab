@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CadastroService } from 'src/app/service/cadastro.service';
+import { CadastroServiceMock } from 'src/app/service/cadastro.service.mock';
 
 import { PedidosRecebidosComponent } from './pedidos-recebidos.component';
 
@@ -8,7 +10,10 @@ describe('PedidosRecebidosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PedidosRecebidosComponent ]
+      declarations: [ PedidosRecebidosComponent ],
+      providers: [
+        { provide: CadastroService, useClass: CadastroServiceMock },
+      ],
     })
     .compileComponents();
   });
