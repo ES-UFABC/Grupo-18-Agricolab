@@ -74,7 +74,7 @@ public class ConsumidorEntityMapperTest {
         Assertions.assertThat(consumidorEntity.getLatitudeConsumidor()).isEqualTo(consumidor.getLatitudeConsumidor());
         Assertions.assertThat(consumidorEntity.getLongitudeConsumidor()).isEqualTo(consumidor.getLongitudeConsumidor());
         Assertions.assertThat(consumidorEntity.getEnderecoConsumidor()).isEqualTo(consumidor.getEnderecoConsumidor());
-        Assertions.assertThat(consumidorEntity.getIdConsumidor()).isEqualTo(consumidor.getId().toString());
+        Assertions.assertThat(consumidorEntity.getIdConsumidor()).isEqualTo(consumidor.getId());
         Assertions.assertThat(consumidorEntity.getTelefoneConsumidor()).isEqualTo(consumidor.getTelefoneConsumidor());
     }
 }

@@ -111,7 +111,7 @@ public class ConsumidorProcessor {
 
     }
 
-    public void replace(Pedido pedidoNovo, Integer id) {
+    public PedidosEntity replace(Pedido pedidoNovo, Integer id) {
 
         final PedidosEntity pedido = pedidosRepository.findByIdPedido(id);
 
@@ -119,6 +119,6 @@ public class ConsumidorProcessor {
         pedido.setValorPedido(pedidoNovo.getValorPedido());
         pedido.setQuantidadePedido(pedidoNovo.getQuantidadePedido());
 
-        pedidosRepository.save(pedido);
+         return pedidosRepository.save(pedido);
     }
 }

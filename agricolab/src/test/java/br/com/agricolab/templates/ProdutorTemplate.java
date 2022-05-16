@@ -1,10 +1,11 @@
 package br.com.agricolab.templates;
 
-import br.com.agricolab.core.produtor.dto.ProdutorDto;
+import br.com.agricolab.domain.Produtor;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class ProdutorTemplate implements TemplateLoader {
@@ -14,9 +15,9 @@ public class ProdutorTemplate implements TemplateLoader {
     @Override
     public void load() {
 
-        Fixture.of(ProdutorDto.class).addTemplate(VALIDO, new Rule(){
+        Fixture.of(Produtor.class).addTemplate(VALIDO, new Rule(){
             {
-                add("idProdutor","1");
+                add("id","1");
                 add("nomeProdutor","teste");
                 add("emailProdutor","testeprodutor@hotmail.com");
                 add("enderecoProdutor","rua teste produtor");
@@ -25,9 +26,9 @@ public class ProdutorTemplate implements TemplateLoader {
                 add("senhaProdutor","senhaprodutorteste");
                 add("telefoneProdutor","111111111");
                 add("tipoProdutor","pj");
-                add("latitudeProdutor","12,12121");
+                add("latitudeProdutor",new BigDecimal("12.12121"));
                 add("produtos", new ArrayList<>());
-                add("longitudeProdutor","15,12121");
+                add("longitudeProdutor",new BigDecimal("15.12121"));
 
 
             }
