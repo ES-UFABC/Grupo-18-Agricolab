@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { ProdutoService } from 'src/app/service/produtos.service';
+import { ProdutoServiceMock } from 'src/app/service/produtos.service.mock';
 
 import { ApagarProdutosComponent } from './apagar-produtos.component';
 
@@ -8,7 +11,11 @@ describe('ApagarProdutosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApagarProdutosComponent ]
+      declarations: [ ApagarProdutosComponent ],
+      providers: [
+        { provide: ProdutoService, useClass: ProdutoServiceMock },
+      ],
+      imports: [ RouterModule.forRoot([]) ],
     })
     .compileComponents();
   });

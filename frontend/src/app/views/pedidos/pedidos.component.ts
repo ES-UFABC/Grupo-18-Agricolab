@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Produtor } from 'src/app/model/produtor.model';
 import { CadastroService } from 'src/app/service/cadastro.service';
@@ -15,7 +16,10 @@ export class PedidosComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cadastroService: CadastroService,
-  ) { }
+    private titleService: Title
+  ) { 
+    this.titleService.setTitle("Pedidos - Agricolab");
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

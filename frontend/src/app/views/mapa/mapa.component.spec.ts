@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MapaService } from 'src/app/service/mapa.service';
+import { MapaServiceMock } from 'src/app/service/mapa.service.mock';
 
 import { MapaComponent } from './mapa.component';
 
@@ -8,7 +10,10 @@ describe('MapaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MapaComponent ]
+      declarations: [ MapaComponent ],
+      providers: [
+        { provide: MapaService, useClass: MapaServiceMock },
+      ],
     })
     .compileComponents();
   });

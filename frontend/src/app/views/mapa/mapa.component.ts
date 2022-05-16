@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import * as maptiler from '@maptiler/geocoder';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { Produtor } from 'src/app/model/produtor.model';
 import { MapaService } from 'src/app/service/mapa.service';
 
@@ -33,8 +33,11 @@ export class MapaComponent implements OnInit, AfterViewInit {
 
   constructor(
     public sanitizer: DomSanitizer,
-    public mapaService: MapaService
-  ) { }
+    public mapaService: MapaService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("Mapa - Agricolab");
+   }
 
   ngOnInit(): void {
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);

@@ -1,4 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { PedidoService } from 'src/app/service/pedidos.service';
+import { PedidoServiceMock } from 'src/app/service/pedidos.service.mock';
 
 import { ApagarPedidoComponent } from './apagar-pedido.component';
 
@@ -8,7 +12,11 @@ describe('ApagarPedidoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApagarPedidoComponent ]
+      declarations: [ ApagarPedidoComponent ],
+      providers: [
+        { provide: PedidoService, useClass: PedidoServiceMock }
+      ],
+      imports: [ RouterModule.forRoot([]), ]
     })
     .compileComponents();
   });
@@ -22,4 +30,11 @@ describe('ApagarPedidoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should test apagar method', () => {
+    spyOn(component, 'apagar').and.callThrough();
+    component.apagar();
+    expect(component.apagar).toHaveBeenCalled();
+  });
+
 });

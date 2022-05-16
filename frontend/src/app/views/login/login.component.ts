@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Consumidor } from 'src/app/model/consumidor.model';
 import { Produtor } from 'src/app/model/produtor.model';
@@ -44,7 +45,10 @@ export class LoginComponent implements OnInit {
     public formBuilder: FormBuilder,
     public cadastroService: CadastroService,
     public loginService: LoginService,
-  ) { }
+    private titleService: Title
+  ) { 
+    this.titleService.setTitle("Login - Agricolab");
+  }
 
   ngOnInit(): void {
     this.construirForm();

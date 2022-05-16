@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,8 +10,11 @@ import { Router } from '@angular/router';
 export class ProdutosComponent implements OnInit {
 
   constructor(
-    public router: Router
-  ) { }
+    public router: Router,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("Produtos - Agricolab");
+   }
 
   ngOnInit(): void {
     this.router.navigateByUrl('produtos/listar');
