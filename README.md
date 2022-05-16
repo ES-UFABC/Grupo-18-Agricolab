@@ -862,7 +862,10 @@ Deleta um pedido de acordo com o id do pedido.
 
 Exemplo Body:
 ```
-
+{
+    "nomeProduto": "alface",
+    "quantidadeProduto":2
+}
 ```
 
 Exemplo Retorno:
