@@ -34,6 +34,9 @@ public class ConsumidorProcessor {
     @Autowired
     private ProdutorRepository produtorRepository;
 
+    ConsumidorEntity pedidoSalvo;
+    Integer contador = 0;
+
 
     public Consumidor createConsumidor(Consumidor Consumidor){
         final ConsumidorEntity ConsumidorEntity = ConsumidorEntityMapper.INSTANCE.consumidorToEntity(Consumidor);
@@ -73,6 +76,7 @@ public class ConsumidorProcessor {
 
     public ConsumidorEntity registroPedidos(ProdutorEntity produtor, List<Pedido> pedidos, ConsumidorEntity consumidorPedidos) throws Exception {
         for(Pedido produto : pedidos) {
+            Integer contador = 0;
             produtor.getProdutos().stream().forEach(
                     con -> {
                         if (con.getNomeProduto().equals(produto.getNomePedido())) {
@@ -92,12 +96,19 @@ public class ConsumidorProcessor {
             final List<ProdutosEntity> produtosNome = produtor.getProdutos();
 
             for (ProdutosEntity produtoNome : produtosNome) {
-                if (produtoNome.getNomeProduto().equals(produto.getNomePedido())) {
-                    return consumidorRepository.save(consumidorPedidos);
+                if (!produtoNome.getNomeProduto().equals(produto.getNomePedido())) {
+                    contador++;
                 }
             }
+                if(contador == produtosNome.size()){
+                    throw new Exception(" produto nao existe");
+                }
+                pedidoSalvo = consumidorRepository.save(consumidorPedidos);
+
         }
-        throw new Exception("produto não existe");
+
+        return pedidoSalvo;
+
     }
 
     public void replace(Pedido pedidoNovo, Integer id) {
