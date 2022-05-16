@@ -5,7 +5,6 @@ import br.com.agricolab.core.consumidor.dto.ConsumidorDto;
 import br.com.agricolab.core.consumidor.mapper.ConsumidorDtoMapper;
 import br.com.agricolab.core.consumidor.processors.ConsumidorProcessor;
 import br.com.agricolab.domain.Consumidor;
-import br.com.agricolab.domain.Produto;
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.PedidosRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
@@ -17,19 +16,17 @@ import br.com.agricolab.service.ProdutorService;
 import br.com.agricolab.templates.*;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
-import org.apache.coyote.Response;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.junit.Test;
 import org.mockito.Spy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -107,7 +104,7 @@ public class ConsumidorControllerTest {
 
         when(consumidorRepository.findById(1)).thenReturn(Optional.ofNullable(consumidorEntity));
 
-        when(consumidorEntityMapper.ConsumidorToEntity(consumidorEntity)).thenReturn(consumidor);
+        when(consumidorEntityMapper.consumidorToEntity(consumidorEntity)).thenReturn(consumidor);
         when(consumidorDtoMapper.consumidorToDto(consumidor)).thenReturn(consumidorDto);
 
         consumidorController.findById(1);
@@ -158,21 +155,6 @@ public class ConsumidorControllerTest {
 
     }
 
-    @Test
-    public void deveCriarConsumidor(){
-        final ConsumidorEntity consumidorEntity = Fixture.from(ConsumidorEntity.class).gimme(ConsumidorEntityTemplate.VALIDO);
-        final ConsumidorDto consumidorDto = Fixture.from(ConsumidorDto.class).gimme(ConsumidorDtoTemplate.VALIDO);
-        final Consumidor consumidor = Fixture.from(Consumidor.class).gimme(ConsumidorTemplate.VALIDO);
-
-
-
-        when(consumidorProcessor.createConsumidor(consumidor)).thenReturn(consumidor);
-
-        when(consumidorDtoMapper.consumidorToDto(consumidor)).thenReturn(consumidorDto);
-
-        Assertions.assertThat(consumidorController.create(consumidorDto)).isEqualTo(consumidorDto);
-
-    }
 }
 
 

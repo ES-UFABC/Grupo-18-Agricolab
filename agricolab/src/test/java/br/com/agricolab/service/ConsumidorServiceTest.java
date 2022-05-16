@@ -55,6 +55,5 @@ public class ConsumidorServiceTest {
 
         Assertions.assertThat(consumidorService.login("teste@hotmail.com","senhateste" )).isEqualTo(Exception.class);
 
-
     }
 }

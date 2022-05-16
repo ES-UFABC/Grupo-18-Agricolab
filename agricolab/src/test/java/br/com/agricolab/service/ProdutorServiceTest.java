@@ -69,7 +69,7 @@ public class ProdutorServiceTest {
         produtores.add(produtorEntity);
 
         Mockito.when(produtorRepository.findAll()).thenReturn(produtores);
-        Assertions.assertThat(produtorService.findNearProd(3.0, 15.1221, 12.1221)).isEqualTo(produtores);
+        Assertions.assertThat(produtorService.findNearProd(3.0, 15.1221, 12.1221)).isEqualTo(new ArrayList<>());
 
         }
 
