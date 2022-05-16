@@ -927,3 +927,9 @@ Exemplo Retorno:
 true
 ```
 
+# Licença
+Agricolab utiliza a licença permissiva MIT.
+
+# Estatísticas
+![Issues](https://img.shields.io/github/issues/ES-UFABC/Grupo-18-Agricolab?style=for-the-badge)    ![Commits](https://img.shields.io/github/commit-activity/y/ES-UFABC/Grupo-18-Agricolab?style=for-the-badge) ![Issues](https://img.shields.io/github/issues-closed/ES-UFABC/Grupo-18-Agricolab?style=for-the-badge)
+
