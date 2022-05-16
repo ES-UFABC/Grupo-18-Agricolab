@@ -35,7 +35,7 @@ public class ConsumidorProcessor {
     private ProdutorRepository produtorRepository;
 
     ConsumidorEntity pedidoSalvo;
-    Integer contador = 0;
+
 
 
     public Consumidor createConsumidor(Consumidor Consumidor){
