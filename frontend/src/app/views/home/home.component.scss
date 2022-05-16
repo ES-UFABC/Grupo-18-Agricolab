@@ -5,7 +5,7 @@
 .first-section {
     background-repeat: no-repeat;
     background-size: cover;
-    height: 97.6vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,7 +107,7 @@
 @media only screen and (min-width: 768px) {
 
     .first-section {
-        height: 97.9vh;
+        height: 100vh;
     }
 
     .first-section h3 {

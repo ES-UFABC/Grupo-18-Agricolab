@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-time',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private titleService: Title
+  ) { 
+    this.titleService.setTitle("Time - Agricolab");
+  }
+  
   ngOnInit(): void {
   }
 

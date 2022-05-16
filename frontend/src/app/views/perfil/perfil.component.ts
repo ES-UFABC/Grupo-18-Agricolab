@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { logoutUsuario, setUsuario, UserSession } from '../login/login.component';
 
@@ -12,7 +13,10 @@ export class PerfilComponent implements OnInit {
 
   constructor(
     public router: Router,
-  ) { }
+    private titleService: Title
+  ) { 
+    this.titleService.setTitle("Perfil - Agricolab");
+  }
 
   ngOnInit(): void {
   }
