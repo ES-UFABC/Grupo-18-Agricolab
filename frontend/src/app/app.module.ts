@@ -34,6 +34,7 @@ import { ListarPedidosComponent } from './views/pedidos/listar-pedidos/listar-pe
 import { ItemCarrinhoComponent } from './components/item-carrinho/item-carrinho.component';
 import { ApagarPedidoComponent } from './views/pedidos/apagar-pedido/apagar-pedido.component';
 import { PedidosRecebidosComponent } from './views/pedidos/pedidos-recebidos/pedidos-recebidos.component';
+import { ApagarPedidosRecebidosComponent } from './views/pedidos/apagar-pedidos-recebidos/apagar-pedidos-recebidos.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { PedidosRecebidosComponent } from './views/pedidos/pedidos-recebidos/ped
     ItemCarrinhoComponent,
     ApagarPedidoComponent,
     PedidosRecebidosComponent,
+    ApagarPedidosRecebidosComponent,
   ],
   imports: [
     BrowserModule,

@@ -53,6 +53,10 @@
 
 .second-section {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: #00386f;
 }
 
@@ -69,13 +73,17 @@
     color: #fff;
     font-weight: 400;
     font-size: 1em;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
     text-align: center;
     margin-top: 1rem;
 }
 
 .third-section {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .third-section h2 {
@@ -91,7 +99,7 @@
     color: #00386f;
     font-weight: 400;
     font-size: 1em;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
     text-align: center;
     margin-top: 1rem;
 }
@@ -106,4 +114,7 @@
         max-width: 30vw;
     }
 
+    .second-section h2, .second-section p, .third-section h2, .third-section p {
+        width: 30%;
+    }
 }

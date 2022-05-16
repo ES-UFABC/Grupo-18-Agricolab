@@ -16,7 +16,7 @@
                 {{ input.label }}
                 <span *ngIf="input.obrigatorio">*</span>
             </label>
-            <input type="{{ input.type }}" name="{{ input.name }}" formControlName="{{ input.name }}" [readonly]="input.name === 'email'" [class.invalid-input]="form.submitted && !cadastroForm.get(input.name)?.valid">
+            <input type="{{ input.type }}" name="{{ input.name }}" formControlName="{{ input.name }}" [readonly]="input.name === 'email'" [class.grey-color]="input.name === 'email'" [class.invalid-input]="form.submitted && !cadastroForm.get(input.name)?.valid">
         </div>
 
         <div class="buttons">

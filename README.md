@@ -45,6 +45,14 @@
 - No terminal, execute o comando "npm start-host" ou "ng serve --host 0.0.0.0"
 - Localize o IP da sua máquina que está rodando o projeto e acesse por http://SEU-IP-DA-MAQUINA:4200 em seu smartphone
 
+## Backend
+
+- É necessário baixar o projeto, java 11 e o IntelliJ community
+- Rodar o comando maven "mvn clean install"
+- Configurar uma nova aplicação como na imagem abaixo:
+![config](https://user-images.githubusercontent.com/32601542/167998253-0a3bac85-039e-4399-9d74-4bbe04fb3af7.png)
+- Rodar com as teclas "Shift + f10"
+
 ========================
 
 # Como usar
@@ -53,6 +61,9 @@
 
 - Com as dependências instaladas, execute o comando "npm start" ou "ng serve"
 - Após a aplicação ser inicializada, ela deve estar rodando na porta http://localhost:4200
+
+## Backend
+- Após rodar a aplicação, o back end estará rodando na porta http://localhost:8080
 
 =======
 

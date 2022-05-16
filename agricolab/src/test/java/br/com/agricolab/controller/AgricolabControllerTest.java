@@ -1,6 +1,5 @@
 package br.com.agricolab.controller;
 
-
 import br.com.agricolab.repository.adapter.ConsumidorRepository;
 import br.com.agricolab.repository.adapter.ProdutorRepository;
 import br.com.agricolab.repository.model.ConsumidorEntity;
@@ -48,8 +47,6 @@ public class AgricolabControllerTest {
     @Before
     public void setup(){
         FixtureFactoryLoader.loadTemplates("br.com.agricolab.templates");
-
-
     }
 
     @Test
@@ -63,11 +60,12 @@ public class AgricolabControllerTest {
         when(consumidorService.login(consumidorEntity.getEmailConsumidor(), consumidorEntity.getSenhaConsumidor())).thenReturn(consumidorEntity);
 
 
-
         ResponseEntity <ConsumidorEntity> responseEntity = agricolabController.loginUser(consumidorEntity);
 
         Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 
+
+        agricolabController.loginUser(consumidorEntity);
     }
 
     @Test
@@ -81,12 +79,10 @@ public class AgricolabControllerTest {
         when(produtorService.login(produtorEntity.getEmailProdutor(), produtorEntity.getSenhaProdutor())).thenReturn(produtorEntity);
 
         agricolabController.loginProdutor(produtorEntity);
-
         ResponseEntity <ProdutorEntity> responseEntity = agricolabController.loginProdutor(produtorEntity);
 
 
         Assert.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-
 
     }
 

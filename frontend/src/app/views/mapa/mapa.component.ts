@@ -15,7 +15,21 @@ export class MapaComponent implements OnInit, AfterViewInit {
   url = './assets/autocomplete.html';
   urlSafe: SafeResourceUrl;
   marcadoresArray: any = [];
-  distanciaValue: number = 1;
+  distanciaValue: number = 15;
+
+  iconRetinaUrl = './assets/marker-icon-2x.png';
+  iconUrl = './assets/pointer_green.png';
+  shadowUrl = './assets/marker-shadow.png';
+  iconDefault = L.icon({
+    iconRetinaUrl: this.iconRetinaUrl,
+    iconUrl: this.iconUrl,
+    shadowUrl: this.shadowUrl,
+    iconSize: [25, 47],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+  });
 
   constructor(
     public sanitizer: DomSanitizer,
@@ -38,6 +52,7 @@ export class MapaComponent implements OnInit, AfterViewInit {
     this.mapa.setView(latlngInicio, 15);
     this.tileMapbox().addTo(this.mapa);
     L.control.zoom({position: 'bottomright'}).addTo(this.mapa);
+    L.Marker.prototype.options.icon = this.iconDefault;
 
     // this.pegarGeolocation();
   }
@@ -109,7 +124,8 @@ export class MapaComponent implements OnInit, AfterViewInit {
         this.criaMarcadores(data);
       })
 
-      this.mapa.panTo([enderecoObject.center[1], enderecoObject.center[0]]);
+      this.mapa.setView({lat: enderecoObject.center[1], lng: enderecoObject.center[0]}, this.distanciaValue);
+      // this.mapa.panTo([enderecoObject.center[1], enderecoObject.center[0]]);
     }
   }
 

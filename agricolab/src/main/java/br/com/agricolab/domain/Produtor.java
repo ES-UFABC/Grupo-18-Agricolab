@@ -1,7 +1,6 @@
 package br.com.agricolab.domain;
 
 import br.com.agricolab.repository.model.PedidosEntity;
-import br.com.agricolab.repository.model.ProdutorEntity;
 import br.com.agricolab.repository.model.ProdutosEntity;
 import lombok.Getter;
 import lombok.Setter;

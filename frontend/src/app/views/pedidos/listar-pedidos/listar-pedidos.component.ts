@@ -23,7 +23,7 @@ export class ListarPedidosComponent implements OnInit {
 
   listaProdutos(idUsuario: string | null) {
     this.cadastroService.getConsumidor(Number(idUsuario)).subscribe(data => {
-      this.pedidosArray = data.pedidos ? data.pedidos : [];
+      this.pedidosArray = data.pedidosConsumidor ? data.pedidosConsumidor : [];
     })
   }
 }

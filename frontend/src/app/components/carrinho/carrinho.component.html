@@ -5,7 +5,7 @@
 <nav @myInsertRemoveTrigger *ngIf="showMenu" class="nav">
 
     <h1 [class.hidden-element]="isPedidoFeito">Meu Carrinho</h1>
-    <div [class.hidden-element]="isPedidoFeito" class="lista-header" *ngIf="listaProdutos">
+    <div [class.hidden-element]="isPedidoFeito" class="lista-header" *ngIf="listaProdutos.length !== 0">
         <p>Produto</p>
         <p>Qtd</p>
         <p>Preço</p>
@@ -13,7 +13,7 @@
     </div>
     <div class="carrinho-container" *ngIf="!isPedidoFeito;else elseBlock">
         <app-item-carrinho *ngFor="let produto of listaProdutos" [produto]="produto" (removerItem)="removerItem($event)"></app-item-carrinho>
-        <div *ngIf="!listaProdutos" class="nenhum-produto">
+        <div *ngIf="listaProdutos.length === 0" class="nenhum-produto">
             <h2>Nenhum produto no carrinho.</h2>
         </div>
     </div>
